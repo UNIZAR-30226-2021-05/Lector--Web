@@ -12,7 +12,6 @@ function Inicio() {
   return (
     <div className="Inicio">
       
-    
       <div class="cajainicio">
           <h1>.</h1>
       </div>
