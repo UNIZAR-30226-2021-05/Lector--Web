@@ -9,6 +9,7 @@ import {
 import Login from './Login'
 import Inicio from './Inicio'
 import Raiz from './Raiz'
+import Admin from './Admin'
 import './styles.css'
 
 function App() {
@@ -17,6 +18,11 @@ function App() {
 
       <Router>
         <Switch>
+
+        <Route path="/admin/">
+            <Admin></Admin>
+          </Route>
+
         <Route path="/login/">
             <Login></Login>
           </Route>

@@ -11,6 +11,7 @@ function Login() {
   }
 
   return (  
+
       <div class="form">
 
         <h1 id="titulo" align="center" > BOOKBRAIN </h1>
@@ -21,19 +22,19 @@ function Login() {
 
 
         <div class="container" id="loginApp">
-          <label for="uname"><b>Username: </b></label>
+          <label for="uname"><b></b></label>
           <input type="text" placeholder="Enter Username" name="uname" required>
           </input>
         </div>
 
         <div class="container" id="passApp">
-          <label for="psw"><b>Password: </b></label>
+          <label for="psw"><b></b></label>
           <input type="password" placeholder="Enter Password" name="psw" required>
           </input>
         </div>
 
         <div class="container" id="forgot">
-             <span class="psw"><a href="#">Ha olvidado su contraseña?</a></span>
+             <span class="psw"><a href="#">¿Ha olvidado su contraseña?</a></span>
              
              {/*FALTA IMPLEMENTAR REESTABLECER LA CONTRASEÑA*/}
 
