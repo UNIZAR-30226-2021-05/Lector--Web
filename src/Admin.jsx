@@ -30,15 +30,33 @@ function Admin() {
 
         <div class="container" id="autorLib">
           <label for="AñoPubli"><b>Año de publicación: </b></label>
-          <input type="text" placeholder="Enter year" name="AñoPubli" maxlength="4" required>
+          <input type="text" placeholder="Enter year" name="AñoPubli" maxlength="4" >
           </input>
         </div>
 
+        <div class="container" id="ISBN">
+          <label for="ISBN"><b>ISBN: </b></label>
+          <input type="text" placeholder="Enter ISBN" name="ISBN" maxlength="10" required>
+          </input>
+        </div>
 
-        <input type="file" name="subirarchivos" id="subirAdmin">
-           
+        <div class="container" id="sinopsis">
+          <label for="Synopsis"><b>Sinopsis: </b></label>
+          <textarea name="sinopsis" id="sino" placeholder="Enter Synopsis" name="ISBN" >
+          </textarea>
+        </div>
+
+        <div class="container" id="subirportada">Seleccione la portada a añadir<p></p>
+        <input type="file" name="subirportada" >
+          
         </input>
+        </div>
 
+        <div class="container" id="subirarchivos">Seleccione los archivos que desea subir<p></p>
+        <input type="file" name="subirarchivos" >
+          
+        </input>
+        </div>
 
         <div class="container" id="but">
           <button type="button" class="btn btn-success">Subir</button>

@@ -105,23 +105,33 @@
         font-size: 16px;
 }
 
-#passApp{
+#passApp, #userMail{
         text-align: center;
         margin-top: 10px;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 16px;
 }
 
-#but, #forgot, #tituloLib, #autorLib{
+#but, #forgot, #tituloLib, #autorLib, #ISBN, #sinopsis {
         text-align: center;
         margin-top: 10px;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 16px;
 }
 
-#subirAdmin{
+#sino{
         text-align: center;
         margin-top: 10px;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 16px;
+        height: 60px;
+        width: 400px;
+}
+
+#subirarchivos, #subirportada{
+        text-align: center;
+        margin-top: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
 }

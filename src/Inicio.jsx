@@ -9,6 +9,12 @@ function Inicio() {
     window.location='/login';
   }
 
+  const clickRegistro = (e) =>{
+    e.preventDefault();
+    console.log('Clickado Registrarse');
+    window.location='/registro';
+  }
+
   return (
     <div className="Inicio">
       
@@ -24,7 +30,7 @@ function Inicio() {
           > Iniciar sesión
       </button>
 
-      <button id="registro" 
+      <button id="registro" value="registrar" onClick={clickRegistro}
           > Registrarse
       </button>
 
