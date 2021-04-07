@@ -6,7 +6,7 @@ import {
   Link,
   Redirect
 }  from 'react-router-dom'
-import React from 'react';
+import React, {useContext} from 'react';
 import Login from './Login'
 import Registro from './Registro'
 import Inicio from './Inicio'
@@ -14,12 +14,12 @@ import Raiz from './Raiz'
 import Admin from './Admin'
 import Perfil from './Perfil'
 import ChangePass from './ChangePass'
+import Context from './Context'
 import './styles.css'
 
 function App() {
 
   return (
-
       <Router>
         <Switch>
 

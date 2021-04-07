@@ -28,6 +28,12 @@ function Admin() {
           </input>
         </div>
 
+        <div class="container" id="genderLib">
+          <label for="genero"><b>Género: </b></label>
+          <input type="text" placeholder="Enter gender" name="gender" maxlength="80" required>
+          </input>
+        </div>
+
         <div class="container" id="autorLib">
           <label for="AñoPubli"><b>Año de publicación: </b></label>
           <input type="text" placeholder="Enter year" name="AñoPubli" maxlength="4" >

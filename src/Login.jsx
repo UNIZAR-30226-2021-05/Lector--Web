@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react'
-import axios from 'axios';
+import React, {useState, useEffect, useContext, useCallback} from 'react'
+import axios from 'axios'
 import Perfil from './Perfil'
 import Admin from './Admin'
-import logo from './LogoWeb.svg';
+import logo from './LogoWeb.svg'
+import Context from './Context'
 import './styles.css'
 
 const Login = () => {
@@ -16,6 +17,7 @@ const Login = () => {
     window.location='/changepas';
   }
 
+  
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -25,15 +27,18 @@ const Login = () => {
       "http://lectorbrainbook.herokuapp.com/rest-auth/login/",
       user
     );
-    // set the state of the user
-    setUser(response.data)
-    // store the user in localStorage
-    localStorage.setItem('user', response.data)
-    console.log(response.data)
-    
-  };
 
- 
+
+    //set the state of the user
+    setUser(response.data)
+    //store the user in localStorage
+    localStorage.setItem('user', response.data)
+    console.log("LA KEY ES:")
+    console.log(response.data)
+
+    //const contextK = useContext(response.data)
+
+  };
   
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
@@ -53,6 +58,7 @@ const Login = () => {
   }
 
     return(
+
     <div class="form">
 
     <h1 id="titulo" align="center" > BOOKBRAIN </h1>
@@ -72,13 +78,6 @@ const Login = () => {
       <label for="psw"><b></b></label>
       <input type="password" placeholder="Enter Password" name="psw" onChange={({ target }) => setPassword(target.value)} required>
       </input>
-    </div>
-
-    <div class="container" id="forgot">
-         <span class="psw"><a href="#" onClick={clickChange}>¿Ha olvidado su contraseña?</a></span>
-         
-         {/*FALTA IMPLEMENTAR REESTABLECER LA CONTRASEÑA*/}
-
     </div>
 
     <div class="container" id="but">
