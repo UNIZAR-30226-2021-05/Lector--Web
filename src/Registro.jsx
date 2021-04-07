@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import Perfil from './Perfil'
+import Admin from './Admin'
 import logo from './LogoWeb.svg';
 import './styles.css'
 
@@ -13,7 +14,7 @@ const Registro = () => {
   
     const handleSubmit = async e => {
       e.preventDefault();
-      const user = { username, email, password1, password2};
+      const user = { username, email, password1, password2 };
       // send the username and password to the server
       const response = await axios.post(
         "http://lectorbrainbook.herokuapp.com/rest-auth/registration/",
@@ -39,9 +40,13 @@ const Registro = () => {
   
 
 // if there's a user show the message below
-  if (user) {
-    return <div><Perfil /></div>;
+
+  if (user && user==='felipe') {
+    return <div><Admin /></div>;
   }
+ // if (user) {
+ //   return <div><Perfil /></div>;
+  //}
 
     return(
     <div class="form">

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import Perfil from './Perfil'
+import Admin from './Admin'
 import logo from './LogoWeb.svg';
 import './styles.css'
 
@@ -45,6 +46,9 @@ const Login = () => {
 
 // if there's a user show the message below
   if (user) {
+    if(username==='felipe'){
+      return <div><Admin /></div>;
+    }
     return <div><Perfil /></div>;
   }
 
