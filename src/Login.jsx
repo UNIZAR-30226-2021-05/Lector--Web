@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext, useCallback} from 'react'
 import axios from 'axios'
 import Perfil from './Perfil'
 import Admin from './Admin'
-import logo from './LogoWeb.svg'
+import logo from './LogoWeb.svg';
 import Context from './Context'
 import './styles.css'
 
@@ -26,7 +26,10 @@ const Login = () => {
     const response = await axios.post(
       "http://lectorbrainbook.herokuapp.com/rest-auth/login/",
       user
-    );
+    )
+    window.location='/Perfil';
+
+    ;
 
 
     //set the state of the user

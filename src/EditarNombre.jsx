@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import  { useState,useEffect } from "react";
 import logo from './LogoWeb.svg';
-import EditarPerfil from './componentesPerfil/EditarPerfil'
 import {
 	StyleSheet,
 	Text,
@@ -9,6 +8,12 @@ import {
 	Image,
 	TouchableOpacity
   } from 'react-native';
+// import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+// import Share from 'react-native-share';
+
+// import files from '../assets/filesBase64';
+
 
 
 
@@ -25,77 +30,41 @@ const Perfil = () => {
         localStorage.clear();
       };
 
-	const editar = (e) =>{
-		e.preventDefault();
-		console.log('Clickado');
-		window.location='/EditarPerfil';
-	  }
-	
-	  
-
     return(
         
-         <form onSubmit={handleLogout}>
-            <div class="sticky-top" id="barra">
-	  		<nav class="navbar navbar-expand-lg container align-items-center">
-				<a class="navbar-brand" href="#">
-				<img src={logo} height="60" alt="" loading="lazy">
-                </img>
-                </a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" 
-						aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> 
-						<span class="navbar-toggler-icon"></span>
-				</button>
-		  		<div class="collapse navbar-collapse justify-content-end" id="navbar" >
-				    <ul class="navbar-nav mx-3">
-				    	<li class="nav-item mx-2 active">
-				        	<a class="nav-link" href="#">LEYENDO</a>
-				        </li>
-						<li class="nav-item mx-2">
-				        	<a class="nav-link" href="#">BIBLIOTECA</a>
-				        </li>
-				        <li class="nav-item mx-2">
-				        	<a class="nav-link" href="#">BÚSQUEDA</a>
-				        </li>
-						<li class="nav-item mx-2">
-				        	<a class="nav-link" href="#">PERFIL</a>
-				        </li>
-				    </ul>
-				    <button onClick={handleLogout}>Cerrar sesión</button>
-	  			</div>
-			</nav>
-		</div>
-		<View style={styles.container}>
+	<View style={styles.container}>
 		<View style={styles.header}></View>
 		<Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
 		<View style={styles.body}>
 		<View style={styles.bodyContent}>
 		<Text style={styles.name}>Oscar Anadon</Text>
 		<Text style={styles.info}>biglector99@gmail.com</Text>
-
-		{/* <input id="edit" type="button" value="EDITAR PERFIL" onClick={editar}></input> */}
-
+		
+		{/* Obviamente no funciona, conectar con BACk */}
+		<div class="container" id="loginApp">
+      		<label for="uname"><b></b></label>
+      		<input type="text" placeholder="Enter Username" name="uname" onChange={({ target }) => setUsername(target.value)} required>
+      		</input>
+    	</div>              
 		<TouchableOpacity style={styles.buttonContainer}>
-			<input id="edit" type="button" value="EDITAR PERFIL" onClick={editar}></input> 
-		</TouchableOpacity>              
-		<TouchableOpacity style={styles.buttonContainer}>
-			<Text>Configuracion de la cuenta</Text> 
+			<Text>Confirmar cambios</Text> 
 		</TouchableOpacity>
 		</View>
 	  	</View>
-		</View>
-       </form>
+</View>
+           
 
 	   
 
 
 
+
+
       ); 
 }
-
 const styles = StyleSheet.create({
 	header:{
-	  backgroundColor: "#FFFF",
+	  backgroundColor: "#00BFFF",
 	  height:200,
 	},
 	avatar: {

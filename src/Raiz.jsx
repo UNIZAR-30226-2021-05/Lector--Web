@@ -15,7 +15,7 @@ function Raiz() {
   const clicar = (e) =>{
     e.preventDefault();
     console.log('Clickado');
-    window.location='/inicio';
+    window.location='/login';
   }
 
   return (

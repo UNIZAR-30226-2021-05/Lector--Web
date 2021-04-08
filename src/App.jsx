@@ -17,6 +17,13 @@ import ChangePass from './ChangePass'
 import Context from './Context'
 import './styles.css'
 
+// Componentes de Perfil
+import EditarPerfil from './componentesPerfil/EditarPerfil'
+import EditarEmail from './componentesPerfil/EditarEmail'
+import EditarFoto from './componentesPerfil/EditarFoto'
+import EditarNombre from './EditarNombre'
+
+
 function App() {
 
   return (
@@ -49,6 +56,24 @@ function App() {
 
           <Route path="/">
             <Raiz></Raiz>
+          </Route>
+
+          {/* Componentes Perfil */}
+
+          <Route path="/EditarPerfil/">
+            <EditarPerfil></EditarPerfil>
+          </Route>
+
+          <Route path="/EditarEmail/">
+            <EditarEmail></EditarEmail>
+          </Route>
+
+          <Route path="/EditarFoto/">
+            <EditarFoto></EditarFoto>
+          </Route>
+
+          <Route path="/EditarNombre/">
+            <EditarNombre></EditarNombre>
           </Route>
 
         </Switch>
