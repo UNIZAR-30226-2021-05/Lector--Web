@@ -30,6 +30,24 @@ function App() {
       <Router>
         <Switch>
 
+          {/* Componentes Perfil */}
+
+          <Route path="/EditarPerfil/">
+            <EditarPerfil></EditarPerfil>
+          </Route>
+
+          <Route path="/EditarEmail/">
+            <EditarEmail></EditarEmail>
+          </Route>
+
+          <Route path="/EditarFoto/">
+            <EditarFoto></EditarFoto>
+          </Route>
+
+          <Route path="/EditarNombre/">
+            <EditarNombre></EditarNombre>
+          </Route>
+
         <Route path="/changepas/">
             <ChangePass></ChangePass>
           </Route>
@@ -56,24 +74,6 @@ function App() {
 
           <Route path="/">
             <Raiz></Raiz>
-          </Route>
-
-          {/* Componentes Perfil */}
-
-          <Route path="/EditarPerfil/">
-            <EditarPerfil></EditarPerfil>
-          </Route>
-
-          <Route path="/EditarEmail/">
-            <EditarEmail></EditarEmail>
-          </Route>
-
-          <Route path="/EditarFoto/">
-            <EditarFoto></EditarFoto>
-          </Route>
-
-          <Route path="/EditarNombre/">
-            <EditarNombre></EditarNombre>
           </Route>
 
         </Switch>
