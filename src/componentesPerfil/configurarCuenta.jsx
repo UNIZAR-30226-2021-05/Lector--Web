@@ -9,6 +9,8 @@ import {
 	Image,
 	TouchableOpacity
   } from 'react-native';
+  import { Link } from 'react-router-dom'
+
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // import Share from 'react-native-share';
@@ -18,7 +20,7 @@ import {
 
 
 
-const Perfil = () => {
+const ConfigurarCuenta = () => {
 
  
 
@@ -30,7 +32,8 @@ const Perfil = () => {
 		<View style={styles.bodyContent}>
 			
 		<TouchableOpacity style={styles.buttonContainer}>
-			<Text>Seguridad</Text>  
+		<Link to="ChangePass" className="security">Seguridad</Link>
+		
 		</TouchableOpacity>              
 		<TouchableOpacity style={styles.buttonContainer}>
 			<Text>Informacion</Text> 
@@ -126,4 +129,4 @@ const styles = StyleSheet.create({
 	},
   });
 
-export default Perfil;
+export default ConfigurarCuenta;

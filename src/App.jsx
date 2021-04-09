@@ -12,55 +12,51 @@ import Registro from './Registro'
 import Inicio from './Inicio'
 import Raiz from './Raiz'
 import Admin from './Admin'
-import Perfil from './Perfil'
 import ChangePass from './ChangePass'
 import Context from './Context'
 import './styles.css'
+import Navigator from './Navigator'
 
 // Componentes de Perfil
 import EditarPerfil from './componentesPerfil/EditarPerfil'
 import EditarEmail from './componentesPerfil/EditarEmail'
 import EditarFoto from './componentesPerfil/EditarFoto'
 import EditarNombre from './componentesPerfil/EditarNombre'
-import ConfigurarCuenta from './componentesPerfil/configurarCuenta'
+import ConfigurarCuenta from './componentesPerfil/ConfigurarCuenta'
+
+// Componentes barra de navegacion
+import Leyendo from './Leyendo'
+import Biblioteca from './Biblioteca'
+import Busqueda from './Busqueda'
+import Perfil from './Perfil'
 
 
 function App() {
 
   return (
       <Router>
+        <Navigator/>
         <Switch>
 
           {/* Componentes Perfil */}
 
-          <Route path="/EditarPerfil/">
-            <EditarPerfil></EditarPerfil>
-          </Route>
+          <Route path="/EditarPerfil/" exact component={EditarPerfil} />
+          <Route path="/EditarEmail/" exact component={EditarEmail} />
+          <Route path="/EditarFoto/" exact component={EditarFoto} />
+          <Route path="/EditarNombre/" exact component={EditarNombre} />
+          <Route path="/ConfigurarCuenta/" exact component={ConfigurarCuenta} />
+          <Route path="/ChangePass/" exact component={ChangePass} />
 
-          <Route path="/EditarEmail/">
-            <EditarEmail></EditarEmail>
-          </Route>
+          {/* Componentes barra de navegacion */}
+          <Route path="/Perfil/" exact component={Perfil} />
+          <Route path="/Leyendo/" exact component={Leyendo} />
+          <Route path="/Biblioteca/" exact component={Biblioteca} />
+          <Route path="/Busqueda/" exact component={Busqueda} />
 
-          <Route path="/EditarFoto/">
-            <EditarFoto></EditarFoto>
-          </Route>
 
-          <Route path="/EditarNombre/">
-            <EditarNombre></EditarNombre>
-          </Route>
 
-          <Route path="/ConfigurarCuenta/">
-            <EditarNombre></EditarNombre>
-          </Route>
 
-        <Route path="/changepas/">
-            <ChangePass></ChangePass>
-          </Route>
-
-        <Route path="/perfil/">
-            <Perfil></Perfil>
-          </Route>
-
+       
         <Route path="/admin/">
             <Admin></Admin>
           </Route>
