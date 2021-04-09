@@ -1,71 +1,64 @@
 import React, {Component} from 'react';
 import  { useState,useEffect } from "react";
-import logo from './LogoWeb.svg';
-import EditarPerfil from './componentesPerfil/EditarPerfil'
+import logo from '../LogoWeb.svg';
 import {
 	StyleSheet,
 	Text,
+	Font,
 	View,
 	Image,
 	TouchableOpacity
   } from 'react-native';
+// import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+// import Share from 'react-native-share';
+
+// import files from '../assets/filesBase64';
+
 
 
 
 const Perfil = () => {
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [user, setUser] = useState()
-
-    const handleLogout = () => {
-        setUser({});
-        setUsername("");
-        setPassword("");
-        localStorage.clear();
-    };
-
-	const editar = (e) =>{
-		e.preventDefault();
-		console.log('Clickado');
-		window.location='/CambiarPass';
-	};
-
-
+ 
 
     return(
         
-         <form onSubmit={handleLogout}>
-           
-		<View style={styles.container}>
+	<View style={styles.container}>
 		<View style={styles.header}></View>
-		<Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
 		<View style={styles.body}>
 		<View style={styles.bodyContent}>
-		<Text style={styles.name}>Oscar Anadon</Text>
-		<Text style={styles.info}>biglector99@gmail.com</Text>
-
-		
-
+			
 		<TouchableOpacity style={styles.buttonContainer}>
-			<input id="edit" type="button" value="Modificar contraseña" onClick={editar}></input> 
+			<Text>Seguridad</Text>  
 		</TouchableOpacity>              
+		<TouchableOpacity style={styles.buttonContainer}>
+			<Text>Informacion</Text> 
+		</TouchableOpacity>
+        <TouchableOpacity style={styles.buttonContainer}>
+			<Text>Ayuda</Text> 
+		</TouchableOpacity>
+		<TouchableOpacity style={styles.buttonContainer2 }>
+		<font face="">Cerrar sesión</font> 
+		</TouchableOpacity>
 		</View>
 	  	</View>
-		</View>
-       </form>
+</View>
+           
 
 	   
 
 
 
+
+
       ); 
 }
-
 const styles = StyleSheet.create({
 	header:{
-	  backgroundColor: "#FFFF",
+	  backgroundColor: "#00BFFF",
 	  height:200,
+	  
 	},
 	avatar: {
 	  width: 130,
@@ -117,6 +110,19 @@ const styles = StyleSheet.create({
 	  width:250,
 	  borderRadius:30,
 	  backgroundColor: "#00BFFF",
+	},
+	buttonContainer2: {
+		marginTop:40,
+		height:45,
+		color: "#FFFF",
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginBottom:20,
+		width:250,
+		borderRadius:30,
+		backgroundColor: "#E61515",
+		
 	},
   });
 

@@ -30,6 +30,29 @@ const EditarPerfil = () => {
         localStorage.clear();
       };
 
+	//   Enlaces a otras paginas
+	const editarNombre = (e) =>{
+		e.preventDefault();
+		console.log('Clickado');
+		window.location='/EditarNombre';
+	}
+
+	const editarEmail = (e) =>{
+		e.preventDefault();
+		console.log('Clickado');
+		window.location='/EditarEmail';
+	}
+
+	const editarFoto = (e) =>{
+		e.preventDefault();
+		console.log('Clickado');
+		window.location='/EditarFoto';
+	}
+
+
+
+
+
     return(
         
 	<View style={styles.container}>
@@ -39,13 +62,13 @@ const EditarPerfil = () => {
 		<View style={styles.bodyContent}>
 			
 		<TouchableOpacity style={styles.buttonContainer}>
-			<Text>Editar nombre</Text>  
+			<input id="editNombre" type="button" value="Editar nombre" onClick={editarNombre}></input> 
 		</TouchableOpacity>              
 		<TouchableOpacity style={styles.buttonContainer}>
-			<Text>Editar email</Text> 
+			<input id="editEmail" type="button" value="Editar email" onClick={editarEmail}></input> 
 		</TouchableOpacity>
         <TouchableOpacity style={styles.buttonContainer}>
-			<Text>Cambiar foto de perfil</Text> 
+			<input id="editFoto" type="button" value="Cambiar foto de perfil" onClick={editarFoto}></input> 
 		</TouchableOpacity>
 		</View>
 	  	</View>

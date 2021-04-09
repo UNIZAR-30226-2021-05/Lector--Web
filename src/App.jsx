@@ -21,7 +21,8 @@ import './styles.css'
 import EditarPerfil from './componentesPerfil/EditarPerfil'
 import EditarEmail from './componentesPerfil/EditarEmail'
 import EditarFoto from './componentesPerfil/EditarFoto'
-import EditarNombre from './EditarNombre'
+import EditarNombre from './componentesPerfil/EditarNombre'
+import ConfigurarCuenta from './componentesPerfil/configurarCuenta'
 
 
 function App() {
@@ -45,6 +46,10 @@ function App() {
           </Route>
 
           <Route path="/EditarNombre/">
+            <EditarNombre></EditarNombre>
+          </Route>
+
+          <Route path="/ConfigurarCuenta/">
             <EditarNombre></EditarNombre>
           </Route>
 

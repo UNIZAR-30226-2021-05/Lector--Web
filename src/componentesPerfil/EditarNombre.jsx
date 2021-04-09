@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import  { useState,useEffect } from "react";
-import logo from './LogoWeb.svg';
+import logo from '../LogoWeb.svg';
 import {
 	StyleSheet,
 	Text,
-	Font,
 	View,
 	Image,
 	TouchableOpacity
@@ -20,26 +19,35 @@ import {
 
 const Perfil = () => {
 
- 
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [user, setUser] = useState()
+
+    const handleLogout = () => {
+        setUser({});
+        setUsername("");
+        setPassword("");
+        localStorage.clear();
+      };
 
     return(
         
 	<View style={styles.container}>
 		<View style={styles.header}></View>
+		<Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
 		<View style={styles.body}>
 		<View style={styles.bodyContent}>
-			
+		<Text style={styles.name}>Oscar Anadon</Text>
+		<Text style={styles.info}>biglector99@gmail.com</Text>
+		
+		{/* Obviamente no funciona, conectar con BACk */}
+		<div class="container" id="loginApp">
+      		<label for="uname"><b></b></label>
+      		<input type="text" placeholder="Enter Username" name="uname" onChange={({ target }) => setUsername(target.value)} required>
+      		</input>
+    	</div>              
 		<TouchableOpacity style={styles.buttonContainer}>
-			<Text>Seguridad</Text>  
-		</TouchableOpacity>              
-		<TouchableOpacity style={styles.buttonContainer}>
-			<Text>Informacion</Text> 
-		</TouchableOpacity>
-        <TouchableOpacity style={styles.buttonContainer}>
-			<Text>Ayuda</Text> 
-		</TouchableOpacity>
-		<TouchableOpacity style={styles.buttonContainer2 }>
-		<font face="">Cerrar sesión</font> 
+			<Text>Confirmar cambios</Text> 
 		</TouchableOpacity>
 		</View>
 	  	</View>
@@ -58,7 +66,6 @@ const styles = StyleSheet.create({
 	header:{
 	  backgroundColor: "#00BFFF",
 	  height:200,
-	  
 	},
 	avatar: {
 	  width: 130,
@@ -110,19 +117,6 @@ const styles = StyleSheet.create({
 	  width:250,
 	  borderRadius:30,
 	  backgroundColor: "#00BFFF",
-	},
-	buttonContainer2: {
-		marginTop:40,
-		height:45,
-		color: "#FFFF",
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center',
-		marginBottom:20,
-		width:250,
-		borderRadius:30,
-		backgroundColor: "#E61515",
-		
 	},
   });
 

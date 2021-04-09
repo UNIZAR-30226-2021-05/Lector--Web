@@ -1,6 +1,14 @@
 import React, { Component, useState, useContext, useEffect} from 'react';
 //import { StyleSheet, View , Text, TouchableWithoutFeedback, Keyboard, TextInput, TouchableHighlight } from 'react-native';
 import axios from 'axios'
+import logo from './LogoWeb.svg';
+import {
+	StyleSheet,
+	Text,
+	View,
+	Image,
+	TouchableOpacity
+  } from 'react-native';
 
 export class ChangePass extends Component{
     constructor(props) {
@@ -33,7 +41,12 @@ export class ChangePass extends Component{
         const {passwordActual, password1, password2 } = this.state
     return (
         
-        <div>
+      
+
+		
+             
+
+	
             <form onSubmit={this.submitHandler}>
                 <div>
                     <input 
@@ -60,7 +73,7 @@ export class ChangePass extends Component{
             </form>
     
 
-        </div>
+	
     )
     }
 }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import  { useState,useEffect } from "react";
 import logo from './LogoWeb.svg';
+import EditarPerfil from './componentesPerfil/EditarPerfil'
 import {
 	StyleSheet,
 	Text,
@@ -8,12 +9,6 @@ import {
 	Image,
 	TouchableOpacity
   } from 'react-native';
-// import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
-// import Share from 'react-native-share';
-
-// import files from '../assets/filesBase64';
-
 
 
 
@@ -28,43 +23,56 @@ const Perfil = () => {
         setUsername("");
         setPassword("");
         localStorage.clear();
-      };
+    };
+
+	const editar = (e) =>{
+		e.preventDefault();
+		console.log('Clickado');
+		window.location='/EditarPerfil';
+	};
+
+	const configuracion = (e) =>{
+		e.preventDefault();
+		console.log('Clickado');
+		window.location='/ConfigurarCuenta';
+	}
+	
+	  
 
     return(
         
-	<View style={styles.container}>
+         <form onSubmit={handleLogout}>
+            
+		<View style={styles.container}>
 		<View style={styles.header}></View>
 		<Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
 		<View style={styles.body}>
 		<View style={styles.bodyContent}>
 		<Text style={styles.name}>Oscar Anadon</Text>
 		<Text style={styles.info}>biglector99@gmail.com</Text>
+
 		
-		{/* Obviamente no funciona, conectar con BACk */}
-		<div class="container" id="loginApp">
-      		<label for="uname"><b></b></label>
-      		<input type="text" placeholder="Enter Username" name="uname" onChange={({ target }) => setUsername(target.value)} required>
-      		</input>
-    	</div>              
+
 		<TouchableOpacity style={styles.buttonContainer}>
-			<Text>Confirmar cambios</Text> 
+			<input id="edit" type="button" value="CONFIRMAR CAMBIOS" onClick={editar}></input> 
+		</TouchableOpacity>              
+		<TouchableOpacity style={styles.buttonContainer}>
 		</TouchableOpacity>
 		</View>
 	  	</View>
-</View>
-           
+		</View>
+       </form>
 
 	   
 
 
 
-
-
       ); 
 }
+
 const styles = StyleSheet.create({
 	header:{
-	  backgroundColor: "#00BFFF",
+	  backgroundColor: "#FFFF",
 	  height:200,
 	},
 	avatar: {
