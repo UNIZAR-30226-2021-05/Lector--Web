@@ -18,7 +18,7 @@ function Inicio() {
   return (
     <div className="Inicio">
       
-      <div class="cajainicio">
+      <div className="cajainicio">
           <h1>.</h1>
       </div>
 
@@ -34,7 +34,7 @@ function Inicio() {
           > Registrarse
       </button>
 
-      <div class="cajainicio2">
+      <div className="cajainicio2">
           <h1>.</h1>
       </div>
 

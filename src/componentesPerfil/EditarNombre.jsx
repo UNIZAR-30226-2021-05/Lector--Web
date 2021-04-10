@@ -17,7 +17,7 @@ import {
 
 
 
-const Perfil = () => {
+const EditarNombre = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -120,4 +120,4 @@ const styles = StyleSheet.create({
 	},
   });
 
-export default Perfil;
+export default EditarNombre;

@@ -21,23 +21,29 @@ const Login = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const user = { username, password };
+    const userB = { username, password };
     // send the username and password to the server
     const response = await axios.post(
       "http://lectorbrainbook.herokuapp.com/rest-auth/login/",
-      user
+      userB
     )
     window.location='/Perfil';
 
     ;
-
+    
+    
 
     //set the state of the user
     setUser(response.data)
     //store the user in localStorage
-    localStorage.setItem('user', response.data)
+    localStorage.setItem('userKey', JSON.stringify(response.data))
+    var x = JSON.parse(localStorage.getItem('userKey'));
     console.log("LA KEY ES:")
     console.log(response.data)
+    console.log("ITEMS:")
+    console.log("-----------")
+    console.log(x)
+    console.log(password)
 
     //const contextK = useContext(response.data)
 
