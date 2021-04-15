@@ -1,5 +1,6 @@
 import React from 'react'
 import './styles.css'
+import { Link } from 'react-router-dom'
 
 function Inicio() {
 
@@ -25,6 +26,10 @@ function Inicio() {
       <div className="tituloAPP">
       <h1 id="titulo2" align="center" > BOOKBRAIN </h1>
       </div>
+    {/* esto de aqui se usara para hacer el boton con link que es como se tiene que hacer realmente */}
+      {/* <TouchableOpacity style={styles.buttonContainer}>
+							<Link to="ConfigurarCuenta" className="config">CONFIGURACION</Link>
+						</TouchableOpacity> */}
 
       <button id="iniciar" value="entrar" onClick={clickInicio}
           > Iniciar sesión

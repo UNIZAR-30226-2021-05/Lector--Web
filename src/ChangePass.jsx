@@ -24,11 +24,13 @@ const Login = () => {
     console.log(password)
     console.log(password2)
     const userB = {password, password2 };
+    const options = {
+      headers: {'Authorization': `Token  + ${x}`}
+    };
     // send the username and password to the server
     //No funciona, error 401, se hace mal la peticion y no se por qué
     const response = await axios.post(
-      "http://lectorbrainbook.herokuapp.com/rest-auth/password/change/", {password, password2}, 
-      {headers:{'Authorization': `Token ${x}`}}  )
+      "http://lectorbrainbook.herokuapp.com/rest-auth/password/change/", userB ,options)
     ;
     //set the state of the user
     setUser(response.data)

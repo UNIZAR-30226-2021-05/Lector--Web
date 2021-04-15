@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import  { useState,useEffect } from "react";
 import logo from './LogoWeb.svg';
 import EditarPerfil from './componentesPerfil/EditarPerfil'
+import Navigator from '../Navigator'
+
 import {
 	StyleSheet,
 	Text,
@@ -40,7 +42,9 @@ const Perfil = () => {
 	  
 
     return(
-        
+        <view>
+			<Navigator />
+		
          <form onSubmit={handleLogout}>
             
 		<View style={styles.container}>
@@ -62,6 +66,7 @@ const Perfil = () => {
 	  	</View>
 		</View>
        </form>
+	   </view>
 
 	   
 

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import  { useState,useEffect } from "react";
 import logo from '../LogoWeb.svg';
+import Navigator from '../Navigator'
+
 import {
 	StyleSheet,
 	Text,
@@ -31,7 +33,7 @@ const EditarNombre = () => {
       };
 
     return(
-        
+    <view><Navigator />
 	<View style={styles.container}>
 		<View style={styles.header}></View>
 		<Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
@@ -52,6 +54,7 @@ const EditarNombre = () => {
 		</View>
 	  	</View>
 </View>
+</view>
            
 
 	   

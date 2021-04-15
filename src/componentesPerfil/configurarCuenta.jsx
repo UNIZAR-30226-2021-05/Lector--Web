@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { useState, useEffect } from "react";
 import logo from '../LogoWeb.svg';
+import Navigator from '../Navigator'
+
 import {
 	StyleSheet,
 	Text,
@@ -31,10 +33,12 @@ const ConfigurarCuenta = () => {
 		setUsername("");
 		setPassword("");
 		localStorage.clear();
+		window.location='/inicio';
+
 	};
 
 	return (
-
+		<view><Navigator />
 		<View style={styles.container}>
 			<View style={styles.header}></View>
 			<View style={styles.body}>
@@ -49,11 +53,12 @@ const ConfigurarCuenta = () => {
 						<Text>Ayuda</Text>
 					</TouchableOpacity>
 					<TouchableOpacity style={styles.buttonContainer2}>
-					<input id="logout" type="button" value="Cerrar sesión" onClick={handleLogout}></input>
+					<input id="logout" type="button"  value="Cerrar sesión" onClick={handleLogout}></input>
 					</TouchableOpacity>
 				</View>
 			</View>
 		</View>
+		</view>
 
 
 

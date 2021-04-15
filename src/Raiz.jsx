@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './LogoWeb.svg';
+import newLogo from './newLogo.png';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,7 +16,7 @@ function Raiz() {
   const clicar = (e) =>{
     e.preventDefault();
     console.log('Clickado');
-    window.location='/login';
+    window.location='/inicio';
   }
 
   return (

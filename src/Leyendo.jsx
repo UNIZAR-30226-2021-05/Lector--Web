@@ -1,5 +1,7 @@
 import React from 'react';
 import logo from './LogoWeb.svg';
+import Navigator from './Navigator'
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -15,7 +17,10 @@ function Leyendo() {
 
 
     return (
-        <h1>Leyendo</h1>
+        <view>
+            <Navigator />
+            <h1>Leyendo</h1>
+            </view>
     )
 
 }

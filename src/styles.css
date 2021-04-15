@@ -140,4 +140,10 @@
         background-color: #84bdda;
 }
 
+#logout{
+        border:0;
+        background-color: rgba(238, 238, 238, 0);
+        outline: none;
+}
 
+/* Estilos relativos a los botones Óscar */

@@ -36,7 +36,7 @@ function App() {
 
   return (
       <Router>
-        <Navigator/>
+        
         <Switch>
 
           {/* Componentes Perfil */}

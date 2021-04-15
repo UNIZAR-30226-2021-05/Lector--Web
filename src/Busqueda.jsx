@@ -1,5 +1,7 @@
 import React from 'react';
 import logo from './LogoWeb.svg';
+import Navigator from './Navigator'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,7 +17,10 @@ function Busqueda() {
   
 
   return (
+    <view>
+    <Navigator />
     <h1>Busqueda</h1>
+    </view>
   )
 
 }

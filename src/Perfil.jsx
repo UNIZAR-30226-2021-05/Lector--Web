@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import logo from './LogoWeb.svg';
 import EditarPerfil from './componentesPerfil/EditarPerfil'
 import { Link } from 'react-router-dom'
+import Navigator from './Navigator'
 
 import {
 	StyleSheet,
@@ -15,10 +16,12 @@ import {
 
 
 const Perfil = () => {
-
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-	const [user, setUser] = useState()
+	const [photo, setPhoto] = useState("");
+	const [email, setEmail] = useState("");
+	const [user, setUser] = useState();
+	
 
 	const handleLogout = () => {
 		setUser({});
@@ -27,11 +30,19 @@ const Perfil = () => {
 		localStorage.clear();
 	};
 
+	// Seccionar response.data y obtener parametros (Creo)
+	// useEffect(() => {
+	// 	const response = await axios.get(
+	// 		"http://lectorbrainbook.herokuapp.com/rest-auth/password/change/", {headers:{'Authorization': `Token ${x}`}}  )
+	//   }, []);
 	
 
-	return (
 
+	return (
+		<view>
+			<Navigator />
 		<form onSubmit={handleLogout}>
+			
 			<View style={styles.container}>
 				<View style={styles.header}></View>
 				<Image style={styles.avatar} source={{ uri: 'https://bootdey.com/img/Content/avatar/avatar6.png' }} />
@@ -52,6 +63,7 @@ const Perfil = () => {
 				</View>
 			</View>
 		</form>
+		</view>
 
 
 
