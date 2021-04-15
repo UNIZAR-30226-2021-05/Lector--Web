@@ -31,16 +31,18 @@ import Biblioteca from './Biblioteca'
 import Busqueda from './Busqueda'
 import Perfil from './Perfil'
 
+// Componentes barrade busqueda
+
+
 
 function App() {
 
   return (
       <Router>
-        
-        <Switch>
+         <Switch>
 
           {/* Componentes Perfil */}
-
+ 
           <Route path="/EditarPerfil/" exact component={EditarPerfil} />
           <Route path="/EditarEmail/" exact component={EditarEmail} />
           <Route path="/EditarFoto/" exact component={EditarFoto} />
@@ -76,9 +78,9 @@ function App() {
 
           <Route path="/">
             <Raiz></Raiz>
-          </Route>
+          </Route> 
 
-        </Switch>
+         </Switch> 
       </Router>
   )
 }

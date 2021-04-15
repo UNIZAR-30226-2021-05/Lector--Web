@@ -12,6 +12,8 @@ import {
 import './App';
 import './styles.css';
 
+import AppCard from './AppCard'
+
 function Busqueda() {
 
   
@@ -19,7 +21,7 @@ function Busqueda() {
   return (
     <view>
     <Navigator />
-    <h1>Busqueda</h1>
+    <AppCard />
     </view>
   )
 
