@@ -32,6 +32,8 @@ import Busqueda from './Busqueda'
 import Perfil from './Perfil'
 
 // Componentes barrade busqueda
+import BookCard from './BookCard'
+import BookCardGetted from './BookCardGetted'
 
 
 
