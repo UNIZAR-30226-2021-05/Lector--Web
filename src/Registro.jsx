@@ -17,7 +17,7 @@ const Registro = () => {
       const user = { username, email, password1, password2 };
       // send the username and password to the server
       const response = await axios.post(
-        "http://lectorbrainbook.herokuapp.com/rest-auth/registration/",
+        "https://lectorbrainbook.herokuapp.com/rest-auth/registration/",
         user
       );
       // set the state of the user
@@ -25,6 +25,7 @@ const Registro = () => {
       // store the user in localStorage
       localStorage.setItem('userKey', response.data)
       console.log(response.data)
+      window.location='/Perfil';
     };
   
    

@@ -24,7 +24,7 @@ const Login = () => {
     const userB = { username, password };
     // send the username and password to the server
     const response = await axios.post(
-      "http://lectorbrainbook.herokuapp.com/rest-auth/login/",
+      "https://lectorbrainbook.herokuapp.com/rest-auth/login/",
       userB
     )
     window.location='/Perfil';
