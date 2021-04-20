@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import  { useState,useEffect } from "react";
+import React, { Component } from 'react';
+import { useState, useEffect } from "react";
 import logo from './LogoWeb.svg';
 import {
 	StyleSheet,
@@ -7,7 +7,10 @@ import {
 	View,
 	Image,
 	TouchableOpacity
-  } from 'react-native';
+} from 'react-native';
+
+import axios from 'axios'
+
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // import Share from 'react-native-share';
@@ -17,104 +20,122 @@ import {
 
 
 
-const Perfil = () => {
+const PerfilBeta = () => {
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [user, setUser] = useState()
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
+	const [user, setUser] = useState()
 
-    const handleLogout = () => {
-        setUser({});
-        setUsername("");
-        setPassword("");
-        localStorage.clear();
-      };
+	const handleLogout = () => {
+		setUser({});
+		setUsername("");
+		setPassword("");
+		localStorage.clear();
+	};
 
-    return(
-        
-	<View style={styles.container}>
-		<View style={styles.header}></View>
-		<Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
-		<View style={styles.body}>
-		<View style={styles.bodyContent}>
-		<Text style={styles.name}>Oscar Anadon</Text>
-		<Text style={styles.info}>biglector99@gmail.com</Text>
+	const getProfile = () =>{
+		var x = JSON.parse(localStorage.getItem('userKey'));
+		var y;
+		const options = {
+			headers: {'Authorization': `Token  + ${x}`}
+		  };
+		const response =  axios.get(
+			"http://lectorbrainbook.herokuapp.com/usuario/nuevoUsuario5" ,options)
+		;
+		console.log("ESTAMOS AQUIII")
+		console.log(response)
+	};
+
+
+	return (
+
+		<View style={styles.container}>
 			
-		<TouchableOpacity style={styles.buttonContainer}>
-			<Text>Editar perfil de usuario</Text>  
-		</TouchableOpacity>              
-		<TouchableOpacity style={styles.buttonContainer}>
-			<Text>Configuracion de la cuenta</Text> 
-		</TouchableOpacity>
+			<View style={styles.header}></View>
+			<Image style={styles.avatar} source={{ uri: 'https://bootdey.com/img/Content/avatar/avatar6.png' }} />
+			<View style={styles.body}>
+			<button id="iniciar" value="entrar" onClick={getProfile}
+          > Iniciar sesión
+      </button>
+				<View style={styles.bodyContent}>
+					<Text style={styles.name}>Oscar Anadon</Text>
+					<Text style={styles.info}>biglector99@gmail.com</Text>
+
+					<TouchableOpacity style={styles.buttonContainer}>
+						<Text>Editar perfil de usuario</Text>
+					</TouchableOpacity>
+					<TouchableOpacity style={styles.buttonContainer}>
+						<Text>Configuracion de la cuenta</Text>
+					</TouchableOpacity>
+				</View>
+			</View>
 		</View>
-	  	</View>
-</View>
-           
-
-	   
 
 
 
 
 
-      ); 
+
+
+
+	);
 }
 const styles = StyleSheet.create({
-	header:{
-	  backgroundColor: "#00BFFF",
-	  height:200,
+	header: {
+		backgroundColor: "#00BFFF",
+		height: 200,
 	},
 	avatar: {
-	  width: 130,
-	  height: 130,
-	  borderRadius: 63,
-	  borderWidth: 4,
-	  borderColor: "white",
-	  marginBottom:10,
-	  alignSelf:'center',
-	  position: 'absolute',
-	  marginTop:130
+		width: 130,
+		height: 130,
+		borderRadius: 63,
+		borderWidth: 4,
+		borderColor: "white",
+		marginBottom: 10,
+		alignSelf: 'center',
+		position: 'absolute',
+		marginTop: 130
 	},
-	name:{
-	  fontSize:22,
-	  color:"#FFFFFF",
-	  fontWeight:'600',
+	name: {
+		fontSize: 22,
+		color: "#FFFFFF",
+		fontWeight: '600',
 	},
-	body:{
-	  marginTop:40,
+	body: {
+		marginTop: 40,
 	},
 	bodyContent: {
-	  flex: 1,
-	  alignItems: 'center',
-	  padding:30,
+		flex: 1,
+		alignItems: 'center',
+		padding: 30,
 	},
-	name:{
-	  fontSize:28,
-	  color: "#696969",
-	  fontWeight: "600"
+	name: {
+		fontSize: 28,
+		color: "#696969",
+		fontWeight: "600"
 	},
-	info:{
-	  fontSize:16,
-	  color: "#00BFFF",
-	  marginTop:10
+	info: {
+		fontSize: 16,
+		color: "#00BFFF",
+		marginTop: 10
 	},
-	description:{
-	  fontSize:16,
-	  color: "#696969",
-	  marginTop:10,
-	  textAlign: 'center'
+	description: {
+		fontSize: 16,
+		color: "#696969",
+		marginTop: 10,
+		textAlign: 'center'
 	},
 	buttonContainer: {
-	  marginTop:10,
-	  height:45,
-	  flexDirection: 'row',
-	  justifyContent: 'center',
-	  alignItems: 'center',
-	  marginBottom:20,
-	  width:250,
-	  borderRadius:30,
-	  backgroundColor: "#00BFFF",
+		marginTop: 10,
+		height: 45,
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginBottom: 20,
+		width: 250,
+		borderRadius: 30,
+		backgroundColor: "#00BFFF",
 	},
-  });
+});
 
-export default Perfil;
+export default PerfilBeta;

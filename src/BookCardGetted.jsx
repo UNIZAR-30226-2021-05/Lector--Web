@@ -4,6 +4,7 @@ import logo from './LogoWeb.svg';
 import EditarPerfil from './componentesPerfil/EditarPerfil'
 import { Link } from 'react-router-dom'
 import Navigator from './Navigator'
+import swal from 'sweetalert';
 
 import {
 	StyleSheet,
@@ -23,7 +24,21 @@ const BookCardGetted = () => {
 		  alt="Canvas Logo"
 		/>
 	)
-
+    
+    // Documentacion alertas  : https://sweetalert.js.org/guides/
+    const mostrarAlerta=()=>{
+        swal({
+			title: "Eliminar",
+			text: "¿Está seguro de querer eliminar el libro?",
+			icon: "warning",
+            // Segundo parametro siempre es tomado como TRUE
+			button: ["Cancelar", "Eliminar"]
+		}).then(respuesta=>{
+            if(respuesta){
+                swal({text: "El libro ha sido eliminado correctamente."})
+            }
+        })
+    }
 	var tituloLibro = (
 		<Text>Harry potter and the Prisioner of Azkaban</Text>
 	)

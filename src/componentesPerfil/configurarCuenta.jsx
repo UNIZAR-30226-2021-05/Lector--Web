@@ -53,7 +53,7 @@ const ConfigurarCuenta = () => {
 						<Text>Ayuda</Text>
 					</TouchableOpacity>
 					<TouchableOpacity style={styles.buttonContainer2}>
-					<input id="logout" type="button"  value="Cerrar sesión" onClick={handleLogout}></input>
+					<input id="transparente" type="button"  value="Cerrar sesión" onClick={handleLogout}></input>
 					</TouchableOpacity>
 				</View>
 			</View>

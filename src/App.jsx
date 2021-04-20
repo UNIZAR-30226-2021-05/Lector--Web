@@ -30,10 +30,10 @@ import Leyendo from './Leyendo'
 import Biblioteca from './Biblioteca'
 import Busqueda from './Busqueda'
 import Perfil from './Perfil'
+import PerfilBeta from './PerfilBeta'
 
 // Componentes barrade busqueda
 import BookCard from './BookCard'
-import BookCardGetted from './BookCardGetted'
 
 
 
@@ -57,6 +57,8 @@ function App() {
           <Route path="/Leyendo/" exact component={Leyendo} />
           <Route path="/Biblioteca/" exact component={Biblioteca} />
           <Route path="/Busqueda/" exact component={Busqueda} />
+
+          <Route path="/PerfilBeta/" exact component={PerfilBeta} />
 
 
 

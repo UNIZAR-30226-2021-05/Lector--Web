@@ -4,6 +4,8 @@ import logo from './LogoWeb.svg';
 import EditarPerfil from './componentesPerfil/EditarPerfil'
 import { Link } from 'react-router-dom'
 import Navigator from './Navigator'
+import swal from 'sweetalert';
+
 
 import {
 	StyleSheet,
@@ -23,6 +25,15 @@ const BookCard = () => {
 		  alt="Canvas Logo"
 		/>
 	)
+
+	const mostrarAlerta=()=>{
+        swal({
+			title: "Libro añadido con exito",
+			text: "Disfrute de su lectura.",
+			icon: "success",
+			button: "Aceptar"
+		});
+    }
 
 	var tituloLibro = (
 		<Text>Harry potter and the Prisioner of Azkaban</Text>
@@ -56,7 +67,7 @@ const BookCard = () => {
 				</View>
 				<View>
 				<TouchableOpacity style={styles.buttonContainer}>
-							<Link to="EditarPerfil" className="editarPerf">Añadir a tu biblioteca</Link>
+					<input id="transparente"  type="button"  value="Añadir a tu biblioteca" onClick={mostrarAlerta}></input>
 				</TouchableOpacity>
 				</View>
 			</View>
