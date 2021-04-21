@@ -30,7 +30,7 @@ import Leyendo from './Leyendo'
 import Biblioteca from './Biblioteca'
 import Busqueda from './Busqueda'
 import Perfil from './Perfil'
-import PerfilBeta from './PerfilBeta'
+// import PerfilBeta from './PerfilBeta'
 
 // Componentes barrade busqueda
 import BookCard from './BookCard'
