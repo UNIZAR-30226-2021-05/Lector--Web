@@ -58,7 +58,7 @@ function App() {
           <Route path="/Biblioteca/" exact component={Biblioteca} />
           <Route path="/Busqueda/" exact component={Busqueda} />
 
-          <Route path="/PerfilBeta/" exact component={PerfilBeta} />
+          {/* <Route path="/PerfilBeta/" exact component={PerfilBeta} /> */}
 
 
 
