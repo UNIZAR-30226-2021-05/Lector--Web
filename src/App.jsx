@@ -23,7 +23,7 @@ import EditarPerfil from './componentesPerfil/EditarPerfil'
 import EditarEmail from './componentesPerfil/EditarEmail'
 import EditarFoto from './componentesPerfil/EditarFoto'
 import EditarNombre from './componentesPerfil/EditarNombre'
-import ConfigurarCuenta from './componentesPerfil/ConfigurarCuenta'
+import ConfigurarCuenta from './componentesPerfil/configurarCuenta'
 
 // Componentes barra de navegacion
 import Leyendo from './Leyendo'
