@@ -24,7 +24,7 @@ function AppCard() {
     <div className="App">
       <div className="container searchApp">
         <h2 className="title is-2 has-text-centered">
-          React Search with Context API and Hooks
+          Encuentre su libro favorito
         </h2>
         <SearchBar onSearch={onSearch} />
         <CardList results={state.results} />

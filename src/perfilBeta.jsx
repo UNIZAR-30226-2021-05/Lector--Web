@@ -36,6 +36,7 @@ const PerfilBeta = () => {
 	const getProfile = () =>{
 		var x = JSON.parse(localStorage.getItem('userKey'));
 		var y;
+		var url = "http://lectorbrainbook.herokuapp.com/usuario/nuevoUsuario5"
 		const options = {
 			headers: {'Authorization': `Token  + ${x}`}
 		  };
@@ -44,6 +45,8 @@ const PerfilBeta = () => {
 		;
 		console.log("ESTAMOS AQUIII")
 		console.log(response)
+
+		
 	};
 
 

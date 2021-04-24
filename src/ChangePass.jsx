@@ -17,27 +17,45 @@ const Login = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     var x = JSON.parse(localStorage.getItem('userKey'));
+    var prev = 'Token '
+    var combo = prev + x
     // document.getElementById("root").innerHTML = x;
+    var url = 'https://lectorbrainbook.herokuapp.com/rest-auth/password/change/';
     console.log("ITEMS:")
     console.log("-----------")
+    console.log(combo)
     console.log(x)
     console.log(password)
     console.log(password2)
     const userB = {password, password2 };
     const options = {
-      headers: {'Authorization': `Token  + ${x}`}
+      headers: {'Authorization':combo }
     };
-    // send the username and password to the server
-    //No funciona, error 401, se hace mal la peticion y no se por qué
-    const response = await axios.post(
-      "http://lectorbrainbook.herokuapp.com/rest-auth/password/change/", userB ,options)
-    ;
-    //set the state of the user
-    setUser(response.data)
-    //store the user in localStorage
-    localStorage.setItem('userKey', response.data)
-    console.log("LA KEY ES:")
-    console.log(response.data)
+    // console.log(options)
+    // // send the username and password to the server
+    // //No funciona, error 401, se hace mal la peticion y no se por qué
+    // const response = await axios.post(
+    //   "http://lectorbrainbook.herokuapp.com/rest-auth/password/change/", userB ,options)
+    // ;
+    // //set the state of the user
+    // setUser(response.data)
+    // //store the user in localStorage
+    // localStorage.setItem('userKey', response.data)
+    // console.log("LA KEY ES:")
+    // console.log(response.data)
+
+
+    const response = fetch(url, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Token + ${x}`
+      },
+      body: JSON.stringify({
+        new_password1: password,
+        new_password2: password2,
+      })
+    })
+    console.log(response.data);
   };
   
   useEffect(() => {

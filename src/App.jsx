@@ -58,6 +58,8 @@ function App() {
           <Route path="/Biblioteca/" exact component={Biblioteca} />
           <Route path="/Busqueda/" exact component={Busqueda} />
 
+          {/* Componentes busqueda de libros y demas */}
+          <Route path="/BookCard/" exact component={BookCard} />
           {/* <Route path="/PerfilBeta/" exact component={PerfilBeta} /> */}
 
 
