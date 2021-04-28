@@ -1,9 +1,5 @@
-import React, {useState, useEffect, useContext, useCallback} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import Perfil from './Perfil'
-import Admin from './Admin'
-import logo from './LogoWeb.svg';
-import Context from './Context'
 import './styles.css'
 
 const Login = () => {
@@ -44,19 +40,28 @@ const Login = () => {
     // console.log("LA KEY ES:")
     // console.log(response.data)
 
+    const article = {};
+        const headers = { 
+            'Authorization':combo
+            
+            
+        };
+        axios.post(url, userB, { headers })
+            .then(response => this.setState({ articleId: response.data.id }));
+    };
 
-    const response = fetch(url, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Token + ${x}`
-      },
-      body: JSON.stringify({
-        new_password1: password,
-        new_password2: password2,
-      })
-    })
-    console.log(response.data);
-  };
+  //   const response = fetch(url, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Authorization': `Token + ${x}`
+  //     },
+  //     body: JSON.stringify({
+  //       new_password1: password,
+  //       new_password2: password2,
+  //     })
+  //   })
+  //   console.log(response.data);
+  // };
   
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");

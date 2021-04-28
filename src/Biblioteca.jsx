@@ -1,14 +1,9 @@
 import React from 'react';
-import logo from './LogoWeb.svg';
 import Navigator from './Navigator'
-
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    Redirect
-} from 'react-router-dom'
+    StyleSheet,
+    View,
+  } from 'react-native';
 import './App';
 import './styles.css';
 
@@ -17,12 +12,26 @@ function Biblioteca() {
 
 
     return (
-        <view>
+        <View>
         <Navigator />
+        <View style={styles.bigTitle}>
         <h1>Biblioteca</h1>
-        </view>
+        <View>
+            
+        </View>
+        </View>
+        </View>
     )
 
 }
+
+const styles = StyleSheet.create({
+	bigTitle: {
+		fontSize: 16,
+		color: "#696969",
+		marginTop: 10,
+		textAlign: 'center'
+	}
+});
 
 export default Biblioteca;

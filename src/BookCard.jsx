@@ -1,8 +1,4 @@
-import React, { Component } from 'react';
-import { useState, useEffect } from "react";
-import logo from './LogoWeb.svg';
-import EditarPerfil from './componentesPerfil/EditarPerfil'
-import { Link } from 'react-router-dom'
+import React from 'react';
 import Navigator from './Navigator'
 import swal from 'sweetalert';
 
@@ -11,7 +7,6 @@ import {
 	StyleSheet,
 	Text,
 	View,
-	Image,
 	TouchableOpacity
 } from 'react-native';
 

@@ -1,21 +1,16 @@
-import logo from './LogoWeb.svg';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  Redirect
 }  from 'react-router-dom'
-import React, {useContext} from 'react';
+import React from 'react';
 import Login from './Login'
 import Registro from './Registro'
 import Inicio from './Inicio'
 import Raiz from './Raiz'
 import Admin from './Admin'
 import ChangePass from './ChangePass'
-import Context from './Context'
 import './styles.css'
-import Navigator from './Navigator'
 
 
 // Componentes de Perfil
@@ -23,7 +18,7 @@ import EditarPerfil from './componentesPerfil/EditarPerfil'
 import EditarEmail from './componentesPerfil/EditarEmail'
 import EditarFoto from './componentesPerfil/EditarFoto'
 import EditarNombre from './componentesPerfil/EditarNombre'
-import ConfigurarCuenta from './componentesPerfil/configurarCuenta'
+import ConfigurarCuenta from './componentesPerfil/ConfigurarCuenta'
 
 // Componentes barra de navegacion
 import Leyendo from './Leyendo'

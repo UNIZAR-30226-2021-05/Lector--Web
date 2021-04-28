@@ -1,15 +1,7 @@
 import React from 'react'
-import logo from './LogoWeb.svg';
 import './styles.css'
 
 function Admin() {
-  
-  const clickInicio = (e) =>{
-    e.preventDefault();
-    console.log('Clickado Iniciar Sesion');
-    window.location='/inicio';
-  }
-
   return (  
 
       <div className="form">
@@ -48,7 +40,7 @@ function Admin() {
 
         <div className="container" id="sinopsis">
           <label for="Synopsis"><b>Sinopsis: </b></label>
-          <textarea name="sinopsis" id="sino" placeholder="Enter Synopsis" name="ISBN" >
+          <textarea name="sinopsis" id="sino" placeholder="Enter Synopsis"  >
           </textarea>
         </div>
 

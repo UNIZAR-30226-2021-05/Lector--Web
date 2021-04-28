@@ -4,9 +4,9 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
-  TouchableOpacity
 } from 'react-native';
+import Grid from '@material-ui/core/Grid';
+
 
 function CardList({ results }) {
   let data = [];
@@ -15,48 +15,46 @@ function CardList({ results }) {
   }
   console.log(data);
 
-  // Esta funcion ha de ser cambiada por link
-  const handleSubmit = async e => {
-    console.log("Se ha clicado encima")
-     window.location='/BookCard';
+  // // Esta funcion ha de ser cambiada por link
+  // const handleSubmit = async e => {
+  //   console.log("Se ha clicado encima")
+  //   window.location = '/BookCard';
 
-    ;
-  }
+  //   ;
+  // }
 
   return (
     <div className="result">
       <View style={styles.categoria}>
         <h1>En tu bibiliteca</h1>
       </View>
-      <View style={styles.bloque}>
+      <View style={styles.vermas}>
+        <Text>Ver mas</Text>
+      </View>
+      <Grid item xl={4} justify = 'center'>
+      <View>
+        
         {data.map((item) => (
-          <View style={styles.libro}>
+            
             <Card key={item.imdbID} movie={item} />
-          </View>
-        )).slice(0, 4)}
+           
+        ))}
+        
       </View>
-      <View style={styles.categoria}>
-        <h1>Descubre </h1>
-      </View>
-      <View style={styles.bloque}>
-        {data.map((item) => (
-          <View style={styles.libro} onClick={handleSubmit}>
-            <Card key={item.imdbID} movie={item} />
-          </View>
-        )).slice(0, 4)}
-      </View>
+      </Grid>
+     
     </div>
   );
 }
 
 const styles = StyleSheet.create({
   libro: {
-    height: 45,
-    width: 400,
-    // marginLeft: 10
+    height: 30,
+    width: 300,
+    marginLeft: 50
   },
   bloque: {
-    
+
     marginBottom: 500,
     height: 45,
     flexDirection: 'row',
@@ -66,7 +64,16 @@ const styles = StyleSheet.create({
 
   },
   categoria: {
-  marginTop: 20
+    marginTop: 20
+  },
+  vermas: {
+    
+    marginTop: -30,
+    marginBottom: 0,
+    // alignItems: 'left',
+    alignItems: 'center',
+    //alinear derecha
+    marginLeft: 1000
   }
 });
 
