@@ -5,7 +5,17 @@ import {
   Text,
   View,
 } from 'react-native';
+
+
+// Necesario para Grid etc
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Radio from '@material-ui/core/Radio';
+import Paper from '@material-ui/core/Paper';
+
 
 
 function CardList({ results }) {
@@ -23,28 +33,51 @@ function CardList({ results }) {
   //   ;
   // }
 
-  return (
-    <div className="result">
-      <View style={styles.categoria}>
-        <h1>En tu bibiliteca</h1>
-      </View>
-      <View style={styles.vermas}>
-        <Text>Ver mas</Text>
-      </View>
-      <Grid item xl={4} justify = 'center'>
-      <View>
-        
-        {data.map((item) => (
-            
-            <Card key={item.imdbID} movie={item} />
-           
-        ))}
-        
-      </View>
+
+
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper2:{
+      padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    },
+    paper: {
+      height: 140,
+      width: 100,
+    },
+    control: {
+      padding: theme.spacing(2),
+    },
+  }));
+
+  const [spacing, setSpacing] = React.useState(2);
+  const classes = useStyles();
+
+  
+
+return (
+  <div className="result">
+
+
+    <Grid container className={classes.root} spacing={3}>
+      <Grid item xs={12}>
+        <Grid container justify="left" spacing={spacing}>
+          {data.map((item) => (
+            <Grid key={item.imdbID} item>
+              <Card key={item.imdbID} movie={item} />
+            </Grid>
+          )).slice(0,3)}
+        </Grid>
       </Grid>
-     
-    </div>
-  );
+    </Grid>
+
+
+  </div>
+);
 }
 
 const styles = StyleSheet.create({
@@ -67,7 +100,7 @@ const styles = StyleSheet.create({
     marginTop: 20
   },
   vermas: {
-    
+
     marginTop: -30,
     marginBottom: 0,
     // alignItems: 'left',

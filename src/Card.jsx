@@ -1,11 +1,13 @@
 import React from "react";
+import { makeStyles } from '@material-ui/core/styles';
 
 export default function Card(props) {
   const { movie } = props;
+  const classes = useStyles();
   return (
     <div class="resultCard">
-      <figure className="image is-48x48">
-        <img
+      <figure >
+        <img className={classes.caratula}
           src={movie.Poster}
           alt= {movie.Title}
         />
@@ -14,3 +16,12 @@ export default function Card(props) {
       <span><b>Year:</b>{movie.Year}</span>
     </div>
   )};
+
+  const useStyles = makeStyles((theme) => ({
+    
+    caratula: {
+      height: 444,
+      width: 300
+    },
+   
+  }));
