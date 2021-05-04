@@ -34,10 +34,48 @@ const Perfil = () => {
 
 	// Seccionar response.data y obtener parametros (Creo)
 	useEffect(() => {
-		// var x = JSON.parse(localStorage.getItem('userKey'));
-		// const response =  axios.get(
-		// 	"https://lectorbrainbook.herokuapp.com/usuario/oscarcps", {headers:{'Authorization': `Token ${x}`}}  )
+		// e.preventDefault();
+		var prev = ' Token '
+		var combo = prev + localStorage.getItem('userKey').substring('8', '48')
+		
+		const response = axios.request({
+		  url: 'http://lectorbrainbook.herokuapp.com/usuario/oscarcps',
+		  method: 'get',
+		  headers: { 'Authorization': combo },	
+		}).then(function (response) {
+		  setUsername(response.data.username)
+		  setEmail(response.data.email)
+		  setPhoto(response.data.pathFoto)
+		})
+		  .catch(function (error) {
+			// handle error
+			console.log("error")
+			console.log(error);
+		  })
+		  ;
 	  }, []);
+	
+
+	  const handleSubmit = async e => {
+		e.preventDefault();
+		var prev = ' Token '
+		var combo = prev + localStorage.getItem('userKey').substring('8', '48')
+		
+		const response = axios.request({
+		  url: 'http://lectorbrainbook.herokuapp.com/usuario/oscarcps',
+		  method: 'get',
+		  headers: { 'Authorization': combo },	
+		}).then(function (response) {
+			console.log("CORRECTO")
+		  console.log(response.data);
+		})
+		  .catch(function (error) {
+			// handle error
+			console.log("error")
+			console.log(error);
+		  })
+		  ;
+	  }
 	
 
 
@@ -51,8 +89,8 @@ const Perfil = () => {
 				<Image style={styles.avatar} source={{ uri: 'https://bootdey.com/img/Content/avatar/avatar6.png' }} />
 				<View style={styles.body}>
 					<View style={styles.bodyContent}>
-						<Text style={styles.name}>Oscar Anadon</Text>
-						<Text style={styles.info}>biglector99@gmail.com</Text>
+						<Text style={styles.name}>{username}</Text>
+						<Text style={styles.info}>{email}</Text>
 
 
 
