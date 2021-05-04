@@ -22,6 +22,7 @@ import Admin from './Admin'
 import logo from './LogoWeb.svg';
 import Context from './Context'
 import './styles.css'
+import swal from 'sweetalert';
 
 const Inicio = () => {
   const [username, setUsername] = useState("");
@@ -41,25 +42,35 @@ const Inicio = () => {
     const response = await axios.post(
       "https://lectorbrainbook.herokuapp.com/rest-auth/login/",
       userB
-    )
-    window.location='/Perfil';
+    ).then(function (response) {
+      setUser(response.data)
+      //store the user in localStorage
+      localStorage.setItem('userKey', JSON.stringify(response.data))
+  
+      localStorage.setItem('userName', JSON.stringify(username))
+      localStorage.setItem('user', JSON.stringify(response.data))
+      console.log(response.data);
+      window.location='/Perfil';
+
+    })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+        swal({
+          title: "Error",
+          text: "Usuario o contraseña incorrectos.",
+          icon: "error"
+        });
+      })
+      ;
+    
 
     ;
     
     
 
     //set the state of the user
-    setUser(response.data)
-    //store the user in localStorage
-    localStorage.setItem('userKey', JSON.stringify(response.data))
-    var x = JSON.parse(localStorage.getItem('userKey'));
-    console.log("LA KEY ES:")
-    console.log(response.data)
-    console.log("ITEMS:")
-    console.log("-----------")
-    console.log(x)
-    console.log(password)
-
+   
     //const contextK = useContext(response.data)
 
   };
@@ -72,6 +83,8 @@ const Inicio = () => {
       setUser(loggedInUser);
     }
   }, []);
+
+  
 
 
 
@@ -110,6 +123,12 @@ const useStyles = makeStyles((theme) => ({
 
   const classes = useStyles();
 
+  if (user) {
+    if(username==='felipe'){
+      return <div><Admin /></div>;
+    }
+    return <div><Perfil /></div>;
+  }
   return (
     <div class="form">
     <Container component="main" maxWidth="xs">

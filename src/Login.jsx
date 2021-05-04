@@ -37,13 +37,13 @@ const Login = () => {
     setUser(response.data)
     //store the user in localStorage
     localStorage.setItem('userKey', JSON.stringify(response.data))
+    localStorage.setItem('userName', JSON.stringify(username))
     var x = JSON.parse(localStorage.getItem('userKey'));
-    console.log("LA KEY ES:")
-    console.log(response.data)
-    console.log("ITEMS:")
-    console.log("-----------")
-    console.log(x)
-    console.log(password)
+    var y = JSON.parse(localStorage.getItem('userName'));
+    console.log("EL NOMBRE ES:")
+    console.log("------------------------------")
+
+    console.log(y)
 
     //const contextK = useContext(response.data)
 

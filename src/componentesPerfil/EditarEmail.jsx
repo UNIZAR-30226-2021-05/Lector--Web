@@ -32,6 +32,9 @@ const Perfil = () => {
         localStorage.clear();
       };
 
+	const nombreUsuario = localStorage.getItem('userName').replace(/['"]+/g, '');
+	const nombreEmail = localStorage.getItem('userEmail').replace(/['"]+/g, '');
+	
     return(
     <view><Navigator /> 
 	<View style={styles.container}>
@@ -39,8 +42,8 @@ const Perfil = () => {
 		<Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
 		<View style={styles.body}>
 		<View style={styles.bodyContent}>
-		<Text style={styles.name}>Oscar Anadon</Text>
-		<Text style={styles.info}>biglector99@gmail.com</Text>
+		<Text style={styles.name}>{nombreUsuario}</Text>
+		<Text style={styles.info}>{nombreEmail}</Text>
 		
 		{/* Obviamente no funciona, conectar con BACk */}
 		<div class="container" id="loginApp">

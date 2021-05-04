@@ -20,6 +20,8 @@ import Admin from './Admin'
 import logo from './LogoWeb.svg';
 import './styles.css'
 
+import swal from 'sweetalert';
+
 const Registro = () => {
 
   const [username, setUsername] = useState("");
@@ -35,13 +37,33 @@ const Registro = () => {
     const response = await axios.post(
       "https://lectorbrainbook.herokuapp.com/rest-auth/registration/",
       user
-    );
-    // set the state of the user
-    setUser(response.data)
-    // store the user in localStorage
-    localStorage.setItem('userKey', response.data)
-    console.log(response.data)
-    window.location='/Perfil';
+    ).then(function (response) {
+      //store the user in localStorage
+      localStorage.setItem('user', response.data)
+      setUser(response.data)
+      // store the user in localStorage
+      localStorage.setItem('userKey', JSON.stringify(response.data))
+      localStorage.setItem('userName', username)
+      localStorage.setItem('userEmail', email)
+      console.log(response.data);
+      window.location='/Perfil';
+
+    })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+        swal({
+          title: "Error",
+          text: "Alguno de los campos es incorrecto.",
+          icon: "error"
+        });
+      })
+      ;;
+  
+
+    
+      
+
   };
 
  
@@ -104,7 +126,12 @@ const useStyles = makeStyles((theme) => ({
   
 
   const classes = useStyles();
-
+  if (user) {
+    if(username==='felipe'){
+      return <div><Admin /></div>;
+    }
+    return <div><Perfil /></div>;
+  }
   return (
     <div class="form">
     <Container component="main" maxWidth="xs">
