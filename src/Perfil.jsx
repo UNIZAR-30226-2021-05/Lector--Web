@@ -5,6 +5,8 @@ import EditarPerfil from './componentesPerfil/EditarPerfil'
 import { Link } from 'react-router-dom'
 import Navigator from './Navigator'
 
+import axios from 'axios'
+
 import {
 	StyleSheet,
 	Text,
@@ -31,10 +33,11 @@ const Perfil = () => {
 	};
 
 	// Seccionar response.data y obtener parametros (Creo)
-	// useEffect(() => {
-	// 	const response = await axios.get(
-	// 		"http://lectorbrainbook.herokuapp.com/rest-auth/password/change/", {headers:{'Authorization': `Token ${x}`}}  )
-	//   }, []);
+	useEffect(() => {
+		// var x = JSON.parse(localStorage.getItem('userKey'));
+		// const response =  axios.get(
+		// 	"https://lectorbrainbook.herokuapp.com/usuario/oscarcps", {headers:{'Authorization': `Token ${x}`}}  )
+	  }, []);
 	
 
 
