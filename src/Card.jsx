@@ -12,7 +12,7 @@ export default function Card(props) {
           alt= {movie.Title}
         />
       </figure>
-      <h4 class="bolder">{movie.Title}</h4>
+      <div className={classes.titulo}><h4 class="bolder">{movie.Title}</h4></div>     
       <span><b>Year:</b>{movie.Year}</span>
     </div>
   )};
@@ -23,5 +23,9 @@ export default function Card(props) {
       height: 444,
       width: 300
     },
+    titulo: {
+       maxWidth: 300,
+	     
+    }
    
   }));

@@ -52,6 +52,7 @@ function AppCard() {
             <View style={stylesB.containerBotones}>
             <h3>En su biblioteca</h3>
             <View style={stylesB.containerVer}>
+              {/* Linkar esto a la biblioteca con la busqueda filtrada */}
             <h3>Ver mas</h3>
             </View>
             </View>

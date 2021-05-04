@@ -16,6 +16,14 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import Paper from '@material-ui/core/Paper';
 
+//stylesheet
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+}  from 'react-router-dom'
 
 
 function CardList({ results }) {
@@ -68,7 +76,9 @@ return (
         <Grid container justify="left" spacing={spacing}>
           {data.map((item) => (
             <Grid key={item.imdbID} item>
+              <Link to="BookCard" className="BookCard">
               <Card key={item.imdbID} movie={item} />
+              </Link>
             </Grid>
           )).slice(0,3)}
         </Grid>
