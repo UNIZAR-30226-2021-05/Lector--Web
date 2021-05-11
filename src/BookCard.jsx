@@ -15,11 +15,43 @@ import {
 
 
 function BookCard({ results }) {
+	const [book, setBook] = useState("");
+
 	// Proceso para obtener libro
+	useEffect(() => {
+		// e.preventDefault();
+		var prev = ' Token '
+		var combo = prev + localStorage.getItem('userKey').substring('8', '48')
+		console.log("NOMBRE")
+		// console.log(localStorage.getItem('userName'))
+
+		var url = 'http://lectorbrainbook.herokuapp.com/libro/'
+		var isbn = localStorage.getItem('isbnCheck')
+		var isbnUnquoted = isbn.replace(/['"]+/g, '');
+		var direccion = url + isbnUnquoted
+
+		console.log("DIRECCION")
+		console.log(direccion)
+		
+		const response = axios.request({
+		  url: direccion,
+		  method: 'get',
+		  headers: { 'Authorization': combo },	
+		}).then(function (response) {
+			setBook(response.data)
+			console.log(book)
+		})
+		  .catch(function (error) {
+			// handle error
+			console.log("error")
+			console.log(error);
+		  })
+	    }, []);
+
 
 	var imagen = (
 		<img
-		  src="https://pictures.abebooks.com/isbn/9780747542155-es.jpg"
+		  src={book.portada}
 		  //src={'/src/images/logo.png'}
 		  alt="Canvas Logo"
 		/>
@@ -35,16 +67,15 @@ function BookCard({ results }) {
     }
 
 	var tituloLibro = (
-		<Text>Harry potter and the Prisioner of Azkaban</Text>
+		<Text>{book.titulo}</Text>
+	)
+
+	var autor = (
+		<Text>{book.autor}</Text>
 	)
 
 	var descripcion = (
-		<Text>En su tercer año en Hogwarts, Harry, Ron y Hermione conocen a Sirius Black, 
-			el prisionero que ha escapado de Azkaban y aprenden a acercarse a un Hippogriffo 
-			mitad caballo/ mitad águila, a como transformar a los cambiantes Boggarts y el arte de la Adivinación. 
-			Harry deberá enfrentárse a los Dementores que son ladrones de almas, defenderse del peligroso hombre lobo 
-			y lidiar con la verdad acerca de la relación entre Sirius Black y sus padres.
-		</Text>
+		<Text>{book.sinopsis}</Text>
 	)
 
 	// Se necesitara funcion para que descargue los parametrosdel libro o similar
@@ -60,6 +91,10 @@ function BookCard({ results }) {
 				<View style={styles.titleContainer}>
 					{/* {tituloLibro} */}
 					<Text style={styles.titulo}>{tituloLibro}</Text>
+				</View>
+				<View style={styles.autorContainer}>
+					{/* {tituloLibro} */}
+					<Text style={styles.titulo}>{autor}</Text>
 				</View>
 				<View style={styles.sinopsis}>
 					{descripcion}
@@ -95,6 +130,15 @@ const styles = StyleSheet.create({
 		marginLeft: 500,
 		marginRight: '200px',
 		marginTop: 70,
+		textAlign: 'left'
+	},
+
+	autorContainer:{
+		
+		alignSelf: 'right',
+		marginLeft: 500,
+		marginRight: '200px',
+		marginTop: 20,
 		textAlign: 'left'
 	},
 

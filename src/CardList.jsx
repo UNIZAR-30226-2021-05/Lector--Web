@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./Card";
+import BookCard from "./BookCard";
 import {
   StyleSheet,
   Text,
@@ -45,6 +46,15 @@ function CardList({ results }) {
   // }
 
 
+  
+
+  const goBook = (item) => (event) => {
+    // you can access the item object and the event object
+
+    localStorage.setItem('isbnCheck', item)
+    console.log("obtenido", localStorage.getItem('isbnCheck'));
+    window.location='/BookCard';
+  }
 
 
   const useStyles = makeStyles((theme) => ({
@@ -78,10 +88,10 @@ return (
       <Grid item xs={12}>
         <Grid container justify="left" spacing={spacing}>
           {data.map((item) => (
-            <Grid key={item.ISBN} item>
-              <Link to="BookCard" className="BookCard">
+            <Grid key={item.ISBN} item onClick={goBook(item.ISBN) }>
+              {/* <Link to="BookCard" className="BookCard"> */}
               <Card key={item.ISBN} movie={item} />
-              </Link>
+              {/* </Link> */}
             </Grid>
           )).slice(0,3)}
         </Grid>
