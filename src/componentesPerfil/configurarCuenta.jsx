@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import logo from '../LogoWeb.svg';
 import Navigator from '../Navigator'
 
+
+
 import {
 	StyleSheet,
 	Text,

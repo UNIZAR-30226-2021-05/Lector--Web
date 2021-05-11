@@ -42,15 +42,12 @@ const Perfil = () => {
 
 		var url = 'http://lectorbrainbook.herokuapp.com/usuario/'
 		var usuario = localStorage.getItem('userName')
-
 		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
-
 		var direccion = url + usuarioUnquoted
-
 
 		console.log("DIRECCION")
 		console.log(direccion)
-
+		
 		const response = axios.request({
 		  url: direccion,
 		  method: 'get',
@@ -69,26 +66,7 @@ const Perfil = () => {
 	  }, []);
 	
 
-	  const handleSubmit = async e => {
-		e.preventDefault();
-		var prev = ' Token '
-		var combo = prev + localStorage.getItem('userKey').substring('8', '48')
-		
-		const response = axios.request({
-		  url: 'http://lectorbrainbook.herokuapp.com/usuario/oscarmac',
-		  method: 'get',
-		  headers: { 'Authorization': combo },	
-		}).then(function (response) {
-			console.log("CORRECTO")
-		  console.log(response.data);
-		})
-		  .catch(function (error) {
-			// handle error
-			console.log("error")
-			console.log(error);
-		  })
-		  ;
-	  }
+	 
 	
 
 

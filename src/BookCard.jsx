@@ -1,6 +1,8 @@
 import React from 'react';
 import Navigator from './Navigator'
 import swal from 'sweetalert';
+import axios from 'axios'
+import { useState, useEffect } from "react";
 
 
 import {
@@ -12,7 +14,9 @@ import {
 
 
 
-const BookCard = () => {
+function BookCard({ results }) {
+	// Proceso para obtener libro
+
 	var imagen = (
 		<img
 		  src="https://pictures.abebooks.com/isbn/9780747542155-es.jpg"

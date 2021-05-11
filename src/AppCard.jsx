@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import React from "react";
+import { useState, useEffect } from "react";
 import CardList from "./CardList";
 import SearchBar from "./SearchBar";
 
@@ -13,28 +13,66 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import Paper from '@material-ui/core/Paper';
+// import { useState, useEffect } from "react";
+import axios from 'axios'
 
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import { Filter } from "@material-ui/icons";
+
 
 
 function AppCard() {
   const [state, setState] = useState({
     results: []
   });
+  const[todos, setTodos] = useState("")
+  const[ver, setVer] = useState("")
+  const[mios, setMios] = useState("")
 
   const onSearch = async (text) => {
-    const results = await MovieSource.get("/", {
-      params: { s: text, i: "tt3896198", apiKey: "821d565d" },
-    });
-
-    setState(prevState => {
-      return { ...prevState, results: results }
+    console.log("TEXTO ---")
+    console.log(text)
+    var url = 'http://lectorbrainbook.herokuapp.com/libro/todos/'
+    const results = axios({
+      url: url,
+      method: 'get',
+    }).then(function (response) {
+      const newData = response.data.filter(function(item){
+        const itemData = item.titulo.toUpperCase()
+        const textData = text.toUpperCase()
+        return itemData.indexOf(textData) > -1
     })
+    
+    if(newData.length == 0){
+      setTodos("")
+      setVer("")
+    }
+    else{
+      setTodos("Todos")
+      setVer("Ver mas")
+    }
+      setState(prevState => {
+        return { ...prevState, results: newData }
+      })
+      
+    // console.log("resultadofinal")
+    // console.log(newData)
+    })
+      .catch(function (error) {
+        // handle error
+        console.log("error")
+        console.log(error);
+      })
+      ;
   };
+
+
+ 
+
   const classes = useStyles();
   return (
     <div className="App">
@@ -50,10 +88,10 @@ function AppCard() {
           <Grid item xs={12}>
             <Grid >
             <View style={stylesB.containerBotones}>
-            <h3>En su biblioteca</h3>
+            <Text>{todos}</Text>
             <View style={stylesB.containerVer}>
               {/* Linkar esto a la biblioteca con la busqueda filtrada */}
-            <h3>Ver mas</h3>
+            <Text>{ver}</Text>
             </View>
             </View>
             </Grid>
@@ -94,7 +132,7 @@ const stylesB = StyleSheet.create({
       //marginBottom: 50
   },
   containerVer:{
-    marginLeft:615
+    marginLeft:715
   }
 });
 

@@ -16,8 +16,6 @@ import './styles.css'
 // Componentes de Perfil
 import EditarPerfil from './componentesPerfil/EditarPerfil'
 import EditarEmail from './componentesPerfil/EditarEmail'
-import EditarFoto from './componentesPerfil/EditarFoto'
-import EditarNombre from './componentesPerfil/EditarNombre'
 import ConfigurarCuenta from './componentesPerfil/ConfigurarCuenta'
 
 // Componentes barra de navegacion
@@ -42,8 +40,6 @@ function App() {
  
           <Route path="/EditarPerfil/" exact component={EditarPerfil} />
           <Route path="/EditarEmail/" exact component={EditarEmail} />
-          <Route path="/EditarFoto/" exact component={EditarFoto} />
-          <Route path="/EditarNombre/" exact component={EditarNombre} />
           <Route path="/ConfigurarCuenta/" exact component={ConfigurarCuenta} />
           <Route path="/ChangePass/" exact component={ChangePass} />
 

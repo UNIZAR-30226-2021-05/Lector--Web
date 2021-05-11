@@ -8,12 +8,12 @@ export default function Card(props) {
     <div class="resultCard">
       <figure >
         <img className={classes.caratula}
-          src={movie.Poster}
-          alt= {movie.Title}
+          src={movie.portada}
+          alt= {movie.titulo}
         />
       </figure>
-      <div className={classes.titulo}><h4 class="bolder">{movie.Title}</h4></div>     
-      <span><b>Year:</b>{movie.Year}</span>
+      <div className={classes.titulo}><h4 class="bolder">{movie.titulo}</h4></div>     
+      <span><b>Autor: </b>{movie.autor}</span>
     </div>
   )};
 

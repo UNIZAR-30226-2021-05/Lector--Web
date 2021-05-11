@@ -6,14 +6,46 @@ import './styles.css'
 //Alertas
 import swal from 'sweetalert';
 
+
+//material ui
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
+import BuildIcon from '@material-ui/icons/Build';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    // color: "green",
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  }
+  }));
+
 const ChangePass = () => {
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const [user, setUser] = useState()
 
   
-
-
 
 
 
@@ -63,36 +95,91 @@ const ChangePass = () => {
       setUser(loggedInUser);
     }
   }, []);
+  const useStyles = makeStyles((theme) => ({
+		paper: {
+		  marginTop: theme.spacing(8),
+		  display: 'flex',
+		  flexDirection: 'column',
+		  alignItems: 'center',
+		},
+		avatar: {
+		  margin: theme.spacing(1),
+		  backgroundColor: theme.palette.secondary.main,
+		},
+		form: {
+		  width: '100%', // Fix IE 11 issue.
+		  marginTop: theme.spacing(1),
+		},
+		submit: {
+		  margin: theme.spacing(3, 0, 2),
+		}
+	  }));
+	const classes = useStyles();
 
   return (
     
     <view>
       <Navigator />
-    <div class="form">
-      <h1 id="titulo" align="center" > Cambio de contraseña </h1>
-
-      <div class="container" id="loginApp">
-        <label htmlFor="uname"><b></b></label>
-        <input type="password" placeholder="Nueva Contraseña" name="uname" onChange={({ target }) => setPassword(target.value)} required>
-        </input>
-      </div>
-
-      <div class="container" id="passApp">
-        <label htmlFor="psw"><b></b></label>
-        <input type="password" placeholder="Repetir nueva contraseña" name="psw" onChange={({ target }) => setPassword2(target.value)} required>
-        </input>
-      </div>
-
-      <div class="container" id="but">
-        <button type="submit" class="btn btn-success" onClick={handleSubmit} >Cambiar Contraseña</button>
-      </div>
+      <div class="form">
+<Container component="main" maxWidth="xs">
+  <CssBaseline />
+  <div className={classes.paper}>
+    <Avatar className={classes.avatar}>
+      <VerifiedUserIcon />
+    </Avatar>
+    <Typography component="h1" variant="h5">
+      Cambio de contraseña
+    </Typography>
+    <form className={classes.form} noValidate>
+      <TextField
+       variant="outlined"
+       margin="normal"
+       required
+       fullWidth
+       name="password"
+       label="Nueva contraseña"
+       type="password"
+       id="password"
+       autoComplete="current-password"
+       onChange={({ target }) => setPassword(target.value)} required
+        
+      />
+      <TextField
+        variant="outlined"
+        margin="normal"
+        required
+        fullWidth
+        name="password"
+        label="Repetir nueva contraseña"
+        type="password"
+        id="password"
+        autoComplete="current-password"
+        onChange={({ target }) => setPassword2(target.value)} required
+      />
+      
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        color="primary"
+        className={classes.submit}
+        onClick={handleSubmit}
+      >
+        Cambiar contraseña
+      </Button>
+      
       
 
+    </form>
+  </div>
+  
+</Container>
+</div>
 
-    </div>
     </view>
   )
 
 }
 
 export default ChangePass;
+

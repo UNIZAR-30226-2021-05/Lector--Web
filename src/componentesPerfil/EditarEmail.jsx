@@ -3,6 +3,9 @@ import  { useState,useEffect } from "react";
 import logo from '../LogoWeb.svg';
 import Navigator from '../Navigator'
 
+import axios from 'axios';
+import swal from 'sweetalert';
+
 import {
 	StyleSheet,
 	Text,
@@ -23,7 +26,9 @@ const Perfil = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+	const [email, setEmail] = useState("");
     const [user, setUser] = useState()
+	const [photo, setPhoto] = useState("")
 
     const handleLogout = () => {
         setUser({});
@@ -32,28 +37,93 @@ const Perfil = () => {
         localStorage.clear();
       };
 
+	const handleSubmit = async e => {
+    e.preventDefault();
+    var prev = ' Token '
+    var combo = prev + localStorage.getItem('userKey').substring('8', '48')
+
+	var url = 'http://lectorbrainbook.herokuapp.com/usuario/'
+		var usuario = localStorage.getItem('userName')
+
+		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
+
+		var direccion = url + usuarioUnquoted
+		console.log(direccion)
+
+		console.log(localStorage.getItem('userKey'))
+		console.log(combo)
+    
+    const response = axios.request({
+      url: direccion,
+      method: 'put',
+      headers: { 'Authorization': combo },
+      data: {
+        'email': email,
+        'pathFoto':'https://www.molinaripixel.com.ar/wp-content/uploads/2010/12/0055.jpg',
+		"username": username
+      },
+
+    }).then(function (response) {
+      console.log(response.data);
+
+	  	localStorage.setItem('userName', JSON.stringify(username))
+		localStorage.setItem('userEmail', JSON.stringify(username))
+	  	setUsername(response.data.username)
+		setEmail(response.data.email)
+		setPhoto('https://www.molinaripixel.com.ar/wp-content/uploads/2010/12/0055.jpg')
+      swal({
+        title: "Exito",
+        text: "El cambio de datos ha sido realizado correctamente.",
+        icon: "success",
+      });
+
+    })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+        swal({
+          title: "Error",
+          text: "Ha habido un fallo en el proceso.",
+          icon: "error"
+        });
+      })
+      ;
+  }
+
+
+
+    ;
+	
 	const nombreUsuario = localStorage.getItem('userName').replace(/['"]+/g, '');
-	const nombreEmail = localStorage.getItem('userEmail').replace(/['"]+/g, '');
+	// const nombreEmail = localStorage.getItem('userEmail').replace(/['"]+/g, '');
 	
     return(
     <view><Navigator /> 
 	<View style={styles.container}>
 		<View style={styles.header}></View>
-		<Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
+		<Image style={styles.avatar} source={{uri: {photo}}}/>
 		<View style={styles.body}>
 		<View style={styles.bodyContent}>
 		<Text style={styles.name}>{nombreUsuario}</Text>
-		<Text style={styles.info}>{nombreEmail}</Text>
+		{/* <Text style={styles.info}>{nombreEmail}</Text> */}
 		
 		{/* Obviamente no funciona, conectar con BACk */}
 		<div class="container" id="loginApp">
       		<label for="uname"><b></b></label>
-      		<input type="text" placeholder="Enter EMAIL" name="uname" onChange={({ target }) => setUsername(target.value)} required>
+      		<input type="text" placeholder="Enter NOMBRE" name="uname" onChange={({ target }) => setUsername(target.value)} required>
       		</input>
-    	</div>              
-		<TouchableOpacity style={styles.buttonContainer}>
-			<Text>Confirmar cambios</Text> 
-		</TouchableOpacity>
+    	</div>   
+		<div class="container" id="loginApp">
+      		<label for="uname"><b></b></label>
+      		<input type="text" placeholder="Enter EMAIL" name="uname" onChange={({ target }) => setEmail(target.value)} required>
+      		</input>
+    	</div>   
+		<div class="container" id="loginApp">
+      		<Text>Cambio de foto por hacer</Text>
+    	</div>             
+		<div class="container" id="but">
+        <button type="submit" class="btn btn-success" onClick={handleSubmit} >CONFIRMAR CAMBIOS</button>
+      </div>
 		</View>
 	  	</View>
 </View>

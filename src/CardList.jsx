@@ -27,11 +27,14 @@ import {
 
 
 function CardList({ results }) {
-  let data = [];
-  if (results.data) {
-    data = results.data.Search || [];
-  }
-  console.log(data);
+  console.log("CARDLIST")
+  console.log(results)
+  let data = []
+  data = results
+  // if (results.data) {
+  //   data = results.data.Search || [];
+  // }
+  // console.log(data);
 
   // // Esta funcion ha de ser cambiada por link
   // const handleSubmit = async e => {
@@ -75,9 +78,9 @@ return (
       <Grid item xs={12}>
         <Grid container justify="left" spacing={spacing}>
           {data.map((item) => (
-            <Grid key={item.imdbID} item>
+            <Grid key={item.ISBN} item>
               <Link to="BookCard" className="BookCard">
-              <Card key={item.imdbID} movie={item} />
+              <Card key={item.ISBN} movie={item} />
               </Link>
             </Grid>
           )).slice(0,3)}
