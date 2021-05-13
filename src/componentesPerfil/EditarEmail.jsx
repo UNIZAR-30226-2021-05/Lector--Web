@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-import  { useState,useEffect } from "react";
-import logo from '../LogoWeb.svg';
+import React from 'react';
+import  { useState} from "react";
 import Navigator from '../Navigator'
 
 import axios from 'axios';
@@ -10,8 +9,7 @@ import {
 	StyleSheet,
 	Text,
 	View,
-	Image,
-	TouchableOpacity
+	Image
   } from 'react-native';
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 

@@ -152,4 +152,28 @@
         outline: none;
 }
 
+#avatarBook{
+        size: xlarge;
+}
+
+
+#REG{
+        margin-left: auto;
+        margin-right: auto;
+}
+
+#closeSesion{
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: "60";
+        height: "60";
+        color: #FFFF;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: "20";
+        width: "50";
+        border-radius: "30";
+        background-color: #E61515;
+}
 /* Estilos relativos a los botones Óscar */

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import * as AxiosLogger from 'axios-logger';
 import Navigator from './Navigator'
 import './styles.css'
 //Alertas
@@ -13,7 +12,6 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
-import BuildIcon from '@material-ui/icons/Build';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';

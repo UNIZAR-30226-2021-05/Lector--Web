@@ -16,7 +16,7 @@ import './styles.css'
 // Componentes de Perfil
 import EditarPerfil from './componentesPerfil/EditarPerfil'
 import EditarEmail from './componentesPerfil/EditarEmail'
-import ConfigurarCuenta from './componentesPerfil/ConfigurarCuenta'
+import ConfigurarCuenta from './componentesPerfil/configurarCuenta'
 
 // Componentes barra de navegacion
 import Leyendo from './Leyendo'

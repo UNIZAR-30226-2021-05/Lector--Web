@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { useState, useEffect } from "react";
-import logo from './LogoWeb.svg';
-import EditarPerfil from './componentesPerfil/EditarPerfil'
 import { Link } from 'react-router-dom'
 import Navigator from './Navigator'
 
@@ -71,7 +69,7 @@ const Perfil = () => {
 
 
 	return (
-		<view>
+		<View>
 			<Navigator />
 		<form onSubmit={handleLogout}>
 			
@@ -95,7 +93,7 @@ const Perfil = () => {
 				</View>
 			</View>
 		</form>
-		</view>
+		</View>
 
 
 

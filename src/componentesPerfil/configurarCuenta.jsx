@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import { useState, useEffect } from "react";
-import logo from '../LogoWeb.svg';
+import React from 'react';
+import {useState} from "react";
 import Navigator from '../Navigator'
 
 

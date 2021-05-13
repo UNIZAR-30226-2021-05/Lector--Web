@@ -1,18 +1,11 @@
-import React, { Component } from 'react';
-import { useState, useEffect, useLayoutEffect } from "react";
-import logo from './LogoWeb.svg';
-import EditarPerfil from './componentesPerfil/EditarPerfil'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { useState, useEffect} from "react";
 import Navigator from './Navigator'
-
 import axios from 'axios'
-
 import {
 	StyleSheet,
 	Text,
 	View,
-	Image,
-	TouchableOpacity
 } from 'react-native';
 
 
@@ -47,7 +40,7 @@ const Leer = () => {
 	    }, []);
 
 		const atras = () => {
-			if(inicio == '0'){
+			if(inicio === '0'){
 				console.log("Ya no puedes ir mas atras")
 			}else{
 				console.log("inicio 0", inicio)
