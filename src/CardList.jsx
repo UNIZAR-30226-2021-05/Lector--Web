@@ -2,11 +2,12 @@ import React from "react";
 import Card from "./Card";
 import BookCard from "./BookCard";
 import {
+  Button,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-
+import { useState, useEffect } from "react";
 
 // Necesario para Grid etc
 import { makeStyles } from '@material-ui/core/styles';
@@ -28,8 +29,6 @@ import {
 
 
 function CardList({ results }) {
-  console.log("CARDLIST")
-  console.log(results)
   let data = []
   data = results
   // if (results.data) {
@@ -76,9 +75,15 @@ function CardList({ results }) {
   }));
 
   const [spacing, setSpacing] = React.useState(2);
+  const [numero, setNumero] = useState("3")
   const classes = useStyles();
 
-  
+  // const handlePlus = () => {
+  //   // you can access the item object and the event object
+  //   var actual = numero + 1
+  //   setNumero(actual)
+    
+  // }
 
 return (
   <div className="result">
@@ -93,9 +98,12 @@ return (
               <Card key={item.ISBN} movie={item} />
               {/* </Link> */}
             </Grid>
-          )).slice(0,3)}
+          )).slice(0,numero)}
+          
         </Grid>
+        
       </Grid>
+      {/* <Button onClick={handlePlus}> Continuar mirando... </Button> */}
     </Grid>
 
 

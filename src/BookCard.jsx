@@ -48,14 +48,10 @@ function BookCard({ results }) {
 		  })
 	    }, []);
 
-
-	var imagen = (
-		<img
-		  src={book.portada}
-		  //src={'/src/images/logo.png'}
-		  alt="Canvas Logo"
-		/>
-	)
+	const leer =()=>{
+		window.location='/Leer';
+	}
+	
 
 	const mostrarAlerta=()=>{
         swal({
@@ -65,6 +61,14 @@ function BookCard({ results }) {
 			button: "Aceptar"
 		});
     }
+
+	var imagen = (
+		<img
+		  src={book.portada}
+		  //src={'/src/images/logo.png'}
+		  alt="Canvas Logo"
+		/>
+	)
 
 	var tituloLibro = (
 		<Text>{book.titulo}</Text>
@@ -102,6 +106,9 @@ function BookCard({ results }) {
 				<View>
 				<TouchableOpacity style={styles.buttonContainer}>
 					<input id="transparente"  type="button"  value="Añadir a tu biblioteca" onClick={mostrarAlerta}></input>
+				</TouchableOpacity>
+				<TouchableOpacity style={styles.buttonContainer}>
+					<input id="transparente"  type="button"  value="Leer libro" onClick={leer}></input>
 				</TouchableOpacity>
 				</View>
 			</View>

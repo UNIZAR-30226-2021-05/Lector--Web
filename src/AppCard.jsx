@@ -2,8 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import CardList from "./CardList";
 import SearchBar from "./SearchBar";
+import { Link } from 'react-router-dom'
 
-import MovieSource from "./api/MovieSource";
 
 // Necesario para Grid etc
 import { makeStyles } from '@material-ui/core/styles';
@@ -33,9 +33,15 @@ function AppCard() {
   const[ver, setVer] = useState("")
   const[mios, setMios] = useState("")
 
+  const goTodos = (item) => (event) => {
+    // you can access the item object and the event object
+
+    localStorage.setItem('todosLibros', item)
+    console.log("Todos los libros", localStorage.getItem('todosLibros'));
+    // window.location='/TodosLibros';
+  }
+
   const onSearch = async (text) => {
-    console.log("TEXTO ---")
-    console.log(text)
     var url = 'http://lectorbrainbook.herokuapp.com/libro/todos/'
     const results = axios({
       url: url,
@@ -90,8 +96,11 @@ function AppCard() {
             <View style={stylesB.containerBotones}>
             <Text>{todos}</Text>
             <View style={stylesB.containerVer}>
-              {/* Linkar esto a la biblioteca con la busqueda filtrada */}
-            <Text>{ver}</Text>
+              
+              <Text onClick={goTodos({todos})}>
+              {ver}
+              </Text>
+              
             </View>
             </View>
             </Grid>

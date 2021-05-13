@@ -27,6 +27,9 @@ import Perfil from './Perfil'
 
 // Componentes barrade busqueda
 import BookCard from './BookCard'
+import Leer from './Leer'
+
+import TodosLibros from './TodosLibros'
 
 
 
@@ -51,7 +54,9 @@ function App() {
 
           {/* Componentes busqueda de libros y demas */}
           <Route path="/BookCard/" exact component={BookCard} />
-          {/* <Route path="/PerfilBeta/" exact component={PerfilBeta} /> */}
+          
+          <Route path="/Leer/" exact component={Leer} />
+          <Route path="/TodosLibros/" exact component={TodosLibros} />
 
 
 
