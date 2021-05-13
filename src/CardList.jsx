@@ -1,32 +1,13 @@
 import React from "react";
 import Card from "./Card";
-import BookCard from "./BookCard";
 import {
-  Button,
-  StyleSheet,
-  Text,
-  View,
+  StyleSheet
 } from 'react-native';
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 // Necesario para Grid etc
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
-import Paper from '@material-ui/core/Paper';
-
-//stylesheet
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect
-}  from 'react-router-dom'
-
 
 function CardList({ results }) {
   let data = []

@@ -1,19 +1,9 @@
-import React, { Component } from 'react';
-import { useState, useEffect } from "react";
-import logo from './LogoWeb.svg';
-import EditarPerfil from './componentesPerfil/EditarPerfil'
-import { Link } from 'react-router-dom'
+import React from 'react';
 import Navigator from './Navigator'
-
-import axios from 'axios'
-
 import {
 	StyleSheet,
-	Button,
 	Text,
-	View,
-	Image,
-	TouchableOpacity
+	View
 } from 'react-native';
 
 

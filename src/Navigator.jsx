@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
-import { useState, useEffect } from "react";
+import React from 'react';
+
 import logo from './LogoWeb.svg';
 import { Link } from 'react-router-dom'
-import EditarPerfil from './componentesPerfil/EditarPerfil'
+
 import {
-    StyleSheet,
-    Text,
-    View,
-    Image,
-    TouchableOpacity
+    StyleSheet
 } from 'react-native';
 
 
@@ -21,28 +17,28 @@ const Navigator = () => {
 
     return (
 
-        <div class="sticky-top" id="barra">
-            <nav class="navbar navbar-expand-lg container align-items-center">
-                <a class="navbar-brand" href="#">
+        <div className="sticky-top" id="barra">
+            <nav className="navbar navbar-expand-lg container align-items-center">
+                <a className="navbar-brand" href="#">
                     <img src={logo} height="60" alt="" loading="lazy">
                     </img>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbar" >
-                    <ul class="navbar-nav mx-3">
-                        <li class="nav-item mx-2 active">
+                <div className="collapse navbar-collapse justify-content-end" id="navbar" >
+                    <ul className="navbar-nav mx-3">
+                        <li className="nav-item mx-2 active">
                             <Link to="Leyendo" className="nav-link">LEYENDO</Link>
                         </li>
-                        <li class="nav-item mx-2">
+                        <li className="nav-item mx-2">
                             <Link to="Biblioteca" className="nav-link">BIBLIOTECA</Link>
                         </li>
-                        <li class="nav-item mx-2">
+                        <li className="nav-item mx-2">
                             <Link to="Busqueda" className="nav-link">BUSQUEDA</Link>
                         </li>
-                        <li class="nav-item mx-2">
+                        <li className="nav-item mx-2">
                             <Link to="Perfil" className="nav-link">PERFIL</Link>
                         </li>
                     </ul>

@@ -5,11 +5,9 @@ import {
   View,
   Text
 } from 'react-native';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import './App';
 import './styles.css';
-import axios from 'axios'
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 const Biblioteca = () => {
   const [datos, setDatos] = useState({results: []})

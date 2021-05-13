@@ -1,13 +1,5 @@
 import React from 'react';
 import logo from './LogoWeb.svg';
-import newLogo from './newLogo.png';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect
-}  from 'react-router-dom'
 import './App';
 import './styles.css';
 

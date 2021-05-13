@@ -1,18 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import CardList from "./CardList";
 import SearchBar from "./SearchBar";
-import { Link } from 'react-router-dom'
 
 
 // Necesario para Grid etc
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
-import Paper from '@material-ui/core/Paper';
 // import { useState, useEffect } from "react";
 import axios from 'axios'
 
@@ -21,7 +15,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Filter } from "@material-ui/icons";
 
 
 
@@ -53,7 +46,7 @@ function AppCard() {
         return itemData.indexOf(textData) > -1
     })
     
-    if(newData.length == 0){
+    if(newData.length === 0){
       setTodos("")
       setVer("")
     }

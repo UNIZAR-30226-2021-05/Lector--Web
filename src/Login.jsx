@@ -1,9 +1,8 @@
-import React, {useState, useEffect, useContext, useCallback} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Perfil from './Perfil'
 import Admin from './Admin'
 import logo from './LogoWeb.svg';
-import Context from './Context'
 import './styles.css'
 
 const Login = () => {
@@ -59,12 +58,12 @@ const Login = () => {
   }, []);
 
 // if there's a user show the message below
-  if (user) {
-    if(username==='felipe'){
+ /*  if (user) {
+    if(username==='adminBrain'){
       return <div><Admin /></div>;
     }
     return <div><Perfil /></div>;
-  }
+  } */
 
     return(
 
