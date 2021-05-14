@@ -15,23 +15,21 @@ const Leer = () => {
 	const [inicio, setInicio] = useState(0)
 	const [final, setFinal] = useState(900)
 	const [subtexto, setSubtexto] = useState("")
+	const [limite, setLimite] = useState(14400)
+	const [tipo, setTipo] = useState(100)
     useEffect(() => {
-		// e.preventDefault();
 		console.log("RENDER")
 		var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/Don_Quijote_de_la_Mancha-Cervantes_Miguel.epub/0/15000'
-		// var isbn = localStorage.getItem('isbnCheck')
-		// var isbnUnquoted = isbn.replace(/['"]+/g, '');
-		var direccion = url 
-        // + isbnUnquoted
 
-	
-		
+		var direccion = url 
 		const response = axios.request({
 		  url: direccion,
 		  method: 'get',	
 		}).then(function (response) {
-			setTexto(response.data.text.substr(inicio,final))
+			console.log(response)
+			setTexto(response.data.text.substr(0,900))
 			setSubtexto(response.data)
+
 		})
 		  .catch(function (error) {
 			// handle error
@@ -39,20 +37,43 @@ const Leer = () => {
 			console.log(error);
 		  })
 	    }, []);
+
+		const obtenerTexto = () => {
+			console.log("holaaaa")
+			var comienzo = inicio
+			var acabo = inicio + 15000
+			
+			var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/Don_Quijote_de_la_Mancha-Cervantes_Miguel.epub/'
+		var direccion = url + comienzo + "/" + acabo
+        console.log("direccion en obtener ", direccion)
+		
+		const response = axios.request({
+		  url: direccion,
+		  method: 'get',	
+		}).then(function (response) {
+			setLimite(comienzo + 15000)
+			setInicio(comienzo)
+			setTexto(response.data.text.substr(comienzo, 900))
+			setSubtexto(response.data)
+			
+		})
+		  .catch(function (error) {
+			// handle error
+			console.log("error")
+			console.log(error);
+		  })
+	    } ;
+		
 		
 		const atras = () => {
-			if(inicio === '0'){
+			
+			if(inicio === 0){
 				console.log("Ya no puedes ir mas atras")
 			}else{
-				console.log("inicio previo atras", inicio)
-				console.log("final previo atras", final)
-				var previoA = inicio
-				var previoB = final
-				setInicio(previoA - 900)
-				setFinal(previoB - 900)
-				console.log("inicio atras  modificado", inicio)
-				console.log("final  atras modificado", final)
-				setTexto(subtexto.text.substr(inicio,final))
+				var start = inicio - 900
+				var end = inicio
+				setInicio(start)
+				setTexto(subtexto.text.substr(start,end))
 				
 			}
 		};
@@ -61,41 +82,40 @@ const Leer = () => {
 		var otro = ""
 		// Preguntar como sucede si se ha llegado al final del libro
 		const alante = () => {
-			if(final > 14100){
-				console.log("final es ", final)
+			if(inicio > limite){
 				console.log("toca volver a cargar")
-			}else{
+				obtenerTexto()}
+			else{
+
 				console.log("inicio alante previo", inicio)
-				console.log("final alante previo", final)
+				// console.log("final alante previo", end)
 				var previo = inicio
-				var previo1 = final
-				setInicio(previo + 900)
-				setFinal(previo1 + 900)
-				console.log("inicio alante modificado", inicio)
-				console.log("final alante modificado", final)
-				setTexto(subtexto.text.substr(inicio,final))
-				
-				console.log("el texto ", texto)
+				var previo1 = inicio + 900
+				setInicio(previo + 900)				
+				console.log("primer caracter ", previo1)
+				setTexto(subtexto.text.substr(previo1,900))
+				console.log('texto', texto)
 			}
+			// return(otro)
 		};
  
-			
-		
+	
 	return (
 		<View>
 			<Navigator />
 		<h1>Pagina de leer</h1>
-        <View style={styles.textoLibro}>
-            <Text style={styles.textBook}>
-                {texto}
-            </Text>
-        </View>
 		<Text onClick={alante}>
 			Boton para ir hacia alante
 		</Text>
 		<Text onClick={atras}>
 			Boton para ir hacia atras
 		</Text>
+        <View >
+            <Text style={styles.textBook}>
+                {texto}
+            </Text>
+        </View>
+		
 		</View>
 
 	);
