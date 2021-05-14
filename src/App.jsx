@@ -4,7 +4,6 @@ import {
   Route,
 }  from 'react-router-dom'
 import React from 'react';
-import Login from './Login'
 import Registro from './Registro'
 import Inicio from './Inicio'
 import Raiz from './Raiz'
@@ -69,10 +68,6 @@ function App() {
         <Route path="/registro/">
           <Registro></Registro>
         </Route>
-
-        <Route path="/login/">
-            <Login></Login>
-          </Route>
 
           <Route path="/inicio/">
             <Inicio></Inicio>

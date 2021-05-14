@@ -1,3 +1,4 @@
+/*Titulo BookBrain Raiz.jsx y Login.jsx*/
 #titulo{
         font-family: Georgia, 'Times New Roman', Times, serif;
         font-size: 70px;
@@ -13,39 +14,10 @@
         color:  #545454;
 }
 
-
+/*AppLogo Raiz.jsx*/
 #AppLogo{
         display: block;
         margin-bottom: 40px;
-}
-
-#iniciar{
-        width: 150px;
-        padding: 10px;
-        font-weight: 600;
-        font-size: 20px;
-        color: #ffffff;
-        background-color: #0986c5;
-        border-radius: 6px;
-        border: 2px solid #0016b0;
-        margin-top: 100px;
-        margin-left: 500px;
-        margin-right: 70px;
-}
-
-#registro{
-        width: 150px;
-        padding: 10px;
-        font-weight: 600;
-        font-size: 20px;
-        color: #ffffff;
-        background-color: #01471e;
-        border-radius: 6px;
-        border: 2px solid #0016b0;
-        margin-top: 10px;
-        margin-top: 100px;
-        margin-right: 50px;
-        margin-left: 50px;
 }
 
 #derechos{
@@ -55,6 +27,7 @@
         text-align: center;
 }
 
+/*Qué es BookBrain en Raiz.jsx*/
 #quest{
         font-size: 32px;
         font-style: italic;
@@ -63,14 +36,14 @@
         letter-spacing: 1px;
         color: white;
 }
-
+/*Qué es BookBrain en Raiz.jsx*/
 #descripcion{
         text-align: center;
         background-color: rgb(108, 170, 141);
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-size: 16px;
 }
-
+/*Qué es BookBrain en Raiz.jsx*/
 #entrar{
         width: 100px;
         height: 40px;
@@ -83,29 +56,7 @@
         border-radius: 6px;
 }
 
-.cajainicio{
-        background-image: url("./LogoWeb.svg");
-        color: transparent;
-}
-
-.cajainicio2{
-        margin-top: 135px;
-        background-image: url("./LogoWeb.svg");
-        color: transparent;
-}
-
-.tituloAPP{
-        align-items: center;
-}
-
-#loginApp{
-        text-align: center;
-        margin-top: 50px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 16px;
-}
-
-#passApp, #userMail{
+#userMail{
         text-align: center;
         margin-top: 10px;
         font-family: Arial, Helvetica, sans-serif;

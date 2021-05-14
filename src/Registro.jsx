@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from './LogoWeb.svg';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -131,12 +132,16 @@ const useStyles = makeStyles((theme) => ({
   }
   return (
     <div class="form">
+      <h1 id="titulo" align="center" > BOOKBRAIN </h1>
+      <div class="img" align="center">
+          <img src={logo} className="App-logo" alt="logoApp" title="logo AppName" weight="150" height="150"/>
+      </div>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className="avatarBook" maxWidth="medium" src='./LogoWeb.svg'>
+        {/* <Avatar className="avatarBook" maxWidth="medium" src='./LogoWeb.svg'>
           <LockOutlinedIcon />
-        </Avatar>
+        </Avatar> */}
         <Typography component="h1" variant="h5">
           Registro
         </Typography>
