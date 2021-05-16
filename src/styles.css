@@ -56,13 +56,14 @@
         border-radius: 6px;
 }
 
-#userMail{
+/* #userMail{
         text-align: center;
         margin-top: 10px;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 16px;
-}
+} */
 
+/*Admin.jsx*/
 #but, #tituloLib, #autorLib, #genderLib, #ISBN, #sinopsis {
         text-align: center;
         margin-top: 10px;
@@ -70,6 +71,7 @@
         font-size: 16px;
 }
 
+/*Admin.jsx*/
 #sino{
         text-align: center;
         margin-top: 10px;
@@ -79,6 +81,7 @@
         width: 400px;
 }
 
+/*Admin.jsx*/
 #subirarchivos, #subirportada{
         text-align: center;
         margin-top: 10px;
@@ -87,32 +90,7 @@
         font-weight: bold;
 }
 
-#barra{
-        background-color: #84bdda;
-}
-
-#logout{
-        border:0;
-        background-color: rgba(238, 238, 238, 0);
-        outline: none;
-}
-
-#transparente{
-        border:0;
-        background-color: rgba(238, 238, 238, 0);
-        outline: none;
-}
-
-#avatarBook{
-        size: xlarge;
-}
-
-
-#REG{
-        margin-left: auto;
-        margin-right: auto;
-}
-
+/*Admin.jsx*/
 #closeSesion{
         margin-left: auto;
         margin-right: auto;
@@ -127,4 +105,65 @@
         border-radius: "30";
         background-color: #E61515;
 }
+
+/*Navigator.jsx*/
+#barra{
+        background-color: #84bdda;
+}
+
+/* #logout{
+        border:0;
+        background-color: rgba(238, 238, 238, 0);
+        outline: none;
+}
+ */
+/*ConfigurarCuenta.jsx*/
+#transparente{
+        border:0;
+        background-color: rgba(238, 238, 238, 0);
+        outline: none;
+}
+/* 
+#headerConfig{
+        background-color: #00BFFF;
+        height: "200";
+}
+
+#bodyConfig{
+        marginTop: "40";
+}
+
+#bodyContent{
+        flex: "1";
+        align-items: center;
+        padding: "30";
+}
+
+#buttonContainer{
+        margin-top: "10";
+        height: "45";
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: "20";
+        width: "250";
+        border-radius: "30";
+        background-color: #00BFFF;
+}
+
+#buttonContainer2{
+        margin-top: "40";
+        height: "45";
+        color: #FFFF;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: "20";
+        width: "250";
+        border-radius: "30";
+        background-color: #E61515;
+}
+ */
+
+
 /* Estilos relativos a los botones Óscar */
