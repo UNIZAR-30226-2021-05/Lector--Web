@@ -85,7 +85,7 @@ function AppCard() {
           <SearchBar onSearch={onSearch} />
           </Grid>
           <Grid item xs={12}>
-            <Grid >
+            <Grid id="texto parcial">
             <View style={stylesB.containerBotones}>
             <Text>{todos}</Text>
             <View style={stylesB.containerVer}>
