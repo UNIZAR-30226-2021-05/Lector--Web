@@ -9,123 +9,112 @@ import { useState } from "react";
 import './App';
 import './styles.css';
 import swal from 'sweetalert';
+import axios from 'axios'
 const Biblioteca = () => {
-  const [datos, setDatos] = useState({results: []})
-  const [texto, setTexto] = useState("Hola bro")
-  const [size, setSize] = useState(14)
-  const [tone, setTone] = useState("black")
-  const [fondo, setFondo] = useState("")
-  const [tipoLetra, setTipoLetra] = useState("")
-  
-  //cosas para 
-const changeTone = () =>{
-  swal( {
-    content: "input",
-    title: "Error",
-          text: "Alguno de los campos es incorrecto.",
-  })
-  .then((value) => {
-    swal(`You typed: ${value}`);
-    setTone(value)
-  });
-}
 
-const changeAll = () =>{
-  swal("Ajustes de visualizacion", {
-    buttons: {
-      Fondo: "Fondo",
-      Tamaño: true,
-      Tonalidad: true,
-      Tipo: true,
-    },
-  })
-  .then((value) => {
-    switch (value) {
-   
-      case "Tonalidad":
-        swal( {
-          content: "input",
-          title: "Cambiar el color de la letra",
-          text: "Ejemplo: green",
-        })
-        .then((value) => {
-          swal({
-            icon:"success",
-            title: "Los cambios se han realizado correctamente",
-          });
-          setTone(value)
-        });
-        break;
-   
-      case "Tamaño":
-        swal( {
-          content: "input",
-          title: "Cambiar el tamaño de la letra",
-          text: "Ejemplo: 11",
-        })
-        .then((value) => {
-          swal({
-            icon:"success",
-            title: "Los cambios se han realizado correctamente",
-          });
-          var anterior = parseInt(value)
-          setSize(anterior)
-        });
-        break;
-   
-      case "Fondo":
-        swal( {
-          content: "input",
-          title: "Modificar color de fondo",
-          text: "Ejemplo: black",
-        })
-        .then((value) => {
-          swal({
-            icon:"success",
-            title: "Los cambios se han realizado correctamente",
-          });
-          setFondo(value)
-        });
-        break;
-        case "Tipo":
-          swal( {
-            content: "input",
-            title: "Modificar tipo letra",
-            text: "Ejemplo: verdana",
-          })
-          .then((value) => {
-            swal({
-              icon:"success",
-              title: "Los cambios se han realizado correctamente",
-            });
-            setTipoLetra(value)
-          });
-          break;
-          default:
-          break;
-    }
-  });
-}
+
+  const getBookmarks = () => {
+    // e.preventDefault();
+    var prev = ' Token '
+    var combo = prev + localStorage.getItem('userKey').substring('8', '48')
+    console.log("NOMBRE")
+    // console.log(localStorage.getItem('userName'))
+
+    var url = 'http://lectorbrainbook.herokuapp.com/'
+    var usuario = localStorage.getItem('userName')
+    var usuarioUnquoted = usuario.replace(/['"]+/g, '');
+    var direccion = url + usuarioUnquoted
+
+    var isbn = localStorage.getItem('isbnCheck')
+    var isbnUnquoted = isbn.replace(/['"]+/g, '');
+
+    var direccion = url + usuarioUnquoted + "/" + isbnUnquoted
+
+    console.log("DIRECCION")
+    console.log(direccion)
+
+    const response = axios.request({
+      url: direccion,
+      method: 'get',
+
+    }).then(function (response) {
+      console.log("respuesta", response.data)
+    })
+      .catch(function (error) {
+        // handle error
+        console.log("error")
+        console.log(error);
+      })
+      ;
+  };
+
+  const setBookmarks = () => {
+    // e.preventDefault();
+    var prev = ' Token '
+    var combo = prev + localStorage.getItem('userKey').substring('8', '48')
+    console.log("NOMBRE")
+    // console.log(localStorage.getItem('userName'))
+
+    var url = 'http://lectorbrainbook.herokuapp.com/'
+    var usuario = localStorage.getItem('userName')
+    var usuarioUnquoted = usuario.replace(/['"]+/g, '');
+    var direccion = url + usuarioUnquoted
+
+    var isbn = localStorage.getItem('isbnCheck')
+    var isbnUnquoted = isbn.replace(/['"]+/g, '');
+
+    var direccion = url + usuarioUnquoted + "/" + isbnUnquoted
+
+    console.log("DIRECCION")
+    console.log(direccion)
+
+    const response = axios.request({
+      url: direccion,
+      method: 'post',
+      data: {
+      'Libro': isbn,
+      '"Usuario': 2,
+      'cuerpo': "Bastante guapo",
+      'esAnotacion': false,
+      'id': 2,
+      'offset': 100,
+      'titulo': "Oooh, que pena"
+      }
+
+    }).then(function (response) {
+      console.log("respuesta", response.data)
+    })
+      .catch(function (error) {
+        // handle error
+        console.log("error")
+        console.log(error);
+      })
+      ;
+  };
+
+
+
+
 
   return (
     <View>
       <Navigator />
       <View>
         <h1>Esta es la pagina de biblioteca
-          Se puede borrar de aqui todo
+        Se puede borrar de aqui todo
         </h1>
-        
-      </View>
-     
-        <Text style={{ fontSize: size, color: tone, backgroundColor: fondo, fontFamily: tipoLetra}}>
-        {texto}
-        </Text>
-        <Text onClick={changeAll}>
-        Preferencias
-        </Text>
-   
 
       </View>
+      <Text onClick={getBookmarks}>
+        Boton para obtener los bookmarks
+     </Text>
+     <Text onClick={getBookmarks}>
+        Boton para poner los bookmarks
+     </Text>
+
+
+
+    </View>
   )
 
 

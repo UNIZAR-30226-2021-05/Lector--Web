@@ -172,8 +172,11 @@ const Leer = () => {
 							text: "Ejemplo: green",
 						})
 							.then((value) => {
+								if(value != null){
 								setTone(value)
 								setPreferences(fondo, value, size, tipoLetra)
+								}
+								
 							});
 
 						break;
@@ -185,9 +188,12 @@ const Leer = () => {
 							text: "Ejemplo: 11",
 						})
 							.then((value) => {
-								var anterior = parseInt(value)
+								if(value != null){
+									var anterior = parseInt(value)
 								setSize(anterior)
 								setPreferences(fondo, tone, value, tipoLetra)
+								}
+								
 							});
 						break;
 
@@ -198,8 +204,10 @@ const Leer = () => {
 							text: "Ejemplo: black",
 						})
 							.then((value) => {
-								setFondo(value)
+								if(value != null){
+									setFondo(value)
 								setPreferences(value, tone, size, tipoLetra)
+								}
 							});
 						break;
 					case "Tipo":
@@ -209,8 +217,11 @@ const Leer = () => {
 							text: "Ejemplo: verdana",
 						})
 							.then((value) => {
-								setTipoLetra(value)
-								setPreferences(fondo, tone, size, value)
+								if(value != null){
+									setTipoLetra(value)
+									setPreferences(fondo, tone, size, value)
+								}
+								
 							});
 						break;
 					default:
@@ -260,8 +271,10 @@ const Leer = () => {
 			<Navigator />
 			<View style={{ backgroundColor: fondo, color: tone, }}>
 				<h1>Pagina de leer</h1>
-				<View id="preferencias" onClick={changeAll} style={{ fontSize: size, color: tone, fontFamily: tipoLetra, }}>
-					Preferencias
+				<View id="preferencias" style={stylesB.containerBotonesB}>
+					<Text onClick={changeAll} style={{ fontSize: size + 5, color: tone, fontFamily: tipoLetra, }}>
+						PREFERENCIAS
+						</Text>
 			</View>
 
 				<View id="texto del libro" >
@@ -273,12 +286,12 @@ const Leer = () => {
 					<Grid id="texto parcial">
 						<View style={stylesB.containerBotones}>
 							<Text onClick={atras} style={{ fontSize: size + 5, color: tone, fontFamily: tipoLetra, }}>
-								Página anterior
+								PÁGINA ANTERIOR
 						</Text>
 							<View style={stylesB.containerVer}>
 
 								<Text onClick={alante} style={{ fontSize: size + 5, color: tone, fontFamily: tipoLetra }}>
-									Página siguiente
+									PÁGINA SIGUIENTE
 								</Text>
 
 							</View>
@@ -303,6 +316,15 @@ const stylesB = StyleSheet.create({
 		//marginTop: 300,
 		//marginBottom: 50
 		marginLeft:500
+	},
+	containerBotonesB:{
+		//flex: 1,
+		flexDirection: 'row',
+		//justifyContent: 'flex-end',
+		//alignContent:'flex-end',
+		//marginTop: 300,
+		//marginBottom: 50
+		marginLeft:1000
 	},
 	containerVer:{
 	  marginLeft:200
