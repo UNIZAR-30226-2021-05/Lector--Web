@@ -111,7 +111,9 @@ const changeAll = () =>{
     <View>
       <Navigator />
       <View>
-        <Text>Esta es la pagina de biblioteca</Text>
+        <h1>Esta es la pagina de biblioteca
+          Se puede borrar de aqui todo
+        </h1>
         
       </View>
      

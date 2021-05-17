@@ -26,6 +26,7 @@ const Leer = () => {
 	const [fondo, setFondo] = useState("")
 	const [tipoLetra, setTipoLetra] = useState("")
 
+	// Primera lectura de libros
 	useEffect(() => {
 		console.log("RENDER")
 		var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/Don_Quijote_de_la_Mancha-Cervantes_Miguel.epub/0/15000'
@@ -47,6 +48,7 @@ const Leer = () => {
 			})
 	}, []);
 
+	// Componente para mover el texto cuando se pasa de 15000
 	const obtenerTexto = () => {
 		console.log("holaaaa")
 		var comienzo = inicio
@@ -73,6 +75,7 @@ const Leer = () => {
 			})
 	};
 
+	// Componente para modificar las preferencias
 	const changeAll = () => {
 		swal("Ajustes de visualizacion", {
 			buttons: {
@@ -92,10 +95,6 @@ const Leer = () => {
 							text: "Ejemplo: green",
 						})
 							.then((value) => {
-								swal({
-									icon: "success",
-									title: "Los cambios se han realizado correctamente",
-								});
 								setTone(value)
 							});
 						break;
@@ -107,10 +106,6 @@ const Leer = () => {
 							text: "Ejemplo: 11",
 						})
 							.then((value) => {
-								swal({
-									icon: "success",
-									title: "Los cambios se han realizado correctamente",
-								});
 								var anterior = parseInt(value)
 								setSize(anterior)
 							});
@@ -123,10 +118,6 @@ const Leer = () => {
 							text: "Ejemplo: black",
 						})
 							.then((value) => {
-								swal({
-									icon: "success",
-									title: "Los cambios se han realizado correctamente",
-								});
 								setFondo(value)
 							});
 						break;
@@ -137,10 +128,6 @@ const Leer = () => {
 							text: "Ejemplo: verdana",
 						})
 							.then((value) => {
-								swal({
-									icon: "success",
-									title: "Los cambios se han realizado correctamente",
-								});
 								setTipoLetra(value)
 							});
 						break;
