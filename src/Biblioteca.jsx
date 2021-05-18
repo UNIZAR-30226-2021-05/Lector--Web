@@ -101,14 +101,14 @@ const Biblioteca = () => {
       <Navigator />
       <View>
         <h1>Esta es la pagina de biblioteca
-        Se puede borrar de aqui todo
+  
         </h1>
 
       </View>
       <Text onClick={getBookmarks}>
         Boton para obtener los bookmarks
      </Text>
-     <Text onClick={getBookmarks}>
+     <Text onClick={setBookmarks}>
         Boton para poner los bookmarks
      </Text>
 
