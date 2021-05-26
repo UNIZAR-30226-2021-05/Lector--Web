@@ -26,6 +26,8 @@ function AppCard() {
   const[ver, setVer] = useState("")
   const[mios, setMios] = useState("")
 
+  const[verMios, setVerMios] = useState("")
+
   const goTodos = (item) => (event) => {
     // you can access the item object and the event object
 
@@ -35,6 +37,7 @@ function AppCard() {
   }
 
   const onSearch = async (text) => {
+    //resultados de todos los libros
     var url = 'http://lectorbrainbook.herokuapp.com/libro/todos/'
     const results = axios({
       url: url,
@@ -58,8 +61,8 @@ function AppCard() {
         return { ...prevState, results: newData }
       })
       
-    // console.log("resultadofinal")
-    // console.log(newData)
+    console.log("resultadofinal1")
+    console.log(newData)
     })
       .catch(function (error) {
         // handle error
@@ -67,6 +70,7 @@ function AppCard() {
         console.log(error);
       })
       ;
+      
   };
 
 

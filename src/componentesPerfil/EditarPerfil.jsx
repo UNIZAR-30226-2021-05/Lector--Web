@@ -14,6 +14,8 @@ import BuildIcon from '@material-ui/icons/Build';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {Dropbox} from 'dropbox'
+import DropboxChooser from 'react-dropbox-chooser'
 
 
 
@@ -39,7 +41,17 @@ const Perfil = () => {
 	const [email, setEmail] = useState("");
     const [user, setUser] = useState()
 	const [photo, setPhoto] = useState("")
-	const [selectedFile, setSelectedFile] = useState(null);
+	const [fileName, setFileName] = useState("")	
+	const [fileType, setFileType] = useState("")
+
+
+	const handleDropbox = () =>{
+		console.log("dbx", dbx)
+		var okey = dbx.filesUpload({
+			path: '/nombreFotoY.jpg', 
+			contents: './agua.jpg'})
+		console.log("okey", okey)
+	}
 
     const handleLogout = () => {
         setUser({});
@@ -127,6 +139,19 @@ const Perfil = () => {
 		}
 	  }));
 	const classes = useStyles();
+
+	var dbx = new Dropbox(
+		{ 
+			accessToken: 'Me56EUxeX0MAAAAAAAAAAXkCEw6O5oYINF1YCi5PoGZm9xjFhQxFswcp2o_Kla8L'
+			
+		}
+	);
+const fileSelectedHandler = (event) => {
+	
+	setFileName(event.taget.files[0].name)
+	setFileType(event.taget.files[0].name)	
+}
+
     return(
     <view><Navigator /> 
 	<View style={styles.container}>
@@ -184,19 +209,12 @@ const Perfil = () => {
             id="transparente"
           >
             {/* Confirmar cambois */}
-          
-		<input
-		//  type="submit"
-			id="transparente"
-			
-		 fullWidth
-          type="file"
-          value={selectedFile}
-          onChange={(e) => setSelectedFile(e.target.files[0])}
-        />
+
+		<div className="pickImages" >
+			<input type="file" onChange={fileSelectedHandler} />
+		</div>
 		</TouchableOpacity>
 		</div>
-          
           <Button
             type="submit"
             fullWidth
@@ -207,6 +225,20 @@ const Perfil = () => {
           >
             Confirmar cambios
           </Button>
+		  <Button
+            
+            onClick={handleDropbox}
+          >
+            Subida previa
+          </Button>
+
+		  <div>
+			  <DropboxChooser 
+			  appKey = 'o38fth43nrdfm8z'
+			  success = {() => console.log("exito")}
+			  cancel = {() => console.log("closed")}
+			  /> 
+		  </div>
     
           
 

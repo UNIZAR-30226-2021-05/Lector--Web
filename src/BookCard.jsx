@@ -11,11 +11,14 @@ import {
 	View,
 	TouchableOpacity
 } from 'react-native';
+import { LocalGasStationOutlined } from '@material-ui/icons';
 
 
 
 function BookCard({ results }) {
 	const [book, setBook] = useState("");
+	const [textBotton, setTextBotton] = useState("Añadir a tu biblioteca")
+	const [colorBotton, setColorBotton] = useState("#00BFFF")
 
 	// Proceso para obtener libro
 	useEffect(() => {
@@ -40,6 +43,7 @@ function BookCard({ results }) {
 		}).then(function (response) {
 			setBook(response.data)
 			console.log(book)
+			console.log(response)
 		})
 		  .catch(function (error) {
 			// handle error
@@ -49,18 +53,62 @@ function BookCard({ results }) {
 	    }, []);
 
 	const leer =()=>{
+
+		localStorage.setItem('formato',book.formato)
+		localStorage.setItem('btr', book.titulo)
 		window.location='/Leer';
 	}
 	
 
-	const mostrarAlerta=()=>{
-        swal({
-			title: "Libro añadido con exito",
-			text: "Disfrute de su lectura.",
-			icon: "success",
-			button: "Aceptar"
-		});
-    }
+	
+	
+
+	const handleSubmit=()=>{
+		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var name = localStorage.getItem('userName')
+		var nameUnquoted = name.replace(/['"]+/g, '');
+		console.log(nameUnquoted)
+
+		var isbn = book.ISBN
+		var isbnUnquoted = isbn.replace(/['"]+/g, '');
+
+
+
+		var direccion = url + nameUnquoted + '/' + isbnUnquoted
+
+		console.log("DIRECCION")
+		console.log(direccion)
+		
+		const response = axios.request({
+		  url: direccion,
+		  method: 'post',
+		  data: {
+			'ISBN': isbnUnquoted,
+			'leyendo': true,
+			'currentOffset': 2,
+			}
+		}).then(function (response) {
+			console.log(response.data)
+			swal({
+				title: "Libro añadido con exito",
+				text: "Disfrute de su lectura.",
+				icon: "success",
+				button: "Aceptar"
+			});
+			setTextBotton("Eliminar Libro")
+			setColorBotton("#F93030")
+		})
+		  .catch(function (error) {
+			// handle error
+			swal({
+				title: "El libro no ha podido ser añadido",
+				text: "Por favor intentelo mas tarde",
+				icon: "error",
+				button: "Aceptar"
+			});
+		  })
+	    }
+	
 
 	var imagen = (
 		<img
@@ -85,13 +133,50 @@ function BookCard({ results }) {
 	// Se necesitara funcion para que descargue los parametrosdel libro o similar
 	// Esto es un ejemplo de funcionamiento
 
+	const valorar = () => {
+		swal({
+			content: "input",
+			title: "Deje una valoración por favor",
+			text: "Valores comprendidos entre 1 (mínimo) y 5 (máximo)",
+		})
+			.then((value) => {
+				if (value != null) {
+					var url = 'http://lectorbrainbook.herokuapp.com/twitter/'
+					var isbn = localStorage.getItem('isbnCheck')
+					var isbnUnquoted = isbn.replace(/['"]+/g, '');
+					var valoracionUnquoted = value.replace(/['"]+/g, '');
+
+					var direccion = url + isbnUnquoted + '/' + valoracionUnquoted
+
+					const response = axios.request({
+						url: direccion,
+						method: 'put',
+					}).then(function (response) {
+						swal({
+							title: "Libro valorado correctamente",
+							text: "Gracias por ayudarnos.",
+							icon: "success",
+							button: "Aceptar"
+						});
+						
+					})
+						.catch(function (error) {
+							// handle error
+							console.log("error")
+							console.log(error);
+						})
+				}
+
+			})}
+
 	return (
 		<view>
 			<Navigator />
-			<View style={styles.container}>
-				<View style={styles.caratula}>
+			<View style={styles.caratula}>
 					{imagen}
 				</View>
+			<View style={styles.container}>
+				
 				<View style={styles.titleContainer}>
 					{/* {tituloLibro} */}
 					<Text style={styles.titulo}>{tituloLibro}</Text>
@@ -104,11 +189,24 @@ function BookCard({ results }) {
 					{descripcion}
 				</View>
 				<View>
-				<TouchableOpacity style={styles.buttonContainer}>
-					<input id="transparente"  type="button"  value="Añadir a tu biblioteca" onClick={mostrarAlerta}></input>
+				<TouchableOpacity style={{ marginTop: 100,
+		marginLeft: 680,
+		marginBottom: 5,
+		height: 45,
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		width: 250,
+		borderRadius: 30,
+		backgroundColor: colorBotton,
+		 }}>
+					<input id="transparente" value={textBotton} type="button"  onClick={handleSubmit}></input>
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.buttonContainer}>
 					<input id="transparente"  type="button"  value="Leer libro" onClick={leer}></input>
+				</TouchableOpacity>
+				<TouchableOpacity style={styles.buttonContainer}>
+					<input id="transparente"  type="button"  value="Valorar" onClick={valorar}></input>
 				</TouchableOpacity>
 				</View>
 			</View>
@@ -128,7 +226,9 @@ const styles = StyleSheet.create({
 		alignSelf: 'left',
 		marginLeft: 50,
 		position: 'absolute',
-		marginTop: 70
+		marginTop: 70,
+		height: 100,
+    	width: 400,
 	},
 
 	titleContainer:{
@@ -174,9 +274,9 @@ const styles = StyleSheet.create({
 		textAlign: 'center'
 	},
 	buttonContainer: {
-		marginTop: 100,
+		marginTop: 10,
 		marginLeft: 680,
-		marginBottom: 20,
+		marginBottom: 5,
 		height: 45,
 		flexDirection: 'row',
 		justifyContent: 'center',

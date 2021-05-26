@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 function CardList({ results }) {
+  console.log("Es lo que hay prim")
   let data = []
   data = results
   // if (results.data) {

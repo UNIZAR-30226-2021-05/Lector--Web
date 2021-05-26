@@ -41,6 +41,9 @@ const Navigator = () => {
                         <li className="nav-item mx-2">
                             <Link to="Perfil" className="nav-link">PERFIL</Link>
                         </li>
+                        <li className="nav-item mx-2">
+                            <Link to="Twitter" className="nav-link">Twitter</Link>
+                        </li>
                     </ul>
                 </div>
             </nav>

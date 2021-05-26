@@ -19,7 +19,11 @@ import ConfigurarCuenta from './componentesPerfil/configurarCuenta'
 
 // Componentes barra de navegacion
 import Leyendo from './Leyendo'
+<<<<<<< Updated upstream
 import Colecciones from './Colecciones'
+=======
+import Leyendo2 from './Leyendo2'
+>>>>>>> Stashed changes
 import Biblioteca from './Biblioteca'
 import Busqueda from './Busqueda'
 import Perfil from './Perfil'
@@ -30,6 +34,7 @@ import BookCard from './BookCard'
 import Leer from './Leer'
 
 import TodosLibros from './TodosLibros'
+import Twitter from './Twitter'
 
 
 
@@ -49,6 +54,7 @@ function App() {
           {/* Componentes barra de navegacion */}
           <Route path="/Perfil/" exact component={Perfil} />
           <Route path="/Leyendo/" exact component={Leyendo} />
+          <Route path="/Leyendo2/" exact component={Leyendo2} />
           <Route path="/Biblioteca/" exact component={Biblioteca} />
           <Route path="/Colecciones/" exact component={Colecciones} />
           <Route path="/Busqueda/" exact component={Busqueda} />
@@ -58,6 +64,8 @@ function App() {
           
           <Route path="/Leer/" exact component={Leer} />
           <Route path="/TodosLibros/" exact component={TodosLibros} />
+
+          <Route path="/Twitter/" exact component={Twitter} />
 
 
 

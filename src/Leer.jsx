@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import swal from 'sweetalert';
 import Grid from '@material-ui/core/Grid';
+import { AspectRatioSharp, SyncProblemSharp } from '@material-ui/icons';
 
 
 
@@ -74,13 +75,41 @@ const Leer = () => {
 	useEffect(() => {
 		//SECCION DE OBTENER PERFIL
 		console.log("RENDER")
-		var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/Don_Quijote_de_la_Mancha-Cervantes_Miguel.epub/0/15000'
+		var bookToRead = localStorage.getItem('btr')
+		var bookToReadUnquoted = bookToRead.replace(/['"]+/g, '');
+		console.log("el ISBN obtenido en leer.jsx es: ", bookToReadUnquoted)
 
+		var formato = localStorage.getItem('formato')
+		var formatoUnquoted = formato.replace(/['"]+/g, '');
+
+
+		var urlDownload = 'https://lectorbrainbook.herokuapp.com/libro/download/'
+		var direccionDownload = urlDownload + bookToReadUnquoted + '.' +  formato
+		
+
+		const responseB = axios.request({
+			url: direccionDownload,
+			method: 'get',
+		}).then(function (responseB) {
+			console.log("download ", responseB)
+			
+
+		})
+			.catch(function (error) {
+				// handle error
+				console.log("error")
+				console.log(error);
+			})
+
+		
+	
+		var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/' + bookToReadUnquoted + '.' + formatoUnquoted + '/0/15000'
 		var direccion = url
 		const response = axios.request({
 			url: direccion,
 			method: 'get',
 		}).then(function (response) {
+			console.log("bien obtenido")
 			console.log(response)
 			setTexto(response.data.text.substr(0, 900))
 			setSubtexto(response.data)
@@ -129,7 +158,8 @@ const Leer = () => {
 		console.log("holaaaa")
 		var comienzo = inicio
 		var acabo = inicio + 15000
-
+		
+		
 		var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/Don_Quijote_de_la_Mancha-Cervantes_Miguel.epub/'
 		var direccion = url + comienzo + "/" + acabo
 		console.log("direccion en obtener ", direccion)
