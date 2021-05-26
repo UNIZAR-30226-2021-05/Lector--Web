@@ -19,6 +19,7 @@ import ConfigurarCuenta from './componentesPerfil/configurarCuenta'
 
 // Componentes barra de navegacion
 import Leyendo from './Leyendo'
+import Colecciones from './Colecciones'
 import Biblioteca from './Biblioteca'
 import Busqueda from './Busqueda'
 import Perfil from './Perfil'
@@ -49,6 +50,7 @@ function App() {
           <Route path="/Perfil/" exact component={Perfil} />
           <Route path="/Leyendo/" exact component={Leyendo} />
           <Route path="/Biblioteca/" exact component={Biblioteca} />
+          <Route path="/Colecciones/" exact component={Colecciones} />
           <Route path="/Busqueda/" exact component={Busqueda} />
 
           {/* Componentes busqueda de libros y demas */}

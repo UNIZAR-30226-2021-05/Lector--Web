@@ -165,5 +165,66 @@
 }
  */
 
+ /*Biblitoeca.jsx*/
+ #irColecciones{
+        position: relative;
+        left: 90%;
+        border: none;
+        color: white;
+        background-color: #4CAF50;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+ }
 
+  /*Colecciones.jsx*/
+  #TodasColecciones{
+        position: relative;
+        left: 5%;
+        border: none;
+        color: white;
+        background-color: #307734;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+ }
+
+ #UnaColeccion,#IntroduzcaISBN,#IntroduzcaColCrear,#TitViejo,#TitNuevo,#TitEliminar{
+        position: relative;
+        left: 5%;
+        padding: 16px 40px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+ }
+
+ #Coleccion,#CrearColeccion,#RenColeccion,#ColeccionEliminar{
+        position: relative;
+        left: 9%;
+        border: none;
+        color: white;
+        background-color: #307734;
+        padding: 16px 36px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+ }
+
+ #subtit{
+        margin-left: 2%; 
+ }
 /* Estilos relativos a los botones Óscar */
