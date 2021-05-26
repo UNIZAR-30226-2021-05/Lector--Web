@@ -19,11 +19,8 @@ import ConfigurarCuenta from './componentesPerfil/configurarCuenta'
 
 // Componentes barra de navegacion
 import Leyendo from './Leyendo'
-<<<<<<< Updated upstream
 import Colecciones from './Colecciones'
-=======
 import Leyendo2 from './Leyendo2'
->>>>>>> Stashed changes
 import Biblioteca from './Biblioteca'
 import Busqueda from './Busqueda'
 import Perfil from './Perfil'
