@@ -3,13 +3,16 @@ import Navigator from './Navigator'
 import {
   StyleSheet,
   View,
-  Text
+  Text,
+  TouchableOpacity
 } from 'react-native';
 import { useState } from "react";
 import './App';
+import Colecciones from './Colecciones'
 import './styles.css';
 import swal from 'sweetalert';
-import axios from 'axios'
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 const Biblioteca = () => {
 
 
@@ -73,7 +76,7 @@ const Biblioteca = () => {
       method: 'post',
       data: {
       'Libro': isbn,
-      '"Usuario': 2,
+      'Usuario': 2,
       'cuerpo': "Bastante guapo",
       'esAnotacion': false,
       'id': 2,
@@ -94,23 +97,33 @@ const Biblioteca = () => {
 
 
 
-
+  const irColeccion = () => {
+    console.log("pulsado ir coleccion")
+    window.location='/Colecciones';
+  }
 
   return (
     <View>
       <Navigator />
       <View>
+
         <h1>Esta es la pagina de biblioteca
-  
+          <div className="container" >
+            <input id="irColecciones" type="button"  value="Colecciones" onClick={irColeccion}></input>
+          </div>
         </h1>
 
       </View>
-      <Text onClick={getBookmarks}>
+      <TouchableOpacity style={styles.buttonContainer} onClick={getBookmarks}>
         Boton para obtener los bookmarks
-     </Text>
-     <Text onClick={setBookmarks}>
+     </TouchableOpacity>
+     <TouchableOpacity style={styles.buttonContainer} onClick={getBookmarks}>
         Boton para poner los bookmarks
-     </Text>
+     </TouchableOpacity>
+
+  {/*    <TouchableOpacity style={styles.AnadirContainer} onClick={irColeccion}>
+       Colecciones
+     </TouchableOpacity> */}
 
 
 
@@ -127,7 +140,18 @@ const styles = StyleSheet.create({
     color: "#696969",
     marginTop: 10,
     textAlign: 'center'
-  }
+  },
+  buttonContainer: {
+		marginTop: 10,
+		height: 45,
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginBottom: 20,
+		width: 250,
+		borderRadius: 30,
+		backgroundColor: "#00BFFF",
+	}
 });
 
 export default Biblioteca;
