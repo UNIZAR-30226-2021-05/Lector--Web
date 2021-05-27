@@ -33,6 +33,8 @@ import Leer from './Leer'
 import TodosLibros from './TodosLibros'
 import Twitter from './Twitter'
 
+import FormEmail from './FormEmail'
+
 
 
 function App() {
@@ -53,7 +55,7 @@ function App() {
           <Route path="/Leyendo/" exact component={Leyendo} />
           <Route path="/Leyendo2/" exact component={Leyendo2} />
           <Route path="/Biblioteca/" exact component={Biblioteca} />
-          <Route path="/Colecciones/" exact component={Colecciones} />
+          <Route path="/Twitter/" exact component={Twitter} />
           <Route path="/Busqueda/" exact component={Busqueda} />
 
           {/* Componentes busqueda de libros y demas */}
@@ -62,7 +64,9 @@ function App() {
           <Route path="/Leer/" exact component={Leer} />
           <Route path="/TodosLibros/" exact component={TodosLibros} />
 
-          <Route path="/Twitter/" exact component={Twitter} />
+          
+          <Route path="/Colecciones/" exact component={Colecciones} />
+          <Route path="/FormEmail/" exact component={FormEmail} />
 
 
 

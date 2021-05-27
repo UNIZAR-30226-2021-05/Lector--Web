@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import Navigator from './Navigator'
+import FormEmail from './FormEmail'
 import axios from 'axios'
 import {
 	StyleSheet,
@@ -10,9 +11,59 @@ import {
 } from 'react-native';
 import swal from 'sweetalert';
 import Grid from '@material-ui/core/Grid';
+import emailjs from 'emailjs';
+import { send } from 'emailjs-com';
 import { AspectRatioSharp, SyncProblemSharp } from '@material-ui/icons';
 
-
+class EnviarCorreo extends React.Component {
+	constructor() {
+	  super();
+	  this.state = { checked: false };
+	  this.handleChange = this.handleChange.bind(this);
+	}
+  
+	handleChange(checked) {
+	  this.setState({ checked });
+	}
+	render() {
+	  return (
+		<div>
+		  <div className="col-md-6  mb-2">
+			<div
+			  className="btn-group btn-group-sm"
+			  role="group"
+			  aria-label="Basic example"
+			>
+			  {/* Este es el boton 1 */}
+			  <button
+				type="button"
+				id="btn-nquote"
+				className="btn btn-success btn-sm"
+				onClick={() => this.handleChange(false)}
+			  >
+				Atrás
+			  </button>
+  
+			  {/* Este es el boton 2 */}
+			  <button
+				type="button"
+				id="btn-flex"
+				className="btn btn-unique btn-sm"
+				onClick={() => this.handleChange(true)}
+			  >
+				Enviar por correo
+			  </button>
+			</div>
+		  </div>
+		  <span>
+			{this.state.checked ? ( <FormEmail/>) : (<br></br>) }
+		  </span>
+  
+  
+		</div>
+	  );
+	}
+  }
 
 const Leer = () => {
 	const [texto, setTexto] = useState("");
@@ -27,6 +78,7 @@ const Leer = () => {
 	const [tone, setTone] = useState("black")
 	const [fondo, setFondo] = useState("")
 	const [tipoLetra, setTipoLetra] = useState("")
+	const [textEnviar, setTextEnviar] = useState("");
 
 	// Obtener preferencias usuario
 
@@ -75,7 +127,8 @@ const Leer = () => {
 	useEffect(() => {
 		//SECCION DE OBTENER PERFIL
 		console.log("RENDER")
-		var bookToRead = localStorage.getItem('btr')
+		var bookToRead = localStorage.getItem('pthBook')
+		console.log(bookToRead)
 		var bookToReadUnquoted = bookToRead.replace(/['"]+/g, '');
 		console.log("el ISBN obtenido en leer.jsx es: ", bookToReadUnquoted)
 
@@ -84,7 +137,7 @@ const Leer = () => {
 
 
 		var urlDownload = 'https://lectorbrainbook.herokuapp.com/libro/download/'
-		var direccionDownload = urlDownload + bookToReadUnquoted + '.' +  formato
+		var direccionDownload = urlDownload + bookToReadUnquoted 
 		
 
 		const responseB = axios.request({
@@ -103,7 +156,7 @@ const Leer = () => {
 
 		
 	
-		var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/' + bookToReadUnquoted + '.' + formatoUnquoted + '/0/15000'
+		var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/' + bookToReadUnquoted + '/0/15000'
 		var direccion = url
 		const response = axios.request({
 			url: direccion,
@@ -295,6 +348,22 @@ const Leer = () => {
 		// return(otro)
 	};
 
+	var estadoEmail = false
+
+	const handleEstado = () => {
+		console.log(estadoEmail)
+		if(estadoEmail){
+			estadoEmail=false
+		}
+		else{
+			estadoEmail=true
+
+		}
+		console.log("DESPUES")
+		console.log(estadoEmail)
+	  }
+
+	
 	return (
 		<View id="general">
 
@@ -328,6 +397,9 @@ const Leer = () => {
 						</View>
 					</Grid>
 				</View>
+			</View>
+			<View id="esconderBoton">
+			<EnviarCorreo/>
 			</View>
 		</View>
 

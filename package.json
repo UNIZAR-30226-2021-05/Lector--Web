@@ -12,6 +12,8 @@
     "axios-logger": "^2.5.0",
     "bootstrap": "^4.6.0",
     "dropbox": "^9.8.6",
+    "emailjs": "^3.4.0",
+    "emailjs-com": "^2.6.4",
     "material-ui": "^0.20.2",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.2",
