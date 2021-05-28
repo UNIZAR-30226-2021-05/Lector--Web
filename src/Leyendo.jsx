@@ -91,9 +91,9 @@ const Leyendo = () => {
             setState(prevState => {
               return { ...prevState, results: newData }
             })
-
+            console.log("no deberia", newData)
             var libros = []
-            for (var i = 0; i < 200; i++) {
+            for (var i = 0; i < newData.length; i++) {
               console.log("i ", i)
            preMuestra(newData[i],libros)
               // if(libros[i] == null){
@@ -103,9 +103,13 @@ const Leyendo = () => {
           } 
 
           // console.log("Libreos", libros)
-          // localStorage.setItem('leyendo', libros)
+          // if(libros.length > 0){
+          //   localStorage.setItem('leyendo', libros)
+          // }
           
-          // console.log("cache ", localStorage.getItem('leyendo'))
+          // var ok = localStorage.getItem('leyendo')
+          // console.log("cache ", ok)
+          // console.log("cache nuevo leyendo2: ",JSON.parse(ok))
           })
             .catch(function (error) {
               // handle error

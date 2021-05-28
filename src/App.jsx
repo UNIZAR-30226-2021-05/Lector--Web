@@ -22,6 +22,7 @@ import Leyendo from './Leyendo'
 import Colecciones from './Colecciones'
 import Leyendo2 from './Leyendo2'
 import Biblioteca from './Biblioteca'
+import Biblioteca2 from './Biblioteca2'
 import Busqueda from './Busqueda'
 import Perfil from './Perfil'
 // import PerfilBeta from './PerfilBeta'
@@ -53,6 +54,7 @@ function App() {
           <Route path="/Leyendo/" exact component={Leyendo} />
           <Route path="/Leyendo2/" exact component={Leyendo2} />
           <Route path="/Biblioteca/" exact component={Biblioteca} />
+          <Route path="/Biblioteca2/" exact component={Biblioteca2} />
           <Route path="/Colecciones/" exact component={Colecciones} />
           <Route path="/Busqueda/" exact component={Busqueda} />
 

@@ -10904,6 +10904,11 @@ react-dropbox-chooser@^0.0.5:
   dependencies:
     load-script "^1.0.0"
 
+react-dropbox-saver@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-dropbox-saver/-/react-dropbox-saver-1.0.1.tgz#ba935e773d6bfd2484ccd211f1c291d17fbde17b"
+  integrity sha512-IDrngQpAd8fe63B3/NFSUbyJeMSnk2wmPnHuumeIk9xQp58TJD2FKGKF6gBDlPAwM4phVC5u/5MWuo+Ih5120w==
+
 react-error-overlay@^6.0.9:
   version "6.0.9"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz"

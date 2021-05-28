@@ -1,4 +1,3 @@
-import React from 'react';
 import Navigator from './Navigator'
 import {
   StyleSheet,
@@ -6,96 +5,104 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native';
-import { useState } from "react";
+
 import './App';
-import Colecciones from './Colecciones'
+import React, { useState, useEffect } from 'react'
 import './styles.css';
-import swal from 'sweetalert';
+
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 const Biblioteca = () => {
+  const [stateB, setStateB] = useState({
+    resultsB: []
+  });
 
+  const handleGo = () =>{
+    window.location='/Biblioteca2';
+  }
 
-  const getBookmarks = () => {
-    // e.preventDefault();
+  const preMuestra = (dato, libros) => {
+    // console.log("en premuestra: ",dato)
     var prev = ' Token '
-    var combo = prev + localStorage.getItem('userKey').substring('8', '48')
-    console.log("NOMBRE")
-    // console.log(localStorage.getItem('userName'))
+		var combo = prev + localStorage.getItem('userKey').substring('8', '48')
+    var url = 'http://lectorbrainbook.herokuapp.com/libro/'
+		var isbn = String(dato.ISBN)
 
-    var url = 'http://lectorbrainbook.herokuapp.com/'
-    var usuario = localStorage.getItem('userName')
-    var usuarioUnquoted = usuario.replace(/['"]+/g, '');
-    var direccion = url + usuarioUnquoted
-
-    var isbn = localStorage.getItem('isbnCheck')
-    var isbnUnquoted = isbn.replace(/['"]+/g, '');
-
-    var direccion = url + usuarioUnquoted + "/" + isbnUnquoted
-
-    console.log("DIRECCION")
-    console.log(direccion)
-
+    
+		var isbnUnquoted = isbn.replace(/['"]+/g, '');
+		var direccion = url + isbnUnquoted
+    
     const response = axios.request({
-      url: direccion,
-      method: 'get',
+		  url: direccion,
+		  method: 'get',
+		  headers: { 'Authorization': combo },	
+      
+		}).then(function (response) {
+      console.log(dato)
+      // libros.cadena.push(response.data)
+      libros.push(response.data)
+      localStorage.setItem('leyendoNuevo', JSON.stringify(libros))
+      
 
-    }).then(function (response) {
-      console.log("respuesta", response.data)
-    })
-      .catch(function (error) {
-        // handle error
-        console.log("error")
-        console.log(error);
-      })
-      ;
-  };
-
-  const setBookmarks = () => {
-    // e.preventDefault();
-    var prev = ' Token '
-    var combo = prev + localStorage.getItem('userKey').substring('8', '48')
-    console.log("NOMBRE")
-    // console.log(localStorage.getItem('userName'))
-
-    var url = 'http://lectorbrainbook.herokuapp.com/'
-    var usuario = localStorage.getItem('userName')
-    var usuarioUnquoted = usuario.replace(/['"]+/g, '');
-    var direccion = url + usuarioUnquoted
-
-    var isbn = localStorage.getItem('isbnCheck')
-    var isbnUnquoted = isbn.replace(/['"]+/g, '');
-
-    var direccion = url + usuarioUnquoted + "/" + isbnUnquoted
-
-    console.log("DIRECCION")
-    console.log(direccion)
-
-    const response = axios.request({
-      url: direccion,
-      method: 'post',
-      data: {
-      'Libro': isbn,
-      'Usuario': 2,
-      'cuerpo': "Bastante guapo",
-      'esAnotacion': false,
-      'id': 2,
-      'offset': 100,
-      'titulo': "Oooh, que pena"
-      }
-
-    }).then(function (response) {
-      console.log("respuesta", response.data)
-    })
-      .catch(function (error) {
-        // handle error
-        console.log("error")
-        console.log(error);
-      })
-      ;
-  };
+			// setBook(response.data)
+      // console.log("libros en preMuestra: ",libros)
+      // localStorage.setItem('leyendo', libros)
+			// console.log("estando en el thenB: ",cacheArriba)
+      // console.log("estando en el thenB: ",JSON.parse(cacheArriba))
+		})
+		  .catch(function (error) {
+			// handle error
+      dato = 100
+			console.log("error")
+			console.log(error);
+		  })
+  }
 
 
+  useEffect(() => {
+    console.log("-----------------")
+    console.log("estamos en leyendo")
+		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var name = localStorage.getItem('userName')
+		var nameUnquoted = name.replace(/['"]+/g, '');
+		var direccion = url + nameUnquoted
+
+		const response = axios.request({
+		  url: direccion,
+		  method: 'get',
+		}).then(function (responseB) {
+          //   const newData = responseB.data.filter(function(item){
+          //     const itemData = item.leyendo.toString().toUpperCase()
+          //     const textData = 'TRUE'
+          //     return itemData.indexOf(textData) > -1
+          // })
+          
+            console.log("primera peticion")
+            setStateB(prevStateB => {
+              return { ...prevStateB, resultsB: responseB.data }
+            })
+
+            var libros = []
+            for (var i = 0; i < responseB.data.length; i++) {
+              console.log("i ", i)
+           preMuestra(responseB.data[i],libros)
+              // if(libros[i] == null){
+              //   i = 100
+              //   libros.pop()
+              // }
+          } 
+
+          console.log("Libreos", libros)
+          // localStorage.setItem('leyendo', libros)
+          
+          // console.log("cache ", localStorage.getItem('leyendo'))
+          })
+            .catch(function (error) {
+              // handle error
+              console.log("error")
+              console.log(error);
+            })
+	    }, []);
 
   const irColeccion = () => {
     console.log("pulsado ir coleccion")
@@ -103,7 +110,7 @@ const Biblioteca = () => {
   }
 
   return (
-    <View>
+    <view>
       <Navigator />
       <View>
 
@@ -114,12 +121,12 @@ const Biblioteca = () => {
         </h1>
 
       </View>
-      <TouchableOpacity style={styles.buttonContainer} onClick={getBookmarks}>
-        Boton para obtener los bookmarks
-     </TouchableOpacity>
-     <TouchableOpacity style={styles.buttonContainer} onClick={getBookmarks}>
-        Boton para poner los bookmarks
-     </TouchableOpacity>
+      
+      <Text style={styles.buttonContainer} onClick = {handleGo}>
+        Obtener tus libros
+     </Text>
+      
+    
 
   {/*    <TouchableOpacity style={styles.AnadirContainer} onClick={irColeccion}>
        Colecciones
@@ -127,7 +134,7 @@ const Biblioteca = () => {
 
 
 
-    </View>
+    </view>
   )
 
 

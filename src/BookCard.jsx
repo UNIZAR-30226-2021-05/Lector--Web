@@ -17,8 +17,9 @@ import { LocalGasStationOutlined } from '@material-ui/icons';
 
 function BookCard({ results }) {
 	const [book, setBook] = useState("");
-	const [textBotton, setTextBotton] = useState("Añadir a tu biblioteca")
-	const [colorBotton, setColorBotton] = useState("#00BFFF")
+	const [acceso, setAcceso] = useState("hidden")
+	const [accesoEliminar, setaccesoEliminar] = useState("hidden")
+	const [accesoBiblioteca, setaccesoBiblioteca] = useState('')
 
 	// Proceso para obtener libro
 	useEffect(() => {
@@ -50,10 +51,68 @@ function BookCard({ results }) {
 			console.log("error")
 			console.log(error);
 		  })
+
+		//Peticion para comprobar si un libro pertenece o no al usuario
+		// http://lectorbrainbook.herokuapp.com/usuario/guardar/<str:username>/<str:ISBN>
+		var urlPertenece = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var direccion = urlPertenece + localStorage.getItem('userName') + '/' + isbnUnquoted
+		const responseB = axios.request({
+			url: direccion,
+			method: 'get',
+		  }).then(function (responseB) {
+			  console.log("ha sido comprobado correctamente")
+			  console.log(responseB.data)
+			  if(responseB.data.error){
+				  console.log("no esta")
+				  setAcceso('hidden')
+				 
+			  }
+			  else{
+				  console.log("esta")
+				  setAcceso('')
+			  }
+		  })
+			.catch(function (error) {
+			  // handle error
+			  console.log("error pertenece")
+			  console.log(error);
+			})
 	    }, []);
 
 	const leer =()=>{
+		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var name = localStorage.getItem('userName')
+		var nameUnquoted = name.replace(/['"]+/g, '');
+		console.log(nameUnquoted)
 
+		var isbn = book.ISBN
+		var isbnUnquoted = isbn.replace(/['"]+/g, '');
+
+
+
+		var direccion = url + nameUnquoted + '/' + isbnUnquoted
+
+		console.log("DIRECCION")
+		console.log(direccion)
+		
+		const response = axios.request({
+		  url: direccion,
+		  method: 'post',
+		  data: {
+			'ISBN': isbnUnquoted,
+			'leyendo': true,
+			'currentOffset': 0,
+			}
+		}).then(function (response) {
+			console.log(response.data)
+			
+			
+		})
+		  .catch(function (error) {
+			// handle error
+			
+		  })
+		
 		localStorage.setItem('formato',book.formato)
 		localStorage.setItem('btr', book.titulo)
 		window.location='/Leer';
@@ -84,19 +143,19 @@ function BookCard({ results }) {
 		  method: 'post',
 		  data: {
 			'ISBN': isbnUnquoted,
-			'leyendo': true,
-			'currentOffset': 2,
+			'leyendo': false,
+			'currentOffset': 0,
 			}
 		}).then(function (response) {
 			console.log(response.data)
 			swal({
 				title: "Libro añadido con exito",
-				text: "Disfrute de su lectura.",
+				text: "Actualice para cargar los cambios.",
 				icon: "success",
 				button: "Aceptar"
 			});
-			setTextBotton("Eliminar Libro")
-			setColorBotton("#F93030")
+			setaccesoEliminar('')
+			setaccesoBiblioteca('hidden')
 		})
 		  .catch(function (error) {
 			// handle error
@@ -189,6 +248,7 @@ function BookCard({ results }) {
 					{descripcion}
 				</View>
 				<View>
+				<view hidden={accesoBiblioteca}>
 				<TouchableOpacity style={{ marginTop: 100,
 		marginLeft: 680,
 		marginBottom: 5,
@@ -198,13 +258,22 @@ function BookCard({ results }) {
 		alignItems: 'center',
 		width: 250,
 		borderRadius: 30,
-		backgroundColor: colorBotton,
+		backgroundColor: '#00BFFF',
 		 }}>
-					<input id="transparente" value={textBotton} type="button"  onClick={handleSubmit}></input>
+					<input id="transparente" value="Añadir a tu biblioteca" type="button"  onClick={handleSubmit}></input>
+					
 				</TouchableOpacity>
-				<TouchableOpacity style={styles.buttonContainer}>
-					<input id="transparente"  type="button"  value="Leer libro" onClick={leer}></input>
+				</view>
+				<view hidden={accesoEliminar}>
+				<TouchableOpacity style={styles.buttonContainer} >
+					<input id="transparente"  type="button"  value="Eliminar libro" onClick={leer} ></input>
 				</TouchableOpacity>
+				</view>
+				<view hidden={acceso}>
+				<TouchableOpacity style={styles.buttonContainer} >
+					<input id="transparente"  type="button"  value="Leer libro" onClick={leer} ></input>
+				</TouchableOpacity>
+				</view>
 				<TouchableOpacity style={styles.buttonContainer}>
 					<input id="transparente"  type="button"  value="Valorar" onClick={valorar}></input>
 				</TouchableOpacity>

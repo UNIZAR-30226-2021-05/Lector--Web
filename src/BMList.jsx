@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./Card";
+
 import {
   StyleSheet
 } from 'react-native';
@@ -9,12 +9,10 @@ import { useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-function CardList({ results }) {
+function BMList({ results }) {
   console.log("Es lo que hay prim")
-  console.log("prim", results)
   let data = []
   data = results
-  console.log("longitud de data", data.length)
   // if (results.data) {
   //   data = results.data.Search || [];
   // }
@@ -31,12 +29,11 @@ function CardList({ results }) {
 
   
 
-  const goBook = (item) => (event) => {
+  const goBM = (item) => (event) => {
     // you can access the item object and the event object
 
-    localStorage.setItem('isbnCheck', item)
-    console.log("obtenido", localStorage.getItem('isbnCheck'));
-    window.location='/BookCard';
+    console.log("offset hacia ese BM")
+    // window.location='/BookCard';
   }
 
 
@@ -59,7 +56,6 @@ function CardList({ results }) {
   }));
 
   const [spacing, setSpacing] = React.useState(2);
-  const [numero, setNumero] = useState("3")
   const classes = useStyles();
 
   // const handlePlus = () => {
@@ -77,12 +73,12 @@ return (
       <Grid item xs={12}>
         <Grid container justify="left" spacing={spacing}>
           {data.map((item) => (
-            <Grid key={item.ISBN} item onClick={goBook(item.ISBN) }>
+            <Grid key={item.id} item onClick={goBM(item.ISBN) }>
               {/* <Link to="BookCard" className="BookCard"> */}
-              <Card key={item.ISBN} movie={item} />
+              <BM key={item.id} movie={item} />
               {/* </Link> */}
             </Grid>
-          )).slice(0,data.length)}
+          ))}
           
         </Grid>
         
@@ -125,4 +121,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CardList;
+export default BMList;

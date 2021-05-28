@@ -19,17 +19,18 @@ const Twitter = () => {
     <div>
         <Navigator/>
         
-
+<div style={{ marginLeft: 300 }}>
 <Timeline
   dataSource={{
     sourceType: 'profile',
     screenName: 'BookLector'
   }}
   options={{
-    width: '200',
-    height: '400'
+    width: '800',
+    height: '600',
   }}
 />
+</div>
 
     </div>
   )
