@@ -115,6 +115,8 @@ function BookCard({ results }) {
 		
 		localStorage.setItem('formato',book.formato)
 		localStorage.setItem('btr', book.titulo)
+		console.log(book.pathLibro)
+		localStorage.setItem('pthBook', book.pathLibro)
 		window.location='/Leer';
 	}
 	

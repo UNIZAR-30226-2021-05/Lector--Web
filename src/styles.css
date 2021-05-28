@@ -64,7 +64,7 @@
 } */
 
 /*Admin.jsx*/
-#but, #tituloLib, #autorLib, #genderLib, #ISBN, #sinopsis {
+#but, #tituloLib, #autorLib, #genderLib, #ISBN, #sinopsis, #formato {
         text-align: center;
         margin-top: 10px;
         font-family: Arial, Helvetica, sans-serif;
@@ -72,7 +72,7 @@
 }
 
 /*Admin.jsx*/
-#sino{
+#sino, #TextoAEnviar{
         text-align: center;
         margin-top: 10px;
         font-family: Arial, Helvetica, sans-serif;
@@ -108,9 +108,13 @@
 
 /*Navigator.jsx*/
 #barra{
-        background-color: #84bdda;
+        background-color: #74bbdf;
 }
 
+.nav-link{
+        color: #f6f6f7;
+        text-decoration: double;
+}
 /* #logout{
         border:0;
         background-color: rgba(238, 238, 238, 0);
@@ -228,3 +232,15 @@
         margin-left: 2%; 
  }
 /* Estilos relativos a los botones Óscar */
+
+
+.redd{
+        width: 100px;
+        height: 100px;
+        background: red;
+      }
+      .red2{
+        width: 100px;
+        height: 100px;
+        background: black;
+      }
