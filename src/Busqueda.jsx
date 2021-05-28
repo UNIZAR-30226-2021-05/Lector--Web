@@ -15,6 +15,7 @@ function Busqueda() {
   return (
     <view>
     <Navigator />
+    <h1 id="titBib">BUSQUEDA</h1>
     <AppCard />
     </view>
   )

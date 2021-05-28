@@ -172,7 +172,7 @@
  /*Biblitoeca.jsx*/
  #irColecciones{
         position: relative;
-        left: 90%;
+        left: 40%;
         border: none;
         color: white;
         background-color: #4CAF50;
@@ -201,7 +201,7 @@
         cursor: pointer;
  }
 
- #UnaColeccion,#IntroduzcaISBN,#IntroduzcaColCrear,#TitViejo,#TitNuevo,#TitEliminar{
+ #UnaColeccion,#IntroduzcaISBN,#IntroduzcaColCrear,#TitViejo,#TitNuevo,#TitEliminar,#btn-nquote,#btn-flex{
         position: relative;
         left: 5%;
         padding: 16px 40px;
@@ -233,14 +233,22 @@
  }
 /* Estilos relativos a los botones Óscar */
 
+#titBib{
+        margin-left: 10px;
+        text-decoration: solid;
+}
 
-.redd{
-        width: 100px;
-        height: 100px;
-        background: red;
-      }
-      .red2{
-        width: 100px;
-        height: 100px;
-        background: black;
-      }
+#irLeyendo2{
+        position: relative;
+        left: 40%;
+        border: none;
+        color: white;
+        background-color: #4CAF50;
+        padding: 16px 16px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 4px 2px;
+        height: 60px;
+        width: 300px;
+ }

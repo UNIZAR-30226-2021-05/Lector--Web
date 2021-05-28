@@ -19,7 +19,7 @@ const Navigator = () => {
 
         <div id="barra" className="sticky-top" >
             <nav className="navbar navbar-expand-lg container align-items-center">
-                <a className="navbar-brand" href="/perfil">
+                <a className="navbar-brand" href="/leyendo">
                     <img src={logo} height="60" alt="" loading="lazy">
                     </img>
                 </a>

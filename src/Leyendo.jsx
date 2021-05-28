@@ -115,25 +115,26 @@ const Leyendo = () => {
             
           }, []);
         // };
+
+        const irLeyendo2 = () =>{
+          console.log("ir leyendo 2")
+          window.location='/Leyendo2';
+        }
        
 
     return (
         <view>
             <Navigator />
             
-            <h1>Leyendo</h1>
+            <h1 id="titBib">LEYENDO</h1>
             {/* <Text onClick = {<Prueba bookGet={state.results[0]}/>}> */}
             {/* <Text onClick = {<CardList results={busca}/>}>
                 boton buscar
             </Text> */}
           
-          <Text style={styles.caratula}>
-							<Link to="Leyendo2" >Pulse para consultar sus lecturas actuales.</Link>
-				</Text>
-            
-            {/* <CardList results={busca}/> */}
-            {/* <CardList results={libros} /> */}
-            {/* <Prueba bookGet={state.results}/> */}
+          <View>
+          <input id="irLeyendo2" type="button"  value="Pulse para consultar sus lecturas" onClick={irLeyendo2}></input>
+          </View> 
 
         </view>
     )

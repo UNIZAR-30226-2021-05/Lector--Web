@@ -81,10 +81,10 @@ function AppCard() {
     <div className="App">
       <div className="container searchApp">
         <h2 className="title is-2 has-text-centered">
-          Encuentre su libro favorito
+          Introduzca el nombre de un libro
         </h2>
         <div className={classes.root}>
-        <Grid container spacing={3}>
+        <Grid  container spacing={3}>
           <Grid item xs={12}>
           <SearchBar onSearch={onSearch} />
           </Grid>
@@ -106,8 +106,6 @@ function AppCard() {
           <CardList results={state.results} />
           </Grid>
         </Grid>
-        {/* <SearchBar onSearch={onSearch} /> */}
-        {/* <CardList results={state.results} /> */}
         </div>
       </div>
     </div>

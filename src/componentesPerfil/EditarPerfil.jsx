@@ -225,7 +225,7 @@ const fileSelectedHandler = (event) => {
           >
             Confirmar cambios
           </Button>
-		  <Button
+		  {/* <Button
             
             onClick={handleDropbox}
           >
@@ -238,7 +238,7 @@ const fileSelectedHandler = (event) => {
 			  success = {() => console.log("exito")}
 			  cancel = {() => console.log("closed")}
 			  /> 
-		  </div>
+		  </div> */}
     
           
 

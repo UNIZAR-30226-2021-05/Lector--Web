@@ -13,7 +13,6 @@ import swal from 'sweetalert';
 import Grid from '@material-ui/core/Grid';
 import emailjs from 'emailjs';
 import { send } from 'emailjs-com';
-import { AspectRatioSharp, SyncProblemSharp } from '@material-ui/icons';
 
 class EnviarCorreo extends React.Component {
 	constructor() {
@@ -35,13 +34,13 @@ class EnviarCorreo extends React.Component {
 			  aria-label="Basic example"
 			>
 			  {/* Este es el boton 1 */}
-			  <button
+			  <button 
 				type="button"
 				id="btn-nquote"
 				className="btn btn-success btn-sm"
 				onClick={() => this.handleChange(false)}
 			  >
-				Atrás
+				Continuar leyendo
 			  </button>
   
 			  {/* Este es el boton 2 */}

@@ -47,12 +47,12 @@ const ConfigurarCuenta = () => {
 					<TouchableOpacity style={styles.buttonContainer}>
 						<Link to="ChangePass" className="security">Seguridad</Link>
 					</TouchableOpacity>
-					<TouchableOpacity style={styles.buttonContainer}>
+					{/* <TouchableOpacity style={styles.buttonContainer}>
 						<Text>Informacion</Text>
 					</TouchableOpacity>
 					<TouchableOpacity style={styles.buttonContainer}>
 						<Text>Ayuda</Text>
-					</TouchableOpacity>
+					</TouchableOpacity> */}
 					<TouchableOpacity style={styles.buttonContainer2}>
 					<input id="transparente" type="button"  value="Cerrar sesión" onClick={handleLogout}></input>
 					</TouchableOpacity>

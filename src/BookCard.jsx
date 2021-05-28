@@ -11,7 +11,6 @@ import {
 	View,
 	TouchableOpacity
 } from 'react-native';
-import { LocalGasStationOutlined } from '@material-ui/icons';
 
 
 

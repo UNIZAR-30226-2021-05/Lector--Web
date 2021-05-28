@@ -12,25 +12,22 @@ import Navigator from './Navigator'
 import { Timeline } from 'react-twitter-widgets'
 
 const Twitter = () => {
-
-  
-  
+ 
   return (
     <div>
-        <Navigator/>
-        
-
-<Timeline
-  dataSource={{
-    sourceType: 'profile',
-    screenName: 'BookLector'
-  }}
-  options={{
-    width: '200',
-    height: '400'
-  }}
-/>
-
+      <Navigator/>  
+      <div style={{ marginLeft: 240 }}>
+      <Timeline
+        dataSource={{
+          sourceType: 'profile',
+          screenName: 'BookLector'
+        }}
+        options={{
+          width: '800',
+          height: '600',
+        }}
+      />
+      </div>
     </div>
   )
 }

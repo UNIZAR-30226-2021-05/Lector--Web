@@ -36,7 +36,6 @@ import Twitter from './Twitter'
 import FormEmail from './FormEmail'
 
 
-
 function App() {
 
   return (
@@ -67,9 +66,6 @@ function App() {
           
           <Route path="/Colecciones/" exact component={Colecciones} />
           <Route path="/FormEmail/" exact component={FormEmail} />
-
-
-
 
        
         <Route path="/admin/">

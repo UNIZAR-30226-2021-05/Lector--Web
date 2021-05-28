@@ -29,7 +29,7 @@ function Leyendo2({ results }) {
 return (
   <div className="result">
       <Navigator />
-      <h1>Leyendo</h1>
+      <h1 id="titBib">LEYENDO</h1>
       <CardList results={cacheFin} />
 
   </div>

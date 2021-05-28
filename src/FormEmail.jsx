@@ -12,7 +12,6 @@ import swal from 'sweetalert';
 import Grid from '@material-ui/core/Grid';
 import emailjs from 'emailjs';
 import { send } from 'emailjs-com';
-import { AspectRatioSharp, SyncProblemSharp } from '@material-ui/icons';
 
 
 
