@@ -7,10 +7,14 @@ import {
 	StyleSheet,
 	Text,
 	View,
-	Button
+	Button,
 } from 'react-native';
 import swal from 'sweetalert';
 import Grid from '@material-ui/core/Grid';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
 import emailjs from 'emailjs';
 import { send } from 'emailjs-com';
 
@@ -67,10 +71,90 @@ class EnviarCorreo extends React.Component {
 const Leer = () => {
 	const [texto, setTexto] = useState("");
 	const [inicio, setInicio] = useState(0)
-	// const [final, setFinal] = useState(900)
 	const [subtexto, setSubtexto] = useState("")
 	const [limite, setLimite] = useState(14400)
-	// const [tipo, setTipo] = useState("textBook")
+	const [anchorEl, setAnchorEl] = React.useState(null);
+	const handleClick = (event) => {
+		console.log("se clico")
+		setAnchorEl(event.currentTarget);
+	};
+
+	// const handleStart = (desplazamientoActual, desplazamientoFinal) => {
+	// 	console.log("HANDLE STARTT")
+	// 	var urlS = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/obtener/'
+	// 	var usuarioS = localStorage.getItem('userName')
+	// 	var usuarioUnquotedS = usuario.replace(/['"]+/g, '');
+	// 	var direccionS = url + usuarioUnquoted
+
+	// 	var isbnS = localStorage.getItem('isbnCheck')
+	// 	var isbnUnquotedS = isbn.replace(/['"]+/g, '');
+
+	// 	var direccionS = url + usuarioUnquoted + "/" + isbnUnquoted
+	// 	const responseC = axios.request({
+	// 		url: direccionS,
+	// 		method: 'get',
+	// 	}).then(function (responseC) {
+	// 		console.log("OFFFSEEET")
+	// 		console.log("primer offset obtenido", response.data)
+	// 		localStorage.setItem('principal', response.data.currentOffset)
+	// 	}).catch(function (error) {
+	// 		// handle error
+	// 		console.log(error);
+	// 		});
+		
+	// }	
+
+	const handleSave = () => {
+
+		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var usuario = localStorage.getItem('userName')
+		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
+		var direccion = url + usuarioUnquoted
+
+		var isbn = localStorage.getItem('isbnCheck')
+		var isbnUnquoted = isbn.replace(/['"]+/g, '');
+
+		var direccion = url + usuarioUnquoted + "/" + isbnUnquoted
+
+		// var elOffset = inicio
+		// if(inicio >920){
+		// 	elOffset = elOffset + 900
+		// }
+			const response = axios.request({
+			url: direccion,
+			method: 'POST',
+			data: {
+				'currentOffset': inicio+900,
+				'leyendo': true,
+				'libro': isbnUnquoted
+
+			},
+
+		}).then(function (response) {
+			console.log("guardado offset", response.data)
+		}).catch(function (error) {
+			// handle error
+			console.log(error);
+			swal({
+				title: "Error de conexion",
+				text: "Los cambios realizados no se guardarán para la siguiente sesión.",
+				icon: "error"
+			});
+		})
+	};
+
+	const handleClose = () => {
+		setBookmarks(cuerpoBM, anotacionBM, tituloBM)
+		setAnchorEl(null);
+		setCuerpoBM('')
+		setAnotacionBM('')
+		setTituloBM('')
+	};
+
+	const handleOut = () => {
+
+		setAnchorEl(null);
+	}
 
 	// Estados edit
 	const [size, setSize] = useState(14)
@@ -78,6 +162,16 @@ const Leer = () => {
 	const [fondo, setFondo] = useState("")
 	const [tipoLetra, setTipoLetra] = useState("")
 	const [textEnviar, setTextEnviar] = useState("");
+
+	//Estados Bookmark
+	const [cuerpoBM, setCuerpoBM] = useState('')
+	const [anotacionBM, setAnotacionBM] = useState('')
+	const [tituloBM, setTituloBM] = useState('')
+
+	//Estados Bookmark para lectura
+
+
+
 
 	// Obtener preferencias usuario
 
@@ -124,7 +218,29 @@ const Leer = () => {
 
 	// Primera lectura de libros + obtencion de preferencias iniciales
 	useEffect(() => {
-		//SECCION DE OBTENER PERFIL
+		//SECCION DE OBTENER OFFSET INICIAL
+		var guay =''
+		console.log("HANDLE STARTT")
+		var urlS = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/obtener/'
+		var usuarioS = localStorage.getItem('userName')
+		var usuarioUnquotedS = usuarioS.replace(/['"]+/g, '');
+		var direccionS = urlS + usuarioUnquotedS
+
+		var isbnS = localStorage.getItem('isbnCheck')
+		var isbnUnquotedS = isbnS.replace(/['"]+/g, '');
+
+		var direccionS = urlS + usuarioUnquotedS + "/" + isbnUnquotedS
+		const responseC = axios.request({
+			url: direccionS,
+			method: 'get',
+		}).then(function (responseC) {
+			console.log("OFFFSEEET")
+			console.log("primer offset obtenido", responseC.data)
+			guay = responseC.data.currentOffset
+			setInicio(guay)
+
+			// localStorage.setItem('principal', response.data.currentOffset)
+			//SECCION DE OBTENER DOWNLOAD
 		console.log("RENDER")
 		var bookToRead = localStorage.getItem('pthBook')
 		console.log(bookToRead)
@@ -136,15 +252,15 @@ const Leer = () => {
 
 
 		var urlDownload = 'https://lectorbrainbook.herokuapp.com/libro/download/'
-		var direccionDownload = urlDownload + bookToReadUnquoted 
-		
+		var direccionDownload = urlDownload + bookToReadUnquoted + '.' + formato
+
 
 		const responseB = axios.request({
 			url: direccionDownload,
 			method: 'get',
 		}).then(function (responseB) {
 			console.log("download ", responseB)
-			
+
 
 		})
 			.catch(function (error) {
@@ -153,10 +269,15 @@ const Leer = () => {
 				console.log(error);
 			})
 
-		
-	
-		var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/' + bookToReadUnquoted + '/0/15000'
+			//SECCION DE OBTENER EL TEXTO
+
+		// var principalLocal = localStorage.getItem('principal')
+		console.log("GUAYY", guay)
+
+		var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/' + bookToReadUnquoted + '.' + formatoUnquoted 
+		+  '/' + (guay).toString()  + '/' + (parseInt(guay,10) + 15000).toString()
 		var direccion = url
+		console.log("la direccion esSSSSS", direccion)
 		const response = axios.request({
 			url: direccion,
 			method: 'get',
@@ -169,9 +290,15 @@ const Leer = () => {
 		})
 			.catch(function (error) {
 				// handle error
-				console.log("error")
+				console.log("error en el primer texto")
 				console.log(error);
 			})
+		}).catch(function (error) {
+			// handle error
+			console.log(error);
+			});
+
+		
 
 		// e.preventDefault();
 		console.log("ESTAMOS EN LAS PREFERENCIAS")
@@ -210,8 +337,8 @@ const Leer = () => {
 		console.log("holaaaa")
 		var comienzo = inicio
 		var acabo = inicio + 15000
-		
-		
+
+
 		var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/Don_Quijote_de_la_Mancha-Cervantes_Miguel.epub/'
 		var direccion = url + comienzo + "/" + acabo
 		console.log("direccion en obtener ", direccion)
@@ -254,11 +381,11 @@ const Leer = () => {
 							text: "Ejemplo: green",
 						})
 							.then((value) => {
-								if(value != null){
-								setTone(value)
-								setPreferences(fondo, value, size, tipoLetra)
+								if (value != null) {
+									setTone(value)
+									setPreferences(fondo, value, size, tipoLetra)
 								}
-								
+
 							});
 
 						break;
@@ -270,12 +397,12 @@ const Leer = () => {
 							text: "Ejemplo: 11",
 						})
 							.then((value) => {
-								if(value != null){
+								if (value != null) {
 									var anterior = parseInt(value)
-								setSize(anterior)
-								setPreferences(fondo, tone, value, tipoLetra)
+									setSize(anterior)
+									setPreferences(fondo, tone, value, tipoLetra)
 								}
-								
+
 							});
 						break;
 
@@ -286,9 +413,9 @@ const Leer = () => {
 							text: "Ejemplo: black",
 						})
 							.then((value) => {
-								if(value != null){
+								if (value != null) {
 									setFondo(value)
-								setPreferences(value, tone, size, tipoLetra)
+									setPreferences(value, tone, size, tipoLetra)
 								}
 							});
 						break;
@@ -299,11 +426,11 @@ const Leer = () => {
 							text: "Ejemplo: verdana",
 						})
 							.then((value) => {
-								if(value != null){
+								if (value != null) {
 									setTipoLetra(value)
 									setPreferences(fondo, tone, size, value)
 								}
-								
+
 							});
 						break;
 					default:
@@ -344,8 +471,95 @@ const Leer = () => {
 			setTexto(subtexto.text.substr(previo1, 900))
 			console.log('texto', texto)
 		}
+		handleSave()
 		// return(otro)
 	};
+
+	const getBookmarks = () => {
+		// e.preventDefault();
+		var prev = ' Token '
+		var combo = prev + localStorage.getItem('userKey').substring('8', '48')
+		console.log("NOMBRE")
+		// console.log(localStorage.getItem('userName'))
+
+		var url = 'http://lectorbrainbook.herokuapp.com/bookmark/'
+		var usuario = localStorage.getItem('userName')
+		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
+		var direccion = url + usuarioUnquoted
+
+		var isbn = localStorage.getItem('isbnCheck')
+		var isbnUnquoted = isbn.replace(/['"]+/g, '');
+
+		var direccion = url + usuarioUnquoted + "/" + isbnUnquoted
+
+		console.log("DIRECCION")
+		console.log(direccion)
+
+		const response = axios.request({
+			url: direccion,
+			method: 'get',
+
+		}).then(function (response) {
+			var bms = ""
+            for (var i = 0; i < 2; i++) {
+              bms = bms + response.data[i].titulo.toString() + ' ' + response.data[i].offset.toString() + '\n'
+           
+          }
+			swal({
+				title: "Bookmarks disponibles",
+				text: bms
+			});
+			
+		})
+			.catch(function (error) {
+				// handle error
+				console.log("error")
+				console.log(error);
+			})
+			;
+	};
+
+	const setBookmarks = (cuerpo, esAnotacion, titulo) => {
+		// e.preventDefault();
+		console.log("Dentro de bookmarks")
+		var prev = ' Token '
+		var combo = prev + localStorage.getItem('userKey').substring('8', '48')
+		// console.log(localStorage.getItem('userName'))
+
+		var url = 'http://lectorbrainbook.herokuapp.com/bookmark/crear/'
+		var usuario = localStorage.getItem('userName')
+		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
+		var direccion = url + usuarioUnquoted
+
+		var isbn = localStorage.getItem('isbnCheck')
+		var isbnUnquoted = isbn.replace(/['"]+/g, '');
+
+		var direccion = url + usuarioUnquoted + "/" + isbnUnquoted
+		const response = axios.request({
+			url: direccion,
+			method: 'post',
+			data: {
+				'Libro': isbn,
+				// 'Usuario': usuarioP,
+				'cuerpo': cuerpo,
+				'esAnotacion': esAnotacion,
+				// 'id': idP,
+				'offset': 900,
+				'titulo': titulo
+			}
+
+		}).then(function (response) {
+			console.log("LOS bookmarks hechos correctamente")
+			console.log("respuesta", response.data)
+		})
+			.catch(function (error) {
+				// handle error
+				console.log("error")
+				console.log(error);
+			})
+			;
+	};
+
 
 	var estadoEmail = false
 
@@ -373,7 +587,68 @@ const Leer = () => {
 					<Text onClick={changeAll} style={{ fontSize: size + 5, color: tone, fontFamily: tipoLetra, }}>
 						PREFERENCIAS
 						</Text>
-			</View>
+				</View>
+				<View id="bookmarks" style={stylesB.containerBotonesB}>
+					<Text onClick={getBookmarks} style={{ fontSize: size + 5, color: tone, fontFamily: tipoLetra, }}>
+						OBTENER BOOKMARKS
+						</Text>
+				</View >
+				<View id="bookmarksMas" style={stylesB.containerBotonesB}>
+					<div>
+						<Text aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} style={{ fontSize: size + 5, color: tone, fontFamily: tipoLetra, }}>
+							AÑADIR BOOKMARK
+     				 </Text>
+						<Menu
+							id="simple-menu"
+							anchorEl={anchorEl}
+							keepMounted
+							open={Boolean(anchorEl)}
+							onClose={handleOut}
+						>
+							<form no validate>
+								<MenuItem>
+									<TextField
+										variant="outlined"
+										margin="normal"
+										fullWidth
+										label="Cuerpo"
+										autoFocus
+										onChange={({ target }) => setCuerpoBM(target.value)}
+									/>
+								</MenuItem>
+								<MenuItem>
+									<TextField
+										variant="outlined"
+										margin="normal"
+										fullWidth
+										label="Es anotacion"
+										autoFocus
+										onChange={({ target }) => setAnotacionBM(target.value)}
+									/>
+								</MenuItem>
+								<MenuItem>
+									<TextField
+										variant="outlined"
+										margin="normal"
+										fullWidth
+										label="Título"
+										autoFocus
+										onChange={({ target }) => setTituloBM(target.value)}
+									/>
+								</MenuItem>
+
+								<MenuItem onClick={handleClose} >
+									<Text style={{ color: 'green' }}> Confrimar</Text>
+								</MenuItem>
+							</form>
+						</Menu>
+					</div>
+				</View>
+				<View id="bookmarks" style={stylesB.containerBotonesB}>
+					<Text onClick={handleSave} style={{ fontSize: size + 5, color: tone, fontFamily: tipoLetra, }}>
+						TERMINAR LECTURA
+						</Text>
+				</View >
 
 				<View id="texto del libro" >
 					<Text style={{ fontSize: size, color: tone, fontFamily: tipoLetra, marginLeft: 500, marginBottom: 40 }} >
@@ -408,29 +683,33 @@ const Leer = () => {
 
 
 const stylesB = StyleSheet.create({
-  
-	containerBotones:{
+
+	menuContainer: {
+
+	},
+
+	containerBotones: {
 		//flex: 1,
 		flexDirection: 'row',
 		//justifyContent: 'flex-end',
 		//alignContent:'flex-end',
 		//marginTop: 300,
 		//marginBottom: 50
-		marginLeft:500
+		marginLeft: 500
 	},
-	containerBotonesB:{
+	containerBotonesB: {
 		//flex: 1,
 		flexDirection: 'row',
 		//justifyContent: 'flex-end',
 		//alignContent:'flex-end',
 		//marginTop: 300,
 		//marginBottom: 50
-		marginLeft:1000
+		marginLeft: 1000
 	},
-	containerVer:{
-	  marginLeft:200
+	containerVer: {
+		marginLeft: 200
 	}
-  });
+});
 
 
 export default Leer;

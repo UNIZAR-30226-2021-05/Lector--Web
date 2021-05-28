@@ -14,8 +14,8 @@ import Navigator from './Navigator'
 function Leyendo2({ results }) {
   
   var cacheArriba = localStorage.getItem('leyendo')
-  console.log("cache leyendo2: ",cacheArriba)
-  console.log("cache nuevo leyendo2: ",JSON.parse(cacheArriba))
+  // console.log("cache leyendo2: ",cacheArriba)
+  // console.log("cache nuevo leyendo2: ",JSON.parse(cacheArriba))
   var cacheFin = JSON.parse(cacheArriba)
   if(cacheFin ==null){
     console.log("nulo")
