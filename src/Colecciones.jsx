@@ -12,6 +12,7 @@ import './styles.css';
 import swal from 'sweetalert';
 import axios from 'axios'
 import TableBody from 'material-ui/Table/TableBody';
+import { render } from '@testing-library/react';
 const Colecciones = () => {
 
     const [coleccion, setColeccion] = useState("");
@@ -27,7 +28,9 @@ const Colecciones = () => {
     var usuario = localStorage.getItem('userName')
     var usuarioUnquoted = usuario.replace(/['"]+/g, '');
     var salida
+    var salidacrear
     var direccion
+    var listaCol=''
 
         const DevolverColecciones = () => {
     
@@ -39,6 +42,17 @@ const Colecciones = () => {
                 headers: { 'Authorization': combo },
              }).then(function (response) {
                console.log(response.data)
+      
+               for(var i=0; i < response.data.length; i++){
+                   listaCol= listaCol + '\n' + response.data[i].titulo
+               }
+               console.log(listaCol)
+               swal({
+                title: "Exito",
+                text: "Las colecciones almacenadas para el usuario son: "+listaCol,
+                icon: "success",
+            });
+            listaCol=''
              }).catch(function (error) {
                  // handle error
                  console.log("error")
@@ -61,6 +75,24 @@ const Colecciones = () => {
              }).then(function (response) {
                 console.log(response.data.libros)
                 console.log(response.data.titulo)
+                /* for(var i=0; i < response.data.length; i++){
+                    listaColTit= listaCol + '\n' + response.data[i].titulo
+                } */
+                console.log(response.data.libros[0])
+                if(response.data.libros !=null && response.data.titulo!=null){
+                    swal({
+                        title: "Exito",
+                        text: "La devolución de la colección ha sido realizada correctamente. "+ response.data.libros[0],
+                        icon: "success",
+                    });
+                }
+                else{
+                    swal({
+                        title: "Error",
+                        text: "No existe la coleccion: " + coleccion,
+                        icon: "error"
+                      });
+                }
                 /* console.log(response.data.ISBN)
                 console.log(response.data.formato)
                 console.log(response.data.pathLibro)
@@ -68,9 +100,12 @@ const Colecciones = () => {
                 console.log(response.data.sinopsis)
                 console.log(response.data.titulo)  */
              }).catch(function (error) {
-                 // handle error
-                 console.log("error")
                  console.log(error);
+                 swal({
+                    title: "Error",
+                    text: "Ha ocurrido un error durante el proceso.",
+                    icon: "error"
+                  });
                })
 
         }
@@ -88,11 +123,28 @@ const Colecciones = () => {
                     'libros': ISBNe,
                 }
              }).then(function (response) {
-                console.log(response.data)
+                console.log(response.data);
+                if(colCrear.length!=0 && ISBNe.length!=0 ){
+                    swal({
+                        title: "Exito",
+                        text: "La creación de la colección ha sido realizada correctamente con los campos:"
+                        + '\n' + "Nombre: "+ colCrear + '\n' + "ISBN libro/s: "+ ISBNe ,
+                        icon: "success",
+                    });
+                }else{
+                    swal({
+                        title: "Error",
+                        text: "Ha ocurrido un error durante el proceso.",
+                        icon: "error"
+                      });
+                }
              }).catch(function (error) {
-                 // handle error
-                 console.log("error")
                  console.log(error);
+                 swal({
+                    title: "Error",
+                    text: "Ha ocurrido un error durante el proceso.",
+                    icon: "error"
+                  });
                })
 
         }
@@ -112,10 +164,26 @@ const Colecciones = () => {
                 }
              }).then(function (response) {
                 console.log(response.data)
+                if(oldTit.length!=0 && newTit.length!=0 ){
+                    swal({
+                        title: "Exito",
+                        text: "La colección " + oldTit + " ha sido renombrada correctamente con el nombre: " + newTit,
+                        icon: "success",
+                    });
+                }else{
+                    swal({
+                        title: "Error",
+                        text: "Ha ocurrido un error durante el proceso.",
+                        icon: "error"
+                      });
+                }
              }).catch(function (error) {
-                 // handle error
-                 console.log("error")
                  console.log(error);
+                 swal({
+                    title: "Error",
+                    text: "Ha ocurrido un error durante el proceso.",
+                    icon: "error"
+                  });
                })
 
         }
@@ -133,20 +201,30 @@ const Colecciones = () => {
                 }
              }).then(function (response) {
                 console.log(response.data)
+                if(oldTit.length!=0 && newTit.length!=0){
+                    swal({
+                        title: "Exito",
+                        text: "La colección eliminada correctamente ha sido: " + titDel,
+                        icon: "success",
+                    });
+                }else{
+                    swal({
+                        title: "Error",
+                        text: "Ha ocurrido un error durante el proceso.",
+                        icon: "error"
+                      });
+                }
              }).catch(function (error) {
-                 // handle error
-                 console.log("error")
                  console.log(error);
+                 swal({
+                    title: "Error",
+                    text: "Ha ocurrido un error durante el proceso.",
+                    icon: "error"
+                  });
                })
 
         }
 
-        const info = () => {
-            return(
-                <h2>salida</h2>
-            )
-        }
- 
         return (
             <View>
             <Navigator/>
@@ -208,7 +286,14 @@ const Colecciones = () => {
                     <input id="ColeccionEliminar" type="button"  value="Elimniar colección" onClick={eliminarColeccion}></input>
                 </div>
                 </View>
+
+                <View>
+                 {console.log(salidacrear)}
+                </View>
+
             </View>
+
+           
         );
 }
 export default Colecciones;
