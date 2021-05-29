@@ -195,9 +195,9 @@ function AppCard() {
             </View>
             </Grid>
           </Grid>
-          <Grid >
+          {/* <Grid >
           <CardList results={stateB.resultsB} />
-          </Grid>
+          </Grid> */}
         </Grid>
 
         </div>

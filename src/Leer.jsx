@@ -20,53 +20,53 @@ import { send } from 'emailjs-com';
 
 class EnviarCorreo extends React.Component {
 	constructor() {
-	  super();
-	  this.state = { checked: false };
-	  this.handleChange = this.handleChange.bind(this);
+		super();
+		this.state = { checked: false };
+		this.handleChange = this.handleChange.bind(this);
 	}
-  
+
 	handleChange(checked) {
-	  this.setState({ checked });
+		this.setState({ checked });
 	}
 	render() {
-	  return (
-		<div>
-		  <div className="col-md-6  mb-2">
-			<div
-			  className="btn-group btn-group-sm"
-			  role="group"
-			  aria-label="Basic example"
-			>
-			  {/* Este es el boton 1 */}
-			  <button 
-				type="button"
-				id="btn-nquote"
-				className="btn btn-success btn-sm"
-				onClick={() => this.handleChange(false)}
-			  >
-				Continuar leyendo
+		return (
+			<div>
+				<div className="col-md-6  mb-2">
+					<div
+						className="btn-group btn-group-sm"
+						role="group"
+						aria-label="Basic example"
+					>
+						{/* Este es el boton 1 */}
+						<button
+							type="button"
+							id="btn-nquote"
+							className="btn btn-success btn-sm"
+							onClick={() => this.handleChange(false)}
+						>
+							Continuar leyendo
 			  </button>
-  
-			  {/* Este es el boton 2 */}
-			  <button
-				type="button"
-				id="btn-flex"
-				className="btn btn-unique btn-sm"
-				onClick={() => this.handleChange(true)}
-			  >
-				Enviar por correo
+
+						{/* Este es el boton 2 */}
+						<button
+							type="button"
+							id="btn-flex"
+							className="btn btn-unique btn-sm"
+							onClick={() => this.handleChange(true)}
+						>
+							Enviar por correo
 			  </button>
+					</div>
+				</div>
+				<span>
+					{this.state.checked ? (<FormEmail />) : (<br></br>)}
+				</span>
+
+
 			</div>
-		  </div>
-		  <span>
-			{this.state.checked ? ( <FormEmail/>) : (<br></br>) }
-		  </span>
-  
-  
-		</div>
-	  );
+		);
 	}
-  }
+}
 
 const Leer = () => {
 	const [texto, setTexto] = useState("");
@@ -101,7 +101,7 @@ const Leer = () => {
 	// 		// handle error
 	// 		console.log(error);
 	// 		});
-		
+
 	// }	
 
 	const handleSave = () => {
@@ -116,15 +116,16 @@ const Leer = () => {
 
 		var direccion = url + usuarioUnquoted + "/" + isbnUnquoted
 
-		// var elOffset = inicio
-		// if(inicio >920){
+		var elOffset = inicio
+		// if(inicio >0){
 		// 	elOffset = elOffset + 900
 		// }
-			const response = axios.request({
+
+		const response = axios.request({
 			url: direccion,
 			method: 'POST',
 			data: {
-				'currentOffset': inicio+900,
+				'currentOffset': elOffset + 900,
 				'leyendo': true,
 				'libro': isbnUnquoted
 
@@ -219,7 +220,7 @@ const Leer = () => {
 	// Primera lectura de libros + obtencion de preferencias iniciales
 	useEffect(() => {
 		//SECCION DE OBTENER OFFSET INICIAL
-		var guay =''
+		var guay = ''
 		console.log("HANDLE STARTT")
 		var urlS = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/obtener/'
 		var usuarioS = localStorage.getItem('userName')
@@ -241,64 +242,72 @@ const Leer = () => {
 
 			// localStorage.setItem('principal', response.data.currentOffset)
 			//SECCION DE OBTENER DOWNLOAD
-		console.log("RENDER")
-		var bookToRead = localStorage.getItem('pthBook')
-		console.log(bookToRead)
-		var bookToReadUnquoted = bookToRead.replace(/['"]+/g, '');
-		console.log("el ISBN obtenido en leer.jsx es: ", bookToReadUnquoted)
+			console.log("RENDER")
+			var bookToRead = localStorage.getItem('pthBook')
+			console.log(bookToRead)
+			var bookToReadUnquoted = bookToRead.replace(/['"]+/g, '');
+			console.log("el ISBN obtenido en leer.jsx es: ", bookToReadUnquoted)
 
-		var formato = localStorage.getItem('formato')
-		var formatoUnquoted = formato.replace(/['"]+/g, '');
-
-
-		var urlDownload = 'https://lectorbrainbook.herokuapp.com/libro/download/'
-		var direccionDownload = urlDownload + bookToReadUnquoted + '.' + formato
+			var formato = localStorage.getItem('formato')
+			var formatoUnquoted = formato.replace(/['"]+/g, '');
 
 
-		const responseB = axios.request({
-			url: direccionDownload,
-			method: 'get',
-		}).then(function (responseB) {
-			console.log("download ", responseB)
+			var urlDownload = 'https://lectorbrainbook.herokuapp.com/libro/download/'
+			var direccionDownload = urlDownload + bookToReadUnquoted + '.' + formato
 
 
-		})
-			.catch(function (error) {
-				// handle error
-				console.log("error")
-				console.log(error);
+			const responseB = axios.request({
+				url: direccionDownload,
+				method: 'get',
+			}).then(function (responseB) {
+				;
+
+
 			})
+				.catch(function (error) {
+					// handle error
+					console.log("error de render")
+					console.log(error);
+				})
 
 			//SECCION DE OBTENER EL TEXTO
 
-		// var principalLocal = localStorage.getItem('principal')
-		console.log("GUAYY", guay)
+			// var principalLocal = localStorage.getItem('principal')
+			console.log("GUAYY", guay)
 
-		var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/' + bookToReadUnquoted + '.' + formatoUnquoted 
-		+  '/' + (guay).toString()  + '/' + (parseInt(guay,10) + 15000).toString()
-		var direccion = url
-		console.log("la direccion esSSSSS", direccion)
-		const response = axios.request({
-			url: direccion,
-			method: 'get',
-		}).then(function (response) {
-			console.log("bien obtenido")
-			console.log(response)
-			setTexto(response.data.text.substr(0, 900))
-			setSubtexto(response.data)
+			var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/' + bookToReadUnquoted + '.' + formatoUnquoted
+				+ '/' + (guay).toString() + '/' + (15000).toString()
+			var direccion = url
+			console.log("la direccion esSSSSS", direccion)
+			const response = axios.request({
+				url: direccion,
+				method: 'get',
+			}).then(function (response) {
+				console.log("bien obtenido")
+				console.log(response)
+				setTexto(response.data.text.substr(0, 900))
+				// setTexto(response.data.text)
+				setSubtexto(response.data)
+				setInicio(guay)
 
-		})
-			.catch(function (error) {
-				// handle error
-				console.log("error en el primer texto")
-				console.log(error);
 			})
+				.catch(function (error) {
+					// handle error
+					console.log("error en el primer texto")
+					console.log(error);
+				})
 		}).catch(function (error) {
 			// handle error
 			console.log(error);
+			swal({
+				title: "No dispone de este ejemplar.",
+				text: "Añada el libro si desea leer",
+				icon: "error",
+				button: "Aceptar"
 			});
+		});
 
-		
+
 
 		// e.preventDefault();
 		console.log("ESTAMOS EN LAS PREFERENCIAS")
@@ -446,12 +455,18 @@ const Leer = () => {
 		if (inicio === 0) {
 			console.log("Ya no puedes ir mas atras")
 		} else {
+			console.log("comiendo en atras", inicio)
 			var start = inicio - 900
 			var end = inicio
-			setInicio(start)
-			setTexto(subtexto.text.substr(start, end))
+			// setInicio(start)
+			console.log("inicio-900")
+			console.log(inicio - 900)
+			console.log(inicio)
+			setInicio(inicio - 900)
+			setTexto(subtexto.text.substr(inicio - 900, 900))
 
 		}
+		handleSave()
 	};
 
 
@@ -501,15 +516,15 @@ const Leer = () => {
 
 		}).then(function (response) {
 			var bms = ""
-            for (var i = 0; i < 2; i++) {
-              bms = bms + response.data[i].titulo.toString() + ' ' + response.data[i].offset.toString() + '\n'
-           
-          }
+			for (var i = 0; i < 2; i++) {
+				bms = bms + response.data[i].titulo.toString() + ' ' + response.data[i].offset.toString() + '\n'
+
+			}
 			swal({
 				title: "Bookmarks disponibles",
 				text: bms
 			});
-			
+
 		})
 			.catch(function (error) {
 				// handle error
@@ -542,7 +557,7 @@ const Leer = () => {
 				'Libro': isbn,
 				// 'Usuario': usuarioP,
 				'cuerpo': cuerpo,
-				'esAnotacion': esAnotacion,
+				'esAnotacion': false,
 				// 'id': idP,
 				'offset': 900,
 				'titulo': titulo
@@ -565,18 +580,18 @@ const Leer = () => {
 
 	const handleEstado = () => {
 		console.log(estadoEmail)
-		if(estadoEmail){
-			estadoEmail=false
+		if (estadoEmail) {
+			estadoEmail = false
 		}
-		else{
-			estadoEmail=true
+		else {
+			estadoEmail = true
 
 		}
 		console.log("DESPUES")
 		console.log(estadoEmail)
-	  }
+	}
 
-	
+
 	return (
 		<View id="general">
 
@@ -621,16 +636,6 @@ const Leer = () => {
 										variant="outlined"
 										margin="normal"
 										fullWidth
-										label="Es anotacion"
-										autoFocus
-										onChange={({ target }) => setAnotacionBM(target.value)}
-									/>
-								</MenuItem>
-								<MenuItem>
-									<TextField
-										variant="outlined"
-										margin="normal"
-										fullWidth
 										label="Título"
 										autoFocus
 										onChange={({ target }) => setTituloBM(target.value)}
@@ -644,11 +649,7 @@ const Leer = () => {
 						</Menu>
 					</div>
 				</View>
-				<View id="bookmarks" style={stylesB.containerBotonesB}>
-					<Text onClick={handleSave} style={{ fontSize: size + 5, color: tone, fontFamily: tipoLetra, }}>
-						TERMINAR LECTURA
-						</Text>
-				</View >
+				
 
 				<View id="texto del libro" >
 					<Text style={{ fontSize: size, color: tone, fontFamily: tipoLetra, marginLeft: 500, marginBottom: 40 }} >
@@ -673,7 +674,7 @@ const Leer = () => {
 				</View>
 			</View>
 			<View id="esconderBoton">
-			<EnviarCorreo/>
+				<EnviarCorreo />
 			</View>
 		</View>
 

@@ -85,6 +85,7 @@ function BookCard({ results }) {
 		console.log(nameUnquoted)
 
 		var isbn = book.ISBN
+		console.log("ISBN en bookcard", isbn)
 		var isbnUnquoted = isbn.replace(/['"]+/g, '');
 
 

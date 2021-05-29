@@ -30,6 +30,7 @@ import Perfil from './Perfil'
 // Componentes barrade busqueda
 import BookCard from './BookCard'
 import Leer from './Leer'
+import Leer2 from './Leer2'
 
 import TodosLibros from './TodosLibros'
 import Twitter from './Twitter'
@@ -64,6 +65,7 @@ function App() {
           <Route path="/BookCard/" exact component={BookCard} />
           
           <Route path="/Leer/" exact component={Leer} />
+          <Route path="/Leer2/" exact component={Leer2} />
           <Route path="/TodosLibros/" exact component={TodosLibros} />
 
           
