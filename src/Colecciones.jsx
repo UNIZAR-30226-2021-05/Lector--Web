@@ -31,6 +31,7 @@ const Colecciones = () => {
     var salidacrear
     var direccion
     var listaCol=''
+    var salCol=''
 
         const DevolverColecciones = () => {
     
@@ -78,13 +79,20 @@ const Colecciones = () => {
                 /* for(var i=0; i < response.data.length; i++){
                     listaColTit= listaCol + '\n' + response.data[i].titulo
                 } */
-                console.log(response.data.libros[0])
+                console.log(response.data.libros)
                 if(response.data.libros !=null && response.data.titulo!=null){
+                    for(var i=0; i < response.data.libros.length; i++){
+                        salCol= salCol + '\n' + "Libro: " + response.data.libros[i].titulo + '\n' +
+                         '\t' + " ISBN: " + response.data.libros[i].ISBN + '\n' + '\t' + " Formato: " + response.data.libros[i].formato 
+                        + '\n' + '\t' + " Autor: " + response.data.libros[i].autor + '\n'
+                    }
+                    console.log(salCol)
                     swal({
                         title: "Exito",
-                        text: "La devolución de la colección ha sido realizada correctamente. "+ response.data.libros[0],
+                        text: "La colección " + response.data.titulo + " está formada por:" + '\n' + salCol,
                         icon: "success",
                     });
+                    salCol=''
                 }
                 else{
                     swal({
