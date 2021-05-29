@@ -247,12 +247,9 @@ const Leer = () => {
 		var bookToReadUnquoted = bookToRead.replace(/['"]+/g, '');
 		console.log("el ISBN obtenido en leer.jsx es: ", bookToReadUnquoted)
 
-		var formato = localStorage.getItem('formato')
-		var formatoUnquoted = formato.replace(/['"]+/g, '');
-
 
 		var urlDownload = 'https://lectorbrainbook.herokuapp.com/libro/download/'
-		var direccionDownload = urlDownload + bookToReadUnquoted + '.' + formato
+		var direccionDownload = urlDownload + bookToReadUnquoted
 
 
 		const responseB = axios.request({
@@ -274,7 +271,7 @@ const Leer = () => {
 		// var principalLocal = localStorage.getItem('principal')
 		console.log("GUAYY", guay)
 
-		var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/' + bookToReadUnquoted + '.' + formatoUnquoted 
+		var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/' + bookToReadUnquoted
 		+  '/' + (guay).toString()  + '/' + (parseInt(guay,10) + 15000).toString()
 		var direccion = url
 		console.log("la direccion esSSSSS", direccion)
