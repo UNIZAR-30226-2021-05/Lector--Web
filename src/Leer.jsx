@@ -576,7 +576,6 @@ const Leer = () => {
 	
 	return (
 		<View id="general">
-
 			<Navigator />
 			<View style={{ backgroundColor: fondo, color: tone, }}>
 				<h1>Pagina de leer</h1>
