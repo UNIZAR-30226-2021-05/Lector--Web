@@ -163,6 +163,7 @@ function AppCard() {
         <h2 className="title is-2 has-text-centered">
           Introduzca el nombre de un libro
         </h2>
+        <h5>(Para mostrar todos los libros, pulse enter)</h5>
         <div className={classes.root}>
         <Grid  container spacing={3}>
           <Grid item xs={12}>

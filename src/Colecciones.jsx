@@ -111,7 +111,7 @@ const Colecciones = () => {
                  console.log(error);
                  swal({
                     title: "Error",
-                    text: "Ha ocurrido un error durante el proceso.",
+                    text: "Ha ocurrido un error durante el proceso, revise el nombre de colección introducido.",
                     icon: "error"
                   });
                })
@@ -132,7 +132,7 @@ const Colecciones = () => {
                 }
              }).then(function (response) {
                 console.log(response.data);
-                if(colCrear.length!=0 && ISBNe.length!=0 ){
+                if(colCrear.length!=0 && ISBNe.length!=0){
                     swal({
                         title: "Exito",
                         text: "La creación de la colección ha sido realizada correctamente con los campos:"
@@ -172,6 +172,7 @@ const Colecciones = () => {
                 }
              }).then(function (response) {
                 console.log(response.data)
+
                 if(oldTit.length!=0 && newTit.length!=0 ){
                     swal({
                         title: "Exito",
@@ -255,9 +256,9 @@ const Colecciones = () => {
                 </div>
 
                 <p></p>
-                <h2 id="subtit">Crear una colección</h2>
-                <h5 id="subtit">(Introduzca ISBN separado por comas)</h5>
-                <h6 id="subtit">(Ejemplo: 9783552051911,78546542185,1312312312312)</h6>
+                <h2 id="subtit">Crear una nueva colección</h2>
+                <h5 id="subtit">(Introduzca ISBN separado por comas y un nombre de colección no existente)</h5>
+                <h6 id="subtit">(Se puede comprobar con "Mostrar colecciones". Ejemplo de ISBN: 9783552051911,78546542185,1312312312312)</h6>
                 <div className="container" >
                     <input id="IntroduzcaISBN" type="text"  placeholder="Introduzca ISBNs colección " onChange={({ target }) => setISBNs(target.value)}></input>
                 </div>
@@ -271,7 +272,8 @@ const Colecciones = () => {
                 </div>
 
                 <p></p>
-                <h2 id="subtit">Renombrar una colección</h2>
+                <h2 id="subtit">Renombrar una colección existente</h2>
+                <h6 id="subtit">(Las colecciones se puede comprobar en "Mostrar colecciones"</h6>
                 <div className="container" >
                     <input id="TitViejo" type="text"  placeholder="Introduzca título actual" onChange={({ target }) => setTitOld(target.value)}></input>
                 </div>
@@ -285,13 +287,14 @@ const Colecciones = () => {
                 </div>
 
                 <p></p>
-                <h2 id="subtit">Eliminar una colección</h2>
+                <h2 id="subtit">Eliminar una colección existente</h2>
+                <h6 id="subtit">(Las colecciones se puede comprobar en "Mostrar colecciones"</h6>
                 <div className="container" >
                     <input id="TitEliminar" type="text"  placeholder="Introduzca título colección" onChange={({ target }) => setTitDel(target.value)}></input>
                 </div>
 
                 <div className="container" >
-                    <input id="ColeccionEliminar" type="button"  value="Elimniar colección" onClick={eliminarColeccion}></input>
+                    <input id="ColeccionEliminar" type="button"  value="Eliminar colección" onClick={eliminarColeccion}></input>
                 </div>
                 </View>
 

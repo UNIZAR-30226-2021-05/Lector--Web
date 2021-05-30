@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Navigator from './Navigator'
 import FormEmail from './FormEmail'
 import axios from 'axios'
-import Rae from 'rae';
 
 import {
 	StyleSheet,
