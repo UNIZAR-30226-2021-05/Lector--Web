@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import Navigator from './Navigator'
 import FormEmail from './FormEmail'
 import axios from 'axios'
+import Rae from 'rae';
+
 import {
 	StyleSheet,
 	Text,
@@ -19,19 +21,33 @@ import emailjs from 'emailjs';
 import { send } from 'emailjs-com';
 
 class EnviarCorreo extends React.Component {
-	constructor() {
-	  super();
-	  this.state = { checked: false };
+	constructor(props) {
+	  super(props);
+	  this.state = { checked: false,
+					 query: {
+						palabra: this.props.palabra
+					 }
+		};
 	  this.handleChange = this.handleChange.bind(this);
 	}
-  
 	handleChange(checked) {
-	  this.setState({ checked });
+	  this.setState({ checked:checked });
+	}
+
+	handleInput(event){
+		var query=this.state.query;
+		query.palabra=event.target.value;
+		this.setState({
+			query:query
+		});
+	}
+	handleButton(){
+		window.open("https://dle.rae.es/"+this.state.query.palabra,"_blank");
 	}
 	render() {
 	  return (
 		<div>
-		  <div className="col-md-6  mb-2">
+		  <div className="col-md-6  mb-2" style={{marginLeft:700}}>
 			<div
 			  className="btn-group btn-group-sm"
 			  role="group"
@@ -61,6 +77,17 @@ class EnviarCorreo extends React.Component {
 		  <span>
 			{this.state.checked ? ( <FormEmail/>) : (<br></br>) }
 		  </span>
+		  <div style={{marginLeft:800}}>
+      		  <tr> 
+				  <td> 
+					  <input  name='query' placeholder="Introduzca termino"  value={this.state.query.palabra} onChange={this.handleInput.bind(this)} /> 
+				  </td> 
+				  <td > 
+					  <button  onClick={this.handleButton.bind(this)}>  Buscar  </button>
+				  </td> 
+			  </tr> 
+
+      	</div>
   
   
 		</div>
