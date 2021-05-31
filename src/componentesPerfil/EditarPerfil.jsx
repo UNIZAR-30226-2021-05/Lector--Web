@@ -49,6 +49,7 @@ const Perfil = () => {
 	]
 	var err = ''
 
+	console.log()
 
 	/* const handleDropbox = () => {
 		console.log("dbx", dbx)
@@ -82,10 +83,15 @@ const Perfil = () => {
 		var url = 'https://lectorbrainbook.herokuapp.com/usuario/'
 		var usuario = localStorage.getItem('userName')
 
-		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
+		var usuario2 = localStorage.getItem('user')
+		
+		console.log("usuario2", usuario2)
 
+		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
+		console.log("suario", usuarioUnquoted)
+		
 		var direccion = url + usuarioUnquoted
-		console.log(direccion)
+		console.log("la direccon", direccion)
 
 		console.log(localStorage.getItem('userKey'))
 		console.log(combo)
@@ -98,7 +104,6 @@ const Perfil = () => {
 			headers: { 'Authorization': combo },
 			data: {
 				'email': email,
-				'pathFoto': '',
 				"username": user
 			},
 

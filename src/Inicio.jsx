@@ -46,7 +46,10 @@ const Inicio = () => {
   
       localStorage.setItem('userName', JSON.stringify(username))
       localStorage.setItem('user', JSON.stringify(response.data))
+      console.log("PETICION EN INICIOOOO")
       console.log(response.data);
+      console.log("userb")
+      console.log(userB.username)
       console.log(username);
       if(username==='adminBrain'){
         /* window.location='/Admin'; */
