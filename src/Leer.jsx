@@ -46,7 +46,7 @@ class EnviarCorreo extends React.Component {
 	render() {
 	  return (
 		<div>
-		  <div className="col-md-6  mb-2" style={{marginLeft:700}}>
+		  <div className="col-md-6  mb-2">
 			<div
 			  className="btn-group btn-group-sm"
 			  role="group"
@@ -76,8 +76,9 @@ class EnviarCorreo extends React.Component {
 		  <span>
 			{this.state.checked ? ( <FormEmail/>) : (<br></br>) }
 		  </span>
-		  <div style={{marginLeft:800}}>
-      		  <tr> 
+		  <div id="btn-flex">
+		  <h5 id="dicci">Diccionario</h5>
+				<tr> 
 				  <td> 
 					  <input  name='query' placeholder="Introduzca termino"  value={this.state.query.palabra} onChange={this.handleInput.bind(this)} /> 
 				  </td> 

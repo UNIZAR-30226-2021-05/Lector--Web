@@ -90,18 +90,6 @@ const Inicio = () => {
 
 
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        BrainBook
-      </Link>{' '}
-      
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -196,9 +184,6 @@ const useStyles = makeStyles((theme) => ({
 
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
     </Container>
     </div>
   );

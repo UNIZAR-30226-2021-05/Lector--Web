@@ -92,7 +92,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="Bookbrain">
-        BookBrain
+        BrainBook
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -132,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
   }
   return (
     <div class="form">
-      <h1 id="titulo" align="center" > BOOKBRAIN </h1>
+      <h1 id="titulo" align="center" > BRAINBOOK </h1>
       <div class="img" align="center">
           <img src={logo} className="App-logo" alt="logoApp" title="logo AppName" weight="150" height="150"/>
       </div>

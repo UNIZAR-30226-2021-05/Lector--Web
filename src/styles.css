@@ -24,7 +24,7 @@
         position: fixed;
         bottom: 0;
         width: 100%;
-        height: 32px;
+        height: 26px;
         padding-bottom: 16px;
         background: #111;
         color: white;
@@ -52,8 +52,8 @@
 #entrar{
         width: 100px;
         height: 40px;
-        margin-bottom: 15px;
-        margin-top: 5px;
+        margin-top: 2px;
+        margin-bottom: 30px;
         font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-style: bold;
         font-size: 20px;
@@ -230,7 +230,7 @@
         cursor: pointer;
  }
 
- #UnaColeccion,#IntroduzcaISBN,#IntroduzcaColCrear,#TitViejo,#TitNuevo,#TitEliminar,#btn-nquote,#btn-flex{
+ #UnaColeccion,#IntroduzcaISBN,#IntroduzcaColCrear,#TitViejo,#TitNuevo,#TitEliminar{
         position: relative;
         left: 5%;
         padding: 16px 40px;
@@ -240,6 +240,24 @@
         margin: 4px 2px;
         transition-duration: 0.4s;
         cursor: pointer;
+ }
+
+ #btn-nquote,#btn-flex{
+        margin-top: 20px;
+        position: relative;
+        left: 15cm;
+        padding: 16px 40px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        /* margin: 4px 2px; */
+        transition-duration: 0.4s;
+        cursor: pointer;
+ }
+
+ #dicci{
+        margin-right: 80%;
+        text-align: center;
  }
 
  #Coleccion,#CrearColeccion,#RenColeccion,#ColeccionEliminar{
