@@ -104,7 +104,7 @@ const Leer = () => {
 
 	// }	
 
-	const handleSave = () => {
+	const handleSave = (desplazamiento) => {
 
 		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
 		var usuario = localStorage.getItem('userName')
@@ -116,16 +116,16 @@ const Leer = () => {
 
 		var direccion = url + usuarioUnquoted + "/" + isbnUnquoted
 
-		var elOffset = inicio
+		var elOffset = inicio + desplazamiento
 		// if(inicio >0){
 		// 	elOffset = elOffset + 900
 		// }
-
+		console.log("el offset en handlseSave", elOffset)
 		const response = axios.request({
 			url: direccion,
 			method: 'POST',
 			data: {
-				'currentOffset': elOffset + 900,
+				'currentOffset': inicio + desplazamiento,
 				'leyendo': true,
 				'libro': isbnUnquoted
 
@@ -133,6 +133,7 @@ const Leer = () => {
 
 		}).then(function (response) {
 			console.log("guardado offset", response.data)
+			setInicio(response.data.currentOffset)
 		}).catch(function (error) {
 			// handle error
 			console.log(error);
@@ -253,59 +254,59 @@ const Leer = () => {
 
 
 			var urlDownload = 'https://lectorbrainbook.herokuapp.com/libro/download/'
-			var direccionDownload = urlDownload + bookToReadUnquoted + '.' + formato
+			var direccionDownload = urlDownload + bookToReadUnquoted
 
 
 			const responseB = axios.request({
 				url: direccionDownload,
 				method: 'get',
 			}).then(function (responseB) {
-				;
+				//SECCION DE OBTENER EL TEXTO
 
+				// var principalLocal = localStorage.getItem('principal')
+				console.log("GUAYY", guay)
 
-			})
-				.catch(function (error) {
-					// handle error
-					console.log("error de render")
-					console.log(error);
+				var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/' + bookToReadUnquoted  
+					+ '/' + (guay).toString() + '/' + (15000).toString()
+				var direccion = url
+				console.log("la direccion esSSSSS", direccion)
+				const response = axios.request({
+					url: direccion,
+					method: 'get',
+				}).then(function (response) {
+					console.log("bien obtenido")
+					console.log(response)
+					setTexto(response.data.text.substr(0, 900))
+					// setTexto(response.data.text)
+					setSubtexto(response.data)
+					setInicio(guay)
+
 				})
-
-			//SECCION DE OBTENER EL TEXTO
-
-			// var principalLocal = localStorage.getItem('principal')
-			console.log("GUAYY", guay)
-
-			var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/' + bookToReadUnquoted + '.' + formatoUnquoted
-				+ '/' + (guay).toString() + '/' + (15000).toString()
-			var direccion = url
-			console.log("la direccion esSSSSS", direccion)
-			const response = axios.request({
-				url: direccion,
-				method: 'get',
-			}).then(function (response) {
-				console.log("bien obtenido")
-				console.log(response)
-				setTexto(response.data.text.substr(0, 900))
-				// setTexto(response.data.text)
-				setSubtexto(response.data)
-				setInicio(guay)
-
-			})
-				.catch(function (error) {
-					// handle error
-					console.log("error en el primer texto")
-					console.log(error);
-				})
-		}).catch(function (error) {
-			// handle error
-			console.log(error);
-			swal({
-				title: "No dispone de este ejemplar.",
-				text: "Añada el libro si desea leer",
-				icon: "error",
-				button: "Aceptar"
+					.catch(function (error) {
+						// handle error
+						console.log("error en el primer texto")
+						console.log(error);
+					})
+			}).catch(function (error) {
+				// handle error
+				console.log(error);
+				swal({
+					title: "No dispone de este ejemplar.",
+					text: "Añada el libro si desea leer",
+					icon: "error",
+					button: "Aceptar"
+				});
 			});
-		});
+
+
+		})
+			.catch(function (error) {
+				// handle error
+				console.log("error de render")
+				console.log(error);
+			})
+
+
 
 
 
@@ -462,11 +463,12 @@ const Leer = () => {
 			console.log("inicio-900")
 			console.log(inicio - 900)
 			console.log(inicio)
-			setInicio(inicio - 900)
+			// setInicio(inicio - 900)
 			setTexto(subtexto.text.substr(inicio - 900, 900))
+			handleSave(-900)
 
 		}
-		handleSave()
+		
 	};
 
 
@@ -481,12 +483,12 @@ const Leer = () => {
 			// console.log("final alante previo", end)
 			var previo = inicio
 			var previo1 = inicio + 900
-			setInicio(previo + 900)
+			// setInicio(previo + 900)
 			console.log("primer caracter ", previo1)
 			setTexto(subtexto.text.substr(previo1, 900))
 			console.log('texto', texto)
 		}
-		handleSave()
+		handleSave(900)
 		// return(otro)
 	};
 
@@ -649,7 +651,7 @@ const Leer = () => {
 						</Menu>
 					</div>
 				</View>
-				
+
 
 				<View id="texto del libro" >
 					<Text style={{ fontSize: size, color: tone, fontFamily: tipoLetra, marginLeft: 500, marginBottom: 40 }} >

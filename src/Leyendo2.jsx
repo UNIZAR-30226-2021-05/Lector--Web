@@ -17,6 +17,7 @@ function Leyendo2({ results }) {
   // console.log("cache leyendo2: ",cacheArriba)
   // console.log("cache nuevo leyendo2: ",JSON.parse(cacheArriba))
   var cacheFin = JSON.parse(cacheArriba)
+  console.log("cache fin", cacheFin)
   if(cacheFin ==null){
     console.log("nulo")
     cacheFin = []

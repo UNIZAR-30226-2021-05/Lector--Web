@@ -63,12 +63,12 @@ function BookCard({ results }) {
 			  console.log(responseB.data)
 			  if(responseB.data.error){
 				  console.log("no esta")
-				  setAcceso('hidden')
+				  setAcceso(false)
 				 
 			  }
 			  else{
 				  console.log("esta")
-				  setAcceso('')
+				  setAcceso(true)
 			  }
 		  })
 			.catch(function (error) {
@@ -125,6 +125,7 @@ function BookCard({ results }) {
 	
 
 	const handleSubmit=()=>{
+		if(acceso == false){
 		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
 		var name = localStorage.getItem('userName')
 		var nameUnquoted = name.replace(/['"]+/g, '');
@@ -156,8 +157,8 @@ function BookCard({ results }) {
 				icon: "success",
 				button: "Aceptar"
 			});
-			setaccesoEliminar('')
-			setaccesoBiblioteca('hidden')
+			setAcceso(true)
+			
 		})
 		  .catch(function (error) {
 			// handle error
@@ -168,6 +169,15 @@ function BookCard({ results }) {
 				button: "Aceptar"
 			});
 		  })
+		}
+		else{
+			swal({
+				title: "El libro ya pertenece a su biblioteca",
+				text: "No se añadirá de nuevo",
+				icon: "warning",
+				button: "Aceptar"
+			});
+		}
 	    }
 	
 
@@ -250,7 +260,7 @@ function BookCard({ results }) {
 					{descripcion}
 				</View>
 				<View>
-				<view hidden={accesoBiblioteca}>
+				<view>
 				<TouchableOpacity style={{ marginTop: 100,
 		marginLeft: 680,
 		marginBottom: 5,
@@ -266,11 +276,7 @@ function BookCard({ results }) {
 					
 				</TouchableOpacity>
 				</view>
-				<view hidden={accesoEliminar}>
-				<TouchableOpacity style={styles.buttonContainer} >
-					<input id="transparente"  type="button"  value="Eliminar libro" onClick={leer} ></input>
-				</TouchableOpacity>
-				</view>
+				
 				<view >
 				<TouchableOpacity style={styles.buttonContainer} >
 					<input id="transparente"  type="button"  value="Leer libro" onClick={leer} ></input>

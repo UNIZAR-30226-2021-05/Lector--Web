@@ -31,42 +31,42 @@ function AppCard() {
   const[todos, setTodos] = useState("")
   const[mios, setMios] = useState("")
 
-  const preMuestra = (dato, libros) => {
-    // console.log("en premuestra: ",dato)
-    var prev = ' Token '
-		var combo = prev + localStorage.getItem('userKey').substring('8', '48')
-    var url = 'http://lectorbrainbook.herokuapp.com/libro/'
-		var isbn = String(dato.ISBN)
+  // const preMuestra = (dato, libros) => {
+  //   // console.log("en premuestra: ",dato)
+  //   var prev = ' Token '
+	// 	var combo = prev + localStorage.getItem('userKey').substring('8', '48')
+  //   var url = 'http://lectorbrainbook.herokuapp.com/libro/'
+	// 	var isbn = String(dato.ISBN)
 
     
-		var isbnUnquoted = isbn.replace(/['"]+/g, '');
-		var direccion = url + isbnUnquoted
+	// 	var isbnUnquoted = isbn.replace(/['"]+/g, '');
+	// 	var direccion = url + isbnUnquoted
     
-    const response = axios.request({
-		  url: direccion,
-		  method: 'get',
-		  headers: { 'Authorization': combo },	
+  //   const response = axios.request({
+	// 	  url: direccion,
+	// 	  method: 'get',
+	// 	  headers: { 'Authorization': combo },	
       
-		}).then(function (response) {
-      console.log(dato)
-      // libros.cadena.push(response.data)
-      libros.push(response.data)
-      localStorage.setItem('leyendo', JSON.stringify(libros))
-      var cacheArriba = localStorage.getItem('leyendo')
+	// 	}).then(function (response) {
+  //     console.log(dato)
+  //     // libros.cadena.push(response.data)
+  //     libros.push(response.data)
+  //     localStorage.setItem('leyendo', JSON.stringify(libros))
+  //     var cacheArriba = localStorage.getItem('leyendo')
 
-			// setBook(response.data)
-      // console.log("libros en preMuestra: ",libros)
-      // localStorage.setItem('leyendo', libros)
-			console.log("estando en el thenB: ",cacheArriba)
-      console.log("estando en el thenB: ",JSON.parse(cacheArriba))
-		})
-		  .catch(function (error) {
-			// handle error
-      dato = 100
-			console.log("error")
-			console.log(error);
-		  })
-  }
+	// 		// setBook(response.data)
+  //     // console.log("libros en preMuestra: ",libros)
+  //     // localStorage.setItem('leyendo', libros)
+	// 		console.log("estando en el thenB: ",cacheArriba)
+  //     console.log("estando en el thenB: ",JSON.parse(cacheArriba))
+	// 	})
+	// 	  .catch(function (error) {
+	// 		// handle error
+  //     dato = 100
+	// 		console.log("error")
+	// 		console.log(error);
+	// 	  })
+  // }
 
 
   const onSearch = async (text) => {
@@ -129,17 +129,17 @@ function AppCard() {
               return { ...prevStateB, resultsB: responseB.data }
             })
 
-            var libros = []
-            for (var i = 0; i < responseB.data.length; i++) {
-              console.log("i ", i)
-           preMuestra(responseB.data[i],libros)
+          //   var libros = []
+          //   for (var i = 0; i < responseB.data.length; i++) {
+          //     console.log("i ", i)
+          //  preMuestra(responseB.data[i],libros)
               // if(libros[i] == null){
               //   i = 100
               //   libros.pop()
               // }
-          } 
+          // } 
 
-          console.log("Libreos", libros)
+          // console.log("Libreos", libros)
           // localStorage.setItem('leyendo', libros)
           
           // console.log("cache ", localStorage.getItem('leyendo'))
@@ -171,7 +171,9 @@ function AppCard() {
           <Grid item xs={12}>
             <Grid id="texto parcial">
             <View style={stylesB.containerBotones}>
-            <Text>{todos}</Text>
+            <Text style={stylesB.containerText}>
+              {todos}
+            </Text>
             <View style={stylesB.containerVer}>
                           
             </View>
@@ -188,7 +190,6 @@ function AppCard() {
           <Grid item xs={12}>
             <Grid id="texto parcial">
             <View style={stylesB.containerBotones}>
-            <Text>{mios}</Text>
             <View style={stylesB.containerVer}>
               
             </View>
@@ -234,6 +235,9 @@ const stylesB = StyleSheet.create({
   },
   containerBig:{
     marginTop:200
+  },
+  containerText:{
+    fontSize:35
   }
 });
 
