@@ -250,17 +250,17 @@ function BookCard({ results }) {
 				</View>
 				<View>
 				<view hidden={accesoBiblioteca}>
-				<TouchableOpacity style={{ marginTop: 100,
-		marginLeft: 680,
-		marginBottom: 5,
-		height: 45,
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center',
-		width: 250,
-		borderRadius: 30,
-		backgroundColor: '#00BFFF',
-		 }}>
+				<TouchableOpacity style={{ marginTop: 50,
+					marginLeft: 680,
+					marginBottom: 5,
+					height: 45,
+					flexDirection: 'row',
+					justifyContent: 'center',
+					alignItems: 'center',
+					width: 250,
+					borderRadius: 30,
+					backgroundColor: '#00BFFF',
+					}}>
 					<input id="transparente" value="Añadir a tu biblioteca" type="button"  onClick={handleSubmit}></input>
 					
 				</TouchableOpacity>
@@ -276,7 +276,7 @@ function BookCard({ results }) {
 				</TouchableOpacity>
 				</view>
 				<TouchableOpacity style={styles.buttonContainer}>
-					<input id="transparente"  type="button"  value="Valorar" onClick={valorar}></input>
+					<input id="valorar"  type="button"  value="Valorar" onClick={valorar}></input>
 				</TouchableOpacity>
 				</View>
 			</View>

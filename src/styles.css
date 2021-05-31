@@ -20,7 +20,7 @@
         margin-bottom: 40px;
 }
 
-/* #derechos{
+#derechos{
         position: fixed;
         bottom: 0;
         width: 100%;
@@ -30,7 +30,7 @@
         color: white;
         text-align: center;
         border-top: 2px solid #0099CC;
-} */
+} 
 
 /*Qué es BookBrain en Raiz.jsx*/
 #quest{
@@ -130,6 +130,14 @@
 #transparente{
         border:0;
         background-color: rgba(238, 238, 238, 0);
+        margin-bottom: 10px;
+        outline: none;
+}
+
+#valorar{
+        border:0;
+        background-color: rgba(238, 238, 238, 0);
+        bottom: 30px;
         outline: none;
 }
 /* 
