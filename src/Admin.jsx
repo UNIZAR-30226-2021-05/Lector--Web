@@ -35,7 +35,7 @@ function Admin() {
 
     var prev = ' Token '
     var combo = prev + localStorage.getItem('userKey').substring('8', '48')
-    var url = 'http://lectorbrainbook.herokuapp.com/libro'
+    var url = 'https://lectorbrainbook.herokuapp.com/libro'
     var usuario = localStorage.getItem('userName')
     var usuarioUnquoted = usuario.replace(/['"]+/g, '');
     var direccion = url + '/' + ISBeNe

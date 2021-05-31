@@ -35,7 +35,7 @@ function AppCard() {
     // console.log("en premuestra: ",dato)
     var prev = ' Token '
 		var combo = prev + localStorage.getItem('userKey').substring('8', '48')
-    var url = 'http://lectorbrainbook.herokuapp.com/libro/'
+    var url = 'https://lectorbrainbook.herokuapp.com/libro/'
 		var isbn = String(dato.ISBN)
 
     
@@ -71,7 +71,7 @@ function AppCard() {
 
   const onSearch = async (text) => {
     //resultados de todos los libros
-    var url = 'http://lectorbrainbook.herokuapp.com/libro/todos/'
+    var url = 'https://lectorbrainbook.herokuapp.com/libro/todos/'
     const results = axios({
       url: url,
       method: 'get',
@@ -109,7 +109,7 @@ function AppCard() {
       //ESTA SERA LA PARTE PARA VER LOS LIBROS DEL USUARIO
       console.log("-----------------")
     console.log("estamos en leyendo")
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/'
 		var name = localStorage.getItem('userName')
 		var nameUnquoted = name.replace(/['"]+/g, '');
 		var direccion = url + nameUnquoted

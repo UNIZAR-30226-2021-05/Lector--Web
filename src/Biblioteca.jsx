@@ -25,7 +25,7 @@ const Biblioteca = () => {
     // console.log("en premuestra: ",dato)
     var prev = ' Token '
 		var combo = prev + localStorage.getItem('userKey').substring('8', '48')
-    var url = 'http://lectorbrainbook.herokuapp.com/libro/'
+    var url = 'https://lectorbrainbook.herokuapp.com/libro/'
 		var isbn = String(dato.ISBN)
 
     
@@ -62,7 +62,7 @@ const Biblioteca = () => {
   useEffect(() => {
     console.log("-----------------")
     console.log("estamos en leyendo")
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/'
 		var name = localStorage.getItem('userName')
 		var nameUnquoted = name.replace(/['"]+/g, '');
 		var direccion = url + nameUnquoted
