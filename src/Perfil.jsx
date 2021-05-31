@@ -38,7 +38,7 @@ const Perfil = () => {
 		console.log("NOMBRE")
 		// console.log(localStorage.getItem('userName'))
 
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/'
 		var usuario = localStorage.getItem('userName')
 		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
 		var direccion = url + usuarioUnquoted

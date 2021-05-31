@@ -28,7 +28,7 @@ function BookCard({ results }) {
 		console.log("NOMBRE")
 		// console.log(localStorage.getItem('userName'))
 
-		var url = 'http://lectorbrainbook.herokuapp.com/libro/'
+		var url = 'https://lectorbrainbook.herokuapp.com/libro/'
 		var isbn = localStorage.getItem('isbnCheck')
 		var isbnUnquoted = isbn.replace(/['"]+/g, '');
 		var direccion = url + isbnUnquoted
@@ -52,8 +52,8 @@ function BookCard({ results }) {
 		  })
 
 		//Peticion para comprobar si un libro pertenece o no al usuario
-		// http://lectorbrainbook.herokuapp.com/usuario/guardar/<str:username>/<str:ISBN>
-		var urlPertenece = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		// https://lectorbrainbook.herokuapp.com/usuario/guardar/<str:username>/<str:ISBN>
+		var urlPertenece = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/'
 		var direccion = urlPertenece + localStorage.getItem('userName') + '/' + isbnUnquoted
 		const responseB = axios.request({
 			url: direccion,
@@ -79,7 +79,7 @@ function BookCard({ results }) {
 	    }, []);
 
 	const leer =()=>{
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/'
 		var name = localStorage.getItem('userName')
 		var nameUnquoted = name.replace(/['"]+/g, '');
 		console.log(nameUnquoted)
@@ -124,7 +124,7 @@ function BookCard({ results }) {
 	
 
 	const handleSubmit=()=>{
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/'
 		var name = localStorage.getItem('userName')
 		var nameUnquoted = name.replace(/['"]+/g, '');
 		console.log(nameUnquoted)
@@ -201,7 +201,7 @@ function BookCard({ results }) {
 		})
 			.then((value) => {
 				if (value != null) {
-					var url = 'http://lectorbrainbook.herokuapp.com/twitter/'
+					var url = 'https://lectorbrainbook.herokuapp.com/twitter/'
 					var isbn = localStorage.getItem('isbnCheck')
 					var isbnUnquoted = isbn.replace(/['"]+/g, '');
 					var valoracionUnquoted = value.replace(/['"]+/g, '');

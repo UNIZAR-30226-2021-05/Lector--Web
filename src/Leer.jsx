@@ -107,7 +107,7 @@ const Leer = () => {
 
 	// const handleStart = (desplazamientoActual, desplazamientoFinal) => {
 	// 	console.log("HANDLE STARTT")
-	// 	var urlS = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/obtener/'
+	// 	var urlS = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/obtener/'
 	// 	var usuarioS = localStorage.getItem('userName')
 	// 	var usuarioUnquotedS = usuario.replace(/['"]+/g, '');
 	// 	var direccionS = url + usuarioUnquoted
@@ -132,7 +132,7 @@ const Leer = () => {
 
 	const handleSave = () => {
 
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/'
 		var usuario = localStorage.getItem('userName')
 		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
 		var direccion = url + usuarioUnquoted
@@ -209,7 +209,7 @@ const Leer = () => {
 
 
 
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/preferencias/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/preferencias/'
 		var nombreUsuario = localStorage.getItem('userName')
 		var nombreUnquoted = nombreUsuario.replace(/['"]+/g, '');
 		var direccion = url + nombreUnquoted
@@ -247,7 +247,7 @@ const Leer = () => {
 		//SECCION DE OBTENER OFFSET INICIAL
 		var guay =''
 		console.log("HANDLE STARTT")
-		var urlS = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/obtener/'
+		var urlS = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/obtener/'
 		var usuarioS = localStorage.getItem('userName')
 		var usuarioUnquotedS = usuarioS.replace(/['"]+/g, '');
 		var direccionS = urlS + usuarioUnquotedS
@@ -330,7 +330,7 @@ const Leer = () => {
 
 
 
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/preferencias/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/preferencias/'
 		var nombreUsuario = localStorage.getItem('userName')
 		var nombreUnquoted = nombreUsuario.replace(/['"]+/g, '');
 		var direccion = url + nombreUnquoted
@@ -505,7 +505,7 @@ const Leer = () => {
 		console.log("NOMBRE")
 		// console.log(localStorage.getItem('userName'))
 
-		var url = 'http://lectorbrainbook.herokuapp.com/bookmark/'
+		var url = 'https://lectorbrainbook.herokuapp.com/bookmark/'
 		var usuario = localStorage.getItem('userName')
 		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
 		var direccion = url + usuarioUnquoted
@@ -549,7 +549,7 @@ const Leer = () => {
 		var combo = prev + localStorage.getItem('userKey').substring('8', '48')
 		// console.log(localStorage.getItem('userName'))
 
-		var url = 'http://lectorbrainbook.herokuapp.com/bookmark/crear/'
+		var url = 'https://lectorbrainbook.herokuapp.com/bookmark/crear/'
 		var usuario = localStorage.getItem('userName')
 		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
 		var direccion = url + usuarioUnquoted

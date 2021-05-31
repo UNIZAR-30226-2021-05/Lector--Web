@@ -24,7 +24,7 @@ const Colecciones = () => {
 
     var prev = ' Token '
     var combo = prev + localStorage.getItem('userKey').substring('8', '48')
-    var url = 'http://lectorbrainbook.herokuapp.com/usuario/coleccion'
+    var url = 'https://lectorbrainbook.herokuapp.com/usuario/coleccion'
     var usuario = localStorage.getItem('userName')
     var usuarioUnquoted = usuario.replace(/['"]+/g, '');
     var salida
