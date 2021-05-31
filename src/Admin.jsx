@@ -68,7 +68,7 @@ function Admin() {
 
       <div className="form">
 
-        <h1 id="titulo" align="center" > BOOKBRAIN </h1>
+        <h1 id="titulo" align="center" > BRAINBOOK </h1>
 
         <div className="container" id="ISBN">
           <label htmlFor="ISBN"><b>ISBN: </b></label>
@@ -113,7 +113,7 @@ function Admin() {
         </div>
         
 
-        <div className="container" id="subirportada">Seleccione la portada a añadir<p></p>
+        {/* <div className="container" id="subirportada">Seleccione la portada a añadir<p></p>
         <input type="file" name="subirportada" >
           
         </input>
@@ -123,7 +123,7 @@ function Admin() {
         <input type="file" name="subirarchivos" >
           
         </input>
-        </div>
+        </div> */}
 
         <div className="container" id="but">
           <button type="button" className="btn btn-success" onClick={subirLibro}>Subir</button>

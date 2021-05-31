@@ -95,7 +95,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        BookBrain
+        BrainBook
       </Link>{' '}
       
       {'.'}
@@ -133,7 +133,7 @@ const useStyles = makeStyles((theme) => ({
   }
   return (
     <div className="form">
-      <h1 id="titulo" align="center" > BOOKBRAIN </h1>
+      <h1 id="titulo" align="center" > BRAINBOOK </h1>
       <div class="img" align="center">
           <img src={logo} className="App-logo" alt="logoApp" title="logo AppName" weight="150" height="150"/>
       </div>
@@ -143,7 +143,7 @@ const useStyles = makeStyles((theme) => ({
         {/* <Avatar className="avatarBook"  
           src='./LogoWeb.svg' /> */}
         <Typography component="h1" variant="h5">
-          Iniciar sesión en BookBrain
+          Iniciar sesión en BrainBook
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
