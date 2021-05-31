@@ -213,23 +213,6 @@ const Perfil = () => {
 											autoComplete="current-email"
 											onChange={({ target }) => setEmail(target.value)} required
 										/>
-
-										<div class="uploader">
-											<TouchableOpacity
-												type="submit"
-												fullWidth
-												variant="contained"
-												color="primary"
-												className={classes.submit}
-												id="transparente"
-											>
-												{/* Confirmar cambois */}
-
-												<div className="pickImages" >
-													<input type="file" onChange={fileSelectedHandler} />
-												</div>
-											</TouchableOpacity>
-										</div>
 										<Button
 											type="submit"
 											fullWidth
@@ -239,27 +222,8 @@ const Perfil = () => {
 											onClick={handleSubmit}
 										>
 											Confirmar cambios
-          </Button>
-										<Button
-
-											onClick={handleDropbox}
-										>
-											Subida previa
-          </Button>
-
-										<div>
-											<DropboxSaver
-												appKey={'o38fth43nrdfm8z'}
-												success={files => this.onSuccess(files)}
-												cancel={() => this.onCancel()}
-												progress={(progress) => this.onProgress(progress)}
-												// error={(err)=this.onError(err)}
-												files={files}
-											/>
-										</div>
-
-
-
+         								 </Button>
+									
 									</form>
 								</div>
 							</Container>
