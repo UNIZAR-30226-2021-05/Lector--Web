@@ -25,6 +25,7 @@ import {
 	View,
 	TouchableOpacity
 } from 'react-native';
+import userEvent from '@testing-library/user-event';
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // import Share from 'react-native-share';
@@ -104,17 +105,16 @@ const Perfil = () => {
 			headers: { 'Authorization': combo },
 			data: {
 				'email': email,
-				"username": user
+				"username": usuarioUnquoted
 			},
 
 		}).then(function (response) {
 			console.log(response.data);
-
-			/* localStorage.setItem('userName', JSON.stringify(username))
-			localStorage.setItem('userEmail', JSON.stringify(username)) 
-			setUser(response.data.user)
+/* 			localStorage.setItem('userName', JSON.stringify(user)) */
+			localStorage.setItem('userEmail', JSON.stringify(email)) 
+			/* setUser(response.data.username) */
 			setEmail(response.data.email)
-			setPhoto('https://www.molinaripixel.com.ar/wp-content/uploads/2010/12/0055.jpg') */
+			setPhoto('')
 			swal({
 				title: "Exito",
 				text: "El cambio de datos ha sido realizado correctamente.",
@@ -194,7 +194,7 @@ const Perfil = () => {
 										Edicion de datos
         </Typography>
 									<form className={classes.form} noValidate>
-										<TextField
+										{/* <TextField
 											variant="outlined"
 											margin="normal"
 											required
@@ -206,7 +206,7 @@ const Perfil = () => {
 											autoFocus
 											onChange={({ target }) => setUser(target.value)} required
 
-										/>
+										/> */}
 										<TextField
 											variant="outlined"
 											margin="normal"

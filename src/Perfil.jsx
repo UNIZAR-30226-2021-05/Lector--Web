@@ -45,6 +45,8 @@ const Perfil = () => {
 
 		console.log("DIRECCION")
 		console.log(direccion)
+		console.log('')
+		console.log(usuarioUnquoted)
 		
 		const response = axios.request({
 		  url: direccion,
