@@ -25,7 +25,7 @@ const Biblioteca = () => {
     // console.log("en premuestra: ",dato)
     var prev = ' Token '
 		var combo = prev + localStorage.getItem('userKey').substring('8', '48')
-    var url = 'http://lectorbrainbook.herokuapp.com/libro/'
+    var url = 'https://lectorbrainbook.herokuapp.com/libro/'
 		var isbn = String(dato.ISBN)
 
     
@@ -62,7 +62,7 @@ const Biblioteca = () => {
   useEffect(() => {
     console.log("-----------------")
     console.log("estamos en leyendo")
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/'
 		var name = localStorage.getItem('userName')
 		var nameUnquoted = name.replace(/['"]+/g, '');
 		var direccion = url + nameUnquoted
@@ -113,49 +113,22 @@ const Biblioteca = () => {
     <view>
       <Navigator />
         <View>
-        <h1 id="titBib"> BIBLIOTECA
-          <div className="container" >
+        <h1 id="titBib"> BIBLIOTECA</h1>
+        <p></p>
+        <div id="caja glob">
+          <div id="irCole">
             <input id="irColecciones" type="button"  value="Colecciones" onClick={irColeccion}></input>
           </div>
-        </h1>
+
+          <div id ="obteLibros">
+            <input id="irLibros" type="button"  value="Obtener tus libros" onClick={handleGo}></input>
+          </div>
+        </div>
 
         </View>
-
-      <Text style={styles.buttonContainer} onClick = {handleGo}>
-        Obtener tus libros
-     </Text>
-      
-    
-
-  {/*    <TouchableOpacity style={styles.AnadirContainer} onClick={irColeccion}>
-       Colecciones
-     </TouchableOpacity> */}
-
-
-
     </view>
   )
 
 }
-
-const styles = StyleSheet.create({
-  bigTitle: {
-    fontSize: 16,
-    color: "#696969",
-    marginTop: 10,
-    textAlign: 'center'
-  },
-  buttonContainer: {
-		marginTop: 10,
-		height: 45,
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center',
-		marginBottom: 20,
-		width: 250,
-		borderRadius: 30,
-		backgroundColor: "#00BFFF",
-	}
-});
 
 export default Biblioteca;

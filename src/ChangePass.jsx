@@ -53,7 +53,7 @@ const ChangePass = () => {
     var combo = prev + localStorage.getItem('userKey').substring('8', '48')
     
     const response = axios.request({
-      url: 'http://lectorbrainbook.herokuapp.com/rest-auth/password/change/',
+      url: 'https://lectorbrainbook.herokuapp.com/rest-auth/password/change/',
       method: 'post',
       headers: { 'Authorization': combo },
       data: {

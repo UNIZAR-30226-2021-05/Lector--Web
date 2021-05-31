@@ -42,7 +42,7 @@ const Navigator = () => {
                             <Link to="Perfil" className="nav-link">PERFIL</Link>
                         </li>
                         <li className="nav-item mx-2">
-                            <Link to="Twitter" className="nav-link">TWITTER</Link>
+                            <Link to="Twitter" className="nav-link">FEEDS</Link>
                         </li>
                     </ul>
                 </div>

@@ -28,7 +28,7 @@ function BookCard({ results }) {
 		console.log("NOMBRE")
 		// console.log(localStorage.getItem('userName'))
 
-		var url = 'http://lectorbrainbook.herokuapp.com/libro/'
+		var url = 'https://lectorbrainbook.herokuapp.com/libro/'
 		var isbn = localStorage.getItem('isbnCheck')
 		var isbnUnquoted = isbn.replace(/['"]+/g, '');
 		var direccion = url + isbnUnquoted
@@ -52,8 +52,8 @@ function BookCard({ results }) {
 		  })
 
 		//Peticion para comprobar si un libro pertenece o no al usuario
-		// http://lectorbrainbook.herokuapp.com/usuario/guardar/<str:username>/<str:ISBN>
-		var urlPertenece = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		// https://lectorbrainbook.herokuapp.com/usuario/guardar/<str:username>/<str:ISBN>
+		var urlPertenece = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/'
 		var direccion = urlPertenece + localStorage.getItem('userName') + '/' + isbnUnquoted
 		const responseB = axios.request({
 			url: direccion,
@@ -79,7 +79,7 @@ function BookCard({ results }) {
 	    }, []);
 
 	const leer =()=>{
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/'
 		var name = localStorage.getItem('userName')
 		var nameUnquoted = name.replace(/['"]+/g, '');
 		console.log(nameUnquoted)
@@ -126,7 +126,7 @@ function BookCard({ results }) {
 
 	const handleSubmit=()=>{
 		if(acceso == false){
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/'
 		var name = localStorage.getItem('userName')
 		var nameUnquoted = name.replace(/['"]+/g, '');
 		console.log(nameUnquoted)
@@ -212,7 +212,7 @@ function BookCard({ results }) {
 		})
 			.then((value) => {
 				if (value != null) {
-					var url = 'http://lectorbrainbook.herokuapp.com/twitter/'
+					var url = 'https://lectorbrainbook.herokuapp.com/twitter/'
 					var isbn = localStorage.getItem('isbnCheck')
 					var isbnUnquoted = isbn.replace(/['"]+/g, '');
 					var valoracionUnquoted = value.replace(/['"]+/g, '');
@@ -260,18 +260,18 @@ function BookCard({ results }) {
 					{descripcion}
 				</View>
 				<View>
-				<view>
-				<TouchableOpacity style={{ marginTop: 100,
-		marginLeft: 680,
-		marginBottom: 5,
-		height: 45,
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center',
-		width: 250,
-		borderRadius: 30,
-		backgroundColor: '#00BFFF',
-		 }}>
+				<view hidden={accesoBiblioteca}>
+				<TouchableOpacity style={{ marginTop: 50,
+					marginLeft: 680,
+					marginBottom: 5,
+					height: 45,
+					flexDirection: 'row',
+					justifyContent: 'center',
+					alignItems: 'center',
+					width: 250,
+					borderRadius: 30,
+					backgroundColor: '#00BFFF',
+					}}>
 					<input id="transparente" value="Añadir a tu biblioteca" type="button"  onClick={handleSubmit}></input>
 					
 				</TouchableOpacity>
@@ -283,7 +283,7 @@ function BookCard({ results }) {
 				</TouchableOpacity>
 				</view>
 				<TouchableOpacity style={styles.buttonContainer}>
-					<input id="transparente"  type="button"  value="Valorar" onClick={valorar}></input>
+					<input id="valorar"  type="button"  value="Valorar" onClick={valorar}></input>
 				</TouchableOpacity>
 				</View>
 			</View>

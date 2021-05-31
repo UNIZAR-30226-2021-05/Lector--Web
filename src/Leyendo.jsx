@@ -7,6 +7,7 @@ import {useState, useEffect, useLayoutEffect} from 'react'
 import CardList from "./CardList";
 import SearchBar from "./SearchBar";
 import { Link } from 'react-router-dom'
+import Typography from '@material-ui/core/Typography';
 
 import Prueba from './Prueba'
 
@@ -36,7 +37,7 @@ const Leyendo = () => {
     // console.log("en premuestra: ",dato)
     var prev = ' Token '
 		var combo = prev + localStorage.getItem('userKey').substring('8', '48')
-    var url = 'http://lectorbrainbook.herokuapp.com/libro/'
+    var url = 'https://lectorbrainbook.herokuapp.com/libro/'
 		var isbn = String(dato.ISBN)
 
     
@@ -72,7 +73,7 @@ const Leyendo = () => {
   useEffect(() => {
     console.log("-----------------")
     console.log("estamos en leyendo")
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/'
 		var name = localStorage.getItem('userName')
 		var nameUnquoted = name.replace(/['"]+/g, '');
 		var direccion = url + nameUnquoted
@@ -127,7 +128,7 @@ const Leyendo = () => {
        
 
     return (
-        <view>
+        <div>
             <Navigator />
             
             <h1 id="titBib">LEYENDO</h1>
@@ -140,7 +141,16 @@ const Leyendo = () => {
           <input id="irLeyendo2" type="button"  value="Pulse para consultar sus lecturas" onClick={irLeyendo2}></input>
           </View> 
 
-        </view>
+          <Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            <Link color="inherit" href="https://brainbookweb.herokuapp.com/">
+              BrainBook
+            </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+
+        </div>
     )
 
 }

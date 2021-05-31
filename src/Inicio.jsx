@@ -3,7 +3,6 @@ import './styles.css'
 
 import React from 'react';
 import logo from './LogoWeb.svg';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -17,6 +16,7 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import Perfil from './Perfil'
 import Admin from './Admin'
+import Copyright from './Registro'
 import './styles.css'
 import swal from 'sweetalert';
 
@@ -90,18 +90,6 @@ const Inicio = () => {
 
 
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        BookBrain
-      </Link>{' '}
-      
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -133,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
   }
   return (
     <div className="form">
-      <h1 id="titulo" align="center" > BOOKBRAIN </h1>
+      <h1 id="titulo" align="center" > BRAINBOOK </h1>
       <div class="img" align="center">
           <img src={logo} className="App-logo" alt="logoApp" title="logo AppName" weight="150" height="150"/>
       </div>
@@ -143,7 +131,7 @@ const useStyles = makeStyles((theme) => ({
         {/* <Avatar className="avatarBook"  
           src='./LogoWeb.svg' /> */}
         <Typography component="h1" variant="h5">
-          Iniciar sesión en BookBrain
+          Iniciar sesión en BrainBook
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -196,9 +184,16 @@ const useStyles = makeStyles((theme) => ({
 
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
+    
+      <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="Bookbrain">
+        BrainBook
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+
     </Container>
     </div>
   );

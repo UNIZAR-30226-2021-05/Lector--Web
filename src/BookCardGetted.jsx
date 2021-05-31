@@ -44,7 +44,7 @@ const BookCardGetted = () => {
 	)
 
 	var descripcion = (
-		<Text>En su tercer año en Hogwarts, Harry, Ron y Hermione conocen a Sirius Black, 
+		<Text> En su tercer año en Hogwarts, Harry, Ron y Hermione conocen a Sirius Black, 
 			el prisionero que ha escapado de Azkaban y aprenden a acercarse a un Hippogriffo 
 			mitad caballo/ mitad águila, a como transformar a los cambiantes Boggarts y el arte de la Adivinación. 
 			Harry deberá enfrentárse a los Dementores que son ladrones de almas, defenderse del peligroso hombre lobo 

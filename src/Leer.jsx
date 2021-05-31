@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Navigator from './Navigator'
 import FormEmail from './FormEmail'
 import axios from 'axios'
+
 import {
 	StyleSheet,
 	Text,
@@ -14,19 +15,36 @@ import Grid from '@material-ui/core/Grid';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import Box from '@material-ui/core/Box';
+import Copyright from './Registro'
 import Input from '@material-ui/core/Input';
 import emailjs from 'emailjs';
 import { send } from 'emailjs-com';
 
 class EnviarCorreo extends React.Component {
-	constructor() {
-		super();
-		this.state = { checked: false };
+	constructor(props) {
+		super(props);
+		this.state = {
+			checked: false,
+			query: {
+				palabra: this.props.palabra
+			}
+		};
 		this.handleChange = this.handleChange.bind(this);
 	}
-
 	handleChange(checked) {
-		this.setState({ checked });
+		this.setState({ checked: checked });
+	}
+
+	handleInput(event) {
+		var query = this.state.query;
+		query.palabra = event.target.value;
+		this.setState({
+			query: query
+		});
+	}
+	handleButton() {
+		window.open("https://dle.rae.es/" + this.state.query.palabra, "_blank");
 	}
 	render() {
 		return (
@@ -56,15 +74,29 @@ class EnviarCorreo extends React.Component {
 						>
 							Enviar por correo
 			  </button>
-					</div>
-				</div>
-				<span>
-					{this.state.checked ? (<FormEmail />) : (<br></br>)}
-				</span>
-
+					
 
 			</div>
-		);
+		  </div >
+		  <span>
+			{this.state.checked ? ( <FormEmail/>) : (<br></br>) }
+		  </span>
+		  <div id="btn-flex">
+		  <h5 id="dicci">Diccionario</h5>
+				<tr> 
+				  <td> 
+					  <input  name='query' placeholder="Introduzca termino"  value={this.state.query.palabra} onChange={this.handleInput.bind(this)} /> 
+				  </td> 
+				  <td > 
+					  <button  onClick={this.handleButton.bind(this)}>  Buscar  </button>
+				  </td> 
+			  </tr> 
+
+      	</div>
+  
+  
+		</div >
+	  );
 	}
 }
 
@@ -81,7 +113,7 @@ const Leer = () => {
 
 	// const handleStart = (desplazamientoActual, desplazamientoFinal) => {
 	// 	console.log("HANDLE STARTT")
-	// 	var urlS = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/obtener/'
+	// 	var urlS = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/obtener/'
 	// 	var usuarioS = localStorage.getItem('userName')
 	// 	var usuarioUnquotedS = usuario.replace(/['"]+/g, '');
 	// 	var direccionS = url + usuarioUnquoted
@@ -106,7 +138,7 @@ const Leer = () => {
 
 	const handleSave = (desplazamiento) => {
 
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/'
 		var usuario = localStorage.getItem('userName')
 		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
 		var direccion = url + usuarioUnquoted
@@ -185,7 +217,7 @@ const Leer = () => {
 
 
 
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/preferencias/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/preferencias/'
 		var nombreUsuario = localStorage.getItem('userName')
 		var nombreUnquoted = nombreUsuario.replace(/['"]+/g, '');
 		var direccion = url + nombreUnquoted
@@ -223,7 +255,7 @@ const Leer = () => {
 		//SECCION DE OBTENER OFFSET INICIAL
 		var guay = ''
 		console.log("HANDLE STARTT")
-		var urlS = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/obtener/'
+		var urlS = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/obtener/'
 		var usuarioS = localStorage.getItem('userName')
 		var usuarioUnquotedS = usuarioS.replace(/['"]+/g, '');
 		var direccionS = urlS + usuarioUnquotedS
@@ -266,7 +298,7 @@ const Leer = () => {
 				// var principalLocal = localStorage.getItem('principal')
 				console.log("GUAYY", guay)
 
-				var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/' + bookToReadUnquoted  
+				var url = 'https://lectorbrainbook.herokuapp.com/libro/offset/' + bookToReadUnquoted
 					+ '/' + (guay).toString() + '/' + (15000).toString()
 				var direccion = url
 				console.log("la direccion esSSSSS", direccion)
@@ -317,7 +349,7 @@ const Leer = () => {
 
 
 
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/preferencias/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/preferencias/'
 		var nombreUsuario = localStorage.getItem('userName')
 		var nombreUnquoted = nombreUsuario.replace(/['"]+/g, '');
 		var direccion = url + nombreUnquoted
@@ -468,7 +500,7 @@ const Leer = () => {
 			handleSave(-900)
 
 		}
-		
+
 	};
 
 
@@ -499,7 +531,7 @@ const Leer = () => {
 		console.log("NOMBRE")
 		// console.log(localStorage.getItem('userName'))
 
-		var url = 'http://lectorbrainbook.herokuapp.com/bookmark/'
+		var url = 'https://lectorbrainbook.herokuapp.com/bookmark/'
 		var usuario = localStorage.getItem('userName')
 		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
 		var direccion = url + usuarioUnquoted
@@ -543,7 +575,7 @@ const Leer = () => {
 		var combo = prev + localStorage.getItem('userKey').substring('8', '48')
 		// console.log(localStorage.getItem('userName'))
 
-		var url = 'http://lectorbrainbook.herokuapp.com/bookmark/crear/'
+		var url = 'https://lectorbrainbook.herokuapp.com/bookmark/crear/'
 		var usuario = localStorage.getItem('userName')
 		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
 		var direccion = url + usuarioUnquoted
@@ -596,7 +628,6 @@ const Leer = () => {
 
 	return (
 		<View id="general">
-
 			<Navigator />
 			<View style={{ backgroundColor: fondo, color: tone, }}>
 				<h1>Pagina de leer</h1>
@@ -679,6 +710,7 @@ const Leer = () => {
 				<EnviarCorreo />
 			</View>
 		</View>
+
 
 	);
 

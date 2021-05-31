@@ -36,12 +36,12 @@ const PerfilBeta = () => {
 	const getProfile = () =>{
 		var x = JSON.parse(localStorage.getItem('userKey'));
 		var y;
-		var url = "http://lectorbrainbook.herokuapp.com/usuario/nuevoUsuario5"
+		var url = "https://lectorbrainbook.herokuapp.com/usuario/nuevoUsuario5"
 		const options = {
 			headers: {'Authorization': `Token  + ${x}`}
 		  };
 		const response =  axios.get(
-			"http://lectorbrainbook.herokuapp.com/usuario/nuevoUsuario5" ,options)
+			"https://lectorbrainbook.herokuapp.com/usuario/nuevoUsuario5" ,options)
 		;
 		console.log("ESTAMOS AQUIII")
 		console.log(response)

@@ -36,7 +36,6 @@ import {
 
 const Perfil = () => {
 
-	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [email, setEmail] = useState("");
 	const [user, setUser] = useState()
@@ -51,14 +50,14 @@ const Perfil = () => {
 	var err = ''
 
 
-	const handleDropbox = () => {
+	/* const handleDropbox = () => {
 		console.log("dbx", dbx)
 		var okey = dbx.filesUpload({
 			path: '/Users/oscaranadon/Desktop/Lector--Web/src/componentesPerfil/',
 			contents: 'ey.jpeg'
 		})
 		console.log("okey", okey)
-	}
+	} */
 	// error={(err)=this.Onerror(err)}
 	const error = () => {
 		console.log("error")
@@ -70,7 +69,7 @@ const Perfil = () => {
 
 	const handleLogout = () => {
 		setUser({});
-		setUsername("");
+		setUser("");
 		setPassword("");
 		localStorage.clear();
 	};
@@ -80,7 +79,7 @@ const Perfil = () => {
 		var prev = ' Token '
 		var combo = prev + localStorage.getItem('userKey').substring('8', '48')
 
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/'
 		var usuario = localStorage.getItem('userName')
 
 		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
@@ -90,6 +89,8 @@ const Perfil = () => {
 
 		console.log(localStorage.getItem('userKey'))
 		console.log(combo)
+		console.log(email)
+		console.log(user)
 
 		const response = axios.request({
 			url: direccion,
@@ -97,18 +98,18 @@ const Perfil = () => {
 			headers: { 'Authorization': combo },
 			data: {
 				'email': email,
-				'pathFoto': 'https://www.molinaripixel.com.ar/wp-content/uploads/2010/12/0055.jpg',
-				"username": username
+				'pathFoto': '',
+				"username": user
 			},
 
 		}).then(function (response) {
 			console.log(response.data);
 
-			localStorage.setItem('userName', JSON.stringify(username))
-			localStorage.setItem('userEmail', JSON.stringify(username))
-			setUsername(response.data.username)
+			/* localStorage.setItem('userName', JSON.stringify(username))
+			localStorage.setItem('userEmail', JSON.stringify(username)) 
+			setUser(response.data.user)
 			setEmail(response.data.email)
-			setPhoto('https://www.molinaripixel.com.ar/wp-content/uploads/2010/12/0055.jpg')
+			setPhoto('https://www.molinaripixel.com.ar/wp-content/uploads/2010/12/0055.jpg') */
 			swal({
 				title: "Exito",
 				text: "El cambio de datos ha sido realizado correctamente.",
@@ -155,12 +156,12 @@ const Perfil = () => {
 	}));
 	const classes = useStyles();
 
-	var dbx = new Dropbox(
+	/* var dbx = new Dropbox(
 		{
 			accessToken: 'Ik02B_3h-_gAAAAAAAAAAVxOiYxKt8lz5J4RUL7mOW_Eg7KXu_FWo9t9szQs-XOE'
 
 		}
-	);
+	); */
 	const fileSelectedHandler = (event) => {
 
 		setFileName(event.taget.files[0].name)
@@ -213,23 +214,6 @@ const Perfil = () => {
 											autoComplete="current-email"
 											onChange={({ target }) => setEmail(target.value)} required
 										/>
-
-										<div class="uploader">
-											<TouchableOpacity
-												type="submit"
-												fullWidth
-												variant="contained"
-												color="primary"
-												className={classes.submit}
-												id="transparente"
-											>
-												{/* Confirmar cambois */}
-
-												<div className="pickImages" >
-													<input type="file" onChange={fileSelectedHandler} />
-												</div>
-											</TouchableOpacity>
-										</div>
 										<Button
 											type="submit"
 											fullWidth
@@ -239,27 +223,8 @@ const Perfil = () => {
 											onClick={handleSubmit}
 										>
 											Confirmar cambios
-          </Button>
-										<Button
-
-											onClick={handleDropbox}
-										>
-											Subida previa
-          </Button>
-
-										<div>
-											<DropboxSaver
-												appKey={'o38fth43nrdfm8z'}
-												success={files => this.onSuccess(files)}
-												cancel={() => this.onCancel()}
-												progress={(progress) => this.onProgress(progress)}
-												// error={(err)=this.onError(err)}
-												files={files}
-											/>
-										</div>
-
-
-
+         								 </Button>
+									
 									</form>
 								</div>
 							</Container>

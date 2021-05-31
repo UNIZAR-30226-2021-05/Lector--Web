@@ -21,11 +21,16 @@
 }
 
 #derechos{
-        margin-top: 15px;
-        margin-bottom: 15px;
-        font-size: 18px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 26px;
+        padding-bottom: 16px;
+        background: #111;
+        color: white;
         text-align: center;
-}
+        border-top: 2px solid #0099CC;
+} 
 
 /*Qué es BookBrain en Raiz.jsx*/
 #quest{
@@ -47,8 +52,8 @@
 #entrar{
         width: 100px;
         height: 40px;
-        margin-bottom: 15px;
-        margin-top: 5px;
+        margin-top: 2px;
+        margin-bottom: 30px;
         font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-style: bold;
         font-size: 20px;
@@ -125,6 +130,14 @@
 #transparente{
         border:0;
         background-color: rgba(238, 238, 238, 0);
+        margin-bottom: 10px;
+        outline: none;
+}
+
+#valorar{
+        border:0;
+        background-color: rgba(238, 238, 238, 0);
+        bottom: 30px;
         outline: none;
 }
 /* 
@@ -171,8 +184,8 @@
 
  /*Biblitoeca.jsx*/
  #irColecciones{
-        position: relative;
-        left: 40%;
+        display: inline-block;
+        vertical-align: top; 
         border: none;
         color: white;
         background-color: #4CAF50;
@@ -182,7 +195,23 @@
         font-size: 16px;
         margin: 4px 2px;
         transition-duration: 0.4s;
-        cursor: pointer;
+        cursor: pointer; 
+ }
+
+ #irLibros{
+        display: inline-block;
+        vertical-align: top; 
+        border: none;
+        color: white;
+        background-color: #242e24;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer; 
+
  }
 
   /*Colecciones.jsx*/
@@ -201,7 +230,7 @@
         cursor: pointer;
  }
 
- #UnaColeccion,#IntroduzcaISBN,#IntroduzcaColCrear,#TitViejo,#TitNuevo,#TitEliminar,#btn-nquote,#btn-flex{
+ #UnaColeccion,#IntroduzcaISBN,#IntroduzcaColCrear,#TitViejo,#TitNuevo,#TitEliminar{
         position: relative;
         left: 5%;
         padding: 16px 40px;
@@ -211,6 +240,24 @@
         margin: 4px 2px;
         transition-duration: 0.4s;
         cursor: pointer;
+ }
+
+ #btn-nquote,#btn-flex{
+        margin-top: 20px;
+        position: relative;
+        left: 15cm;
+        padding: 16px 40px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        /* margin: 4px 2px; */
+        transition-duration: 0.4s;
+        cursor: pointer;
+ }
+
+ #dicci{
+        margin-right: 80%;
+        text-align: center;
  }
 
  #Coleccion,#CrearColeccion,#RenColeccion,#ColeccionEliminar{
@@ -252,3 +299,30 @@
         height: 60px;
         width: 300px;
  }
+
+ #irCole,#obteLibros{
+        float: left;
+        margin-left: 40%;
+
+}
+
+#twi{
+        float: left;
+        width: 450px;
+        height: 700px;
+        margin-left: 15%;
+        margin-right: 90px;
+        padding: 3px;  
+}
+
+#perio{
+        float: left;
+        width: 450px;
+        height: 700px;
+        margin-right: 90px;
+        padding: 3px;  
+}
+
+#cajaglob{
+        display: inline-block;
+}

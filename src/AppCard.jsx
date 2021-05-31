@@ -71,7 +71,7 @@ function AppCard() {
 
   const onSearch = async (text) => {
     //resultados de todos los libros
-    var url = 'http://lectorbrainbook.herokuapp.com/libro/todos/'
+    var url = 'https://lectorbrainbook.herokuapp.com/libro/todos/'
     const results = axios({
       url: url,
       method: 'get',
@@ -109,7 +109,7 @@ function AppCard() {
       //ESTA SERA LA PARTE PARA VER LOS LIBROS DEL USUARIO
       console.log("-----------------")
     console.log("estamos en leyendo")
-		var url = 'http://lectorbrainbook.herokuapp.com/usuario/guardar/'
+		var url = 'https://lectorbrainbook.herokuapp.com/usuario/guardar/'
 		var name = localStorage.getItem('userName')
 		var nameUnquoted = name.replace(/['"]+/g, '');
 		var direccion = url + nameUnquoted
@@ -163,6 +163,7 @@ function AppCard() {
         <h2 className="title is-2 has-text-centered">
           Introduzca el nombre de un libro
         </h2>
+        <h5>(Para mostrar todos los libros, pulse enter)</h5>
         <div className={classes.root}>
         <Grid  container spacing={3}>
           <Grid item xs={12}>

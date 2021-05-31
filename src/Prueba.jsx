@@ -26,7 +26,7 @@ const ey = () => {
 		console.log("NOMBRE")
 		// console.log(localStorage.getItem('userName'))
 
-		var url = 'http://lectorbrainbook.herokuapp.com/libro/'
+		var url = 'https://lectorbrainbook.herokuapp.com/libro/'
 		var isbn = String(bookGet)
 		var isbnUnquoted = isbn.replace(/['"]+/g, '');
 		var direccion = url + isbnUnquoted

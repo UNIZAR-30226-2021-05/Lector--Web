@@ -40,7 +40,7 @@ const Perfil = () => {
     var prev = ' Token '
     var combo = prev + localStorage.getItem('userKey').substring('8', '48')
 
-	var url = 'http://lectorbrainbook.herokuapp.com/usuario/'
+	var url = 'https://lectorbrainbook.herokuapp.com/usuario/'
 		var usuario = localStorage.getItem('userName')
 
 		var usuarioUnquoted = usuario.replace(/['"]+/g, '');
