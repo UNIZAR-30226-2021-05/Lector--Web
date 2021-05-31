@@ -15,6 +15,8 @@ import Grid from '@material-ui/core/Grid';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import Box from '@material-ui/core/Box';
+import Copyright from './Registro'
 import Input from '@material-ui/core/Input';
 import emailjs from 'emailjs';
 import { send } from 'emailjs-com';
@@ -699,6 +701,7 @@ const Leer = () => {
 			<EnviarCorreo/>
 			</View>
 		</View>
+
 
 	);
 

@@ -213,7 +213,7 @@ const useStyles = makeStyles((theme) => ({
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="Inicio" variant="body2">
+              <Link href="/Inicio" variant="body2">
                 ¿Ya tienes una cuenta? Inicia sesión.
               </Link>
             </Grid>

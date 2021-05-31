@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom'
 import Navigator from './Navigator'
+import Typography from '@material-ui/core/Typography';
 
 function Leyendo2({ results }) {
   
@@ -32,6 +33,14 @@ return (
       <h1 id="titBib">LEYENDO</h1>
       <CardList results={cacheFin} />
 
+      <Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            <Link color="inherit" href="https://brainbookweb.herokuapp.com/">
+              BrainBook
+            </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
   </div>
 );
 }

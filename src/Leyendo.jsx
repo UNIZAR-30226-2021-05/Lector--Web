@@ -7,6 +7,7 @@ import {useState, useEffect, useLayoutEffect} from 'react'
 import CardList from "./CardList";
 import SearchBar from "./SearchBar";
 import { Link } from 'react-router-dom'
+import Typography from '@material-ui/core/Typography';
 
 import Prueba from './Prueba'
 
@@ -127,7 +128,7 @@ const Leyendo = () => {
        
 
     return (
-        <view>
+        <div>
             <Navigator />
             
             <h1 id="titBib">LEYENDO</h1>
@@ -140,7 +141,16 @@ const Leyendo = () => {
           <input id="irLeyendo2" type="button"  value="Pulse para consultar sus lecturas" onClick={irLeyendo2}></input>
           </View> 
 
-        </view>
+          <Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            <Link color="inherit" href="https://brainbookweb.herokuapp.com/">
+              BrainBook
+            </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+
+        </div>
     )
 
 }

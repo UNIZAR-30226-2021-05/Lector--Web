@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import Navigator from './Navigator'
-
+import Typography from '@material-ui/core/Typography';
 import axios from 'axios'
 
 import {
@@ -93,6 +93,16 @@ const Perfil = () => {
 				</View>
 			</View>
 		</form>
+
+		<Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            <Link color="inherit" href="https://brainbookweb.herokuapp.com/">
+              BrainBook
+            </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+
 		</View>
 
 

@@ -3,7 +3,6 @@ import './styles.css'
 
 import React from 'react';
 import logo from './LogoWeb.svg';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -17,6 +16,7 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import Perfil from './Perfil'
 import Admin from './Admin'
+import Copyright from './Registro'
 import './styles.css'
 import swal from 'sweetalert';
 
@@ -184,6 +184,16 @@ const useStyles = makeStyles((theme) => ({
 
         </form>
       </div>
+    
+      <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="Bookbrain">
+        BrainBook
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+
     </Container>
     </div>
   );
